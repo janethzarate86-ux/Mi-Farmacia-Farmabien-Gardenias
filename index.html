@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0a4d8c">
+  <meta name="description" content="Mi Farmacia: consulta existencias, precios y envía tu pedido a farmacia.">
+  <title>Mi Farmacia</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <button id="brandButton" class="brand" type="button" aria-label="Configuración" title="Configuración">
+      <img src="assets/logo.png" alt="Mi Farmacia" class="brand-logo">
+      <span class="brand-copy"><strong>Mi Farmacia</strong><small id="storeName">Catálogo en línea</small></span>
+    </button>
+    <div class="header-actions">
+      <span id="statusChip" class="status-chip offline"><i></i><span>Conectando</span></span>
+      <button id="cartButton" class="cart-button" type="button" aria-label="Abrir carrito">🛒<b id="cartCount">0</b></button>
+    </div>
+  </header>
+
+  <div id="configPanel" class="config-panel" hidden>
+    <div class="config-card">
+      <div class="config-head"><div><strong>Conexión Mi Farmacia</strong><small>Usa la misma Realtime Database configurada en Macroxel.</small></div><button id="closeConfig" class="icon-button" type="button" aria-label="Cerrar">✕</button></div>
+      <label>URL Firebase Realtime Database<input id="firebaseUrl" type="url" placeholder="https://tu-proyecto-default-rtdb.firebaseio.com"></label>
+      <label>ID de tienda (opcional)<input id="storeIdInput" placeholder="Se detecta automáticamente si solo existe una tienda"></label>
+      <div class="config-actions"><button id="saveConfig" class="btn primary" type="button">Guardar y conectar</button><button id="clearConfig" class="btn ghost" type="button">Limpiar</button></div>
+      <p id="configMessage" class="config-message">En GitHub Pages conviene dejar la URL en config.js para que todos los clientes vean el catálogo.</p>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">CATÁLOGO DISPONIBLE</p><h1>Encuentra lo que necesitas</h1><p id="heroText">Solo mostramos productos con existencia disponible.</p></div>
+      <div class="hero-pill"><span id="productCount">0</span><small>productos</small></div>
+    </section>
+
+    <section class="search-shell" aria-label="Buscar productos">
+      <div class="search-box"><span>⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="Buscar medicamento o producto..."><button id="clearSearch" type="button" aria-label="Limpiar búsqueda">✕</button></div>
+      <div id="categoryStrip" class="category-strip" aria-label="Categorías"></div>
+    </section>
+
+    <section id="loadingState" class="state-card"><div class="spinner"></div><strong>Cargando catálogo…</strong><span>Consultando existencias y precios.</span></section>
+    <section id="emptyState" class="state-card" hidden><div class="state-icon">📦</div><strong>No hay productos para mostrar</strong><span id="emptyMessage">Prueba otra búsqueda.</span></section>
+    <section id="productGrid" class="product-grid" aria-live="polite"></section>
+    <div class="load-more-wrap"><button id="loadMoreProducts" class="btn ghost load-more" type="button" hidden>Mostrar más productos</button></div>
+  </main>
+
+  <button id="floatingCart" class="floating-cart" type="button" aria-label="Ver carrito"><span>🛒</span><strong>Carrito</strong><b id="floatingCartCount">0</b></button>
+
+  <div id="quantityModal" class="modal" hidden>
+    <div class="modal-backdrop" data-close="quantity"></div>
+    <div class="modal-card quantity-card" role="dialog" aria-modal="true" aria-labelledby="quantityTitle">
+      <button class="modal-close" type="button" data-close="quantity">✕</button>
+      <div id="quantityImage" class="quantity-image"></div>
+      <div class="quantity-copy"><small id="quantityPresentation"></small><h2 id="quantityTitle">Producto</h2><div class="quantity-meta"><span id="quantityStock"></span><strong id="quantityPrice"></strong></div></div>
+      <div class="stepper" aria-label="Cantidad"><button id="qtyMinus" type="button">−</button><input id="qtyInput" type="number" min="1" value="1" inputmode="numeric"><button id="qtyPlus" type="button">+</button></div>
+      <button id="addToCart" class="btn primary wide" type="button">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div id="cartDrawer" class="drawer" hidden>
+    <div class="drawer-backdrop" data-close="cart"></div>
+    <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="drawer-head"><div><small>TU PEDIDO</small><h2 id="cartTitle">Carrito</h2></div><button class="icon-button" type="button" data-close="cart">✕</button></div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-summary"><div><span>Productos</span><strong id="cartPieces">0 pzas</strong></div><div class="cart-total"><span>Total estimado</span><strong id="cartTotal">$0.00</strong></div></div>
+      <button id="checkoutButton" class="btn primary wide" type="button">Finalizar pedido</button>
+    </aside>
+  </div>
+
+  <div id="checkoutModal" class="modal" hidden>
+    <div class="modal-backdrop" data-close="checkout"></div>
+    <div class="modal-card checkout-card" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <button class="modal-close" type="button" data-close="checkout">✕</button>
+      <p class="eyebrow">DATOS PARA TU PEDIDO</p><h2 id="checkoutTitle">Confirmar pedido</h2>
+      <div class="checkout-grid">
+        <label>Nombre completo<input id="customerName" autocomplete="name" maxlength="80" placeholder="Tu nombre"></label>
+        <label>Teléfono<input id="customerPhone" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="10 dígitos"></label>
+        <label class="full">Observaciones<textarea id="customerNote" maxlength="240" placeholder="Opcional: indicaciones para la farmacia"></textarea></label>
+      </div>
+      <div class="checkout-review"><span>Total estimado</span><strong id="checkoutTotal">$0.00</strong></div>
+      <button id="submitOrder" class="btn primary wide" type="button">Enviar pedido a la farmacia</button>
+      <p id="checkoutMessage" class="checkout-message"></p>
+    </div>
+  </div>
+
+  <div id="successModal" class="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-card success-card" role="dialog" aria-modal="true">
+      <div class="success-mark">✓</div><p class="eyebrow">PEDIDO ENVIADO</p><h2>Tu farmacia ya recibió el pedido</h2>
+      <p>Conserva este folio para identificarlo.</p><div id="successOrderId" class="order-id">—</div>
+      <button id="closeSuccess" class="btn primary wide" type="button">Seguir comprando</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer><strong>Mi Farmacia</strong><span>Existencias y precios sujetos a disponibilidad al momento de surtir.</span><small>Diseñado Por- LIC. J. César Astudillo Guzmán. TEL: 5564216859.</small></footer>
+
+  <script src="config.js"></script>
+  <script src="product-images.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
