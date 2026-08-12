@@ -364,37 +364,57 @@ window.MI_FARMACIA_IMAGES = window.MI_FARMACIA_IMAGES || {};
 
   function imageType(product){
     const src=norm(`${product.tipoImagen||''} ${product.presentacion||''} ${product.nombre||''}`);
+    // Reglas específicas pedidas por el usuario:
+    // - Si dice ml/L/envase/frasco/botella, normalmente mostrar botella.
+    // - Si dice con X tab/tabletas/cápsulas/comprimidos, normalmente mostrar caja.
+    if(/CREMA|UNG[ÜU]ENTO|POMADA|GEL|PASTA|TUBO/.test(src)) return 'tubo';
+    if(/BOLSA|BOLSITA|SACHET|SACH[EÉ]|SOBRE|POLVO/.test(src)) return 'bolsa';
+    if(/GOTA|GOTERO|OFTALM|OTIC/.test(src)) return 'gotero';
     if(/JARABE|SUSPENSION|EMULSION/.test(src)) return 'jarabe';
-    if(/GOTA|GOTERO|OFTALM|OTIC/.test(src)) return 'gotas';
-    if(/CREMA|UNG[ÜU]ENTO|POMADA|GEL|LOCION/.test(src)) return 'crema';
     if(/INYECT|AMPOL|VIAL|JERINGA/.test(src)) return 'inyectable';
-    if(/AEROSOL|INHALADOR|SPRAY/.test(src)) return 'aerosol';
-    if(/CAPSULA/.test(src)) return 'capsula';
-    if(/TABLETA|COMPRIMIDO|GRAGEA/.test(src)) return 'tableta';
-    if(/SOBRE|POLVO/.test(src)) return 'polvo';
-    if(/SOLUCION/.test(src)) return 'solucion';
-    if(/VENDA|GASA|GUANTE|JERINGA|SONDA|MATERIAL|DISPOSITIVO/.test(src)) return 'dispositivo';
-    return 'medicamento';
+    if(/AEROSOL|INHALADOR|SPRAY/.test(src)) return 'spray';
+    if(/LATA|\bCAN\b/.test(src)) return 'lata';
+    if(/VENDA|GASA|GUANTE|SONDA|MATERIAL|DISPOSITIVO|BATA|CINTA|CURACION|CUBREBOCA/.test(src)) return 'dispositivo';
+    if(/(?:CON\s*)?\d+\s*(?:TAB|TABS|TABLETA|TABLETAS|COMPRIMIDO|COMPRIMIDOS|GRAGEA|GRAGEAS|CAPS|CAPSULA|CAPSULAS|C[ÁA]PSULA|C[ÁA]PSULAS)\b/.test(src)) return 'caja';
+    if(/TABLETA|COMPRIMIDO|GRAGEA|BLISTER|CAPSULA|C[ÁA]PSULA/.test(src)) return 'caja';
+    if(/\b\d+\s*(?:ML|L)\b|\bML\b|\bL\b|BOTELLA|BOT\.?|FRASCO|ENVASE|SOLUCION|LOCION|ENJUAGUE|SHAMPOO|ALCOHOL|ACEITE|AGUA|JUGO|BEBIDA/.test(src)) return 'botella';
+    if(/CAJA|CARTON|ESTUCHE|BOX/.test(src)) return 'caja';
+    return 'caja';
   }
 
   function imageSvg(product){
-    const t=imageType(product); const label=esc((text(product.distintiva||product.generica||'Mi Farmacia').slice(0,16)||'Mi Farmacia'));
-    const common=`<svg viewBox="0 0 180 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}"><defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#0a5fa8"/><stop offset="1" stop-color="#26a9df"/></linearGradient><linearGradient id="w"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#e6eef6"/></linearGradient></defs>`;
+    const t=imageType(product);
+    const labelRaw=text(product.distintiva||product.generica||product.nombre||'Mi Farmacia').slice(0,18) || 'Mi Farmacia';
+    const label=esc(labelRaw);
+    const sub=esc(text(product.presentacion||'').slice(0,12).toUpperCase());
+    const uid=('u'+(labelRaw+'-'+t).toLowerCase().replace(/[^a-z0-9]+/g,'').slice(0,18)) || 'uimg';
+    const defs=`<defs>
+      <linearGradient id="${uid}g1" x1="0" x2="1"><stop stop-color="#0d5ea5"/><stop offset="1" stop-color="#2db0ea"/></linearGradient>
+      <linearGradient id="${uid}g2" x1="0" x2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#e7eef5"/></linearGradient>
+      <linearGradient id="${uid}g3" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#d6e3ef"/></linearGradient>
+      <linearGradient id="${uid}liq" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#96d8ff"/><stop offset="1" stop-color="#34a7e0"/></linearGradient>
+      <filter id="${uid}shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#6c89a6" flood-opacity="0.22"/></filter>
+    </defs>`;
+    const mark=`<text x="90" y="87" text-anchor="middle" fill="#173d60" font-size="8.6" font-weight="800">${label}</text>${sub?`<text x="90" y="98" text-anchor="middle" fill="#6f8597" font-size="6.2" font-weight="700">${sub}</text>`:''}`;
+    const open=`<svg viewBox="0 0 180 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}" shape-rendering="geometricPrecision">${defs}<ellipse cx="90" cy="111" rx="45" ry="8" fill="#d6e4ef"/>`;
     const variants={
-      tableta:`<rect x="25" y="29" width="130" height="76" rx="9" fill="url(#w)" stroke="#b8cadd"/><rect x="25" y="29" width="130" height="17" rx="9" fill="url(#g)"/><circle cx="65" cy="72" r="13" fill="#dce9f3"/><path d="M56 72h18" stroke="#7fa2bc" stroke-width="2"/><text x="92" y="70" text-anchor="middle" fill="#174c75" font-size="10" font-weight="700">${label}</text><text x="92" y="84" text-anchor="middle" fill="#678196" font-size="7">TABLETAS</text>`,
-      capsula:`<rect x="26" y="31" width="128" height="74" rx="10" fill="url(#w)" stroke="#bfd0df"/><path d="M49 79a15 15 0 0 1 0-21l14-14a15 15 0 0 1 21 21L70 79a15 15 0 0 1-21 0Z" fill="#28a7dc"/><path d="m60 55 13 13" stroke="#fff" stroke-width="2"/><text x="112" y="66" text-anchor="middle" fill="#174c75" font-size="9" font-weight="700">${label}</text><text x="112" y="80" text-anchor="middle" fill="#678196" font-size="7">CÁPSULAS</text>`,
-      jarabe:`<rect x="58" y="31" width="64" height="82" rx="13" fill="#fff" stroke="#aabfd2"/><rect x="68" y="17" width="44" height="20" rx="5" fill="#174f7c"/><rect x="64" y="56" width="52" height="35" rx="5" fill="url(#g)"/><text x="90" y="73" text-anchor="middle" fill="#fff" font-size="8" font-weight="800">${label}</text><text x="90" y="83" text-anchor="middle" fill="#dff4ff" font-size="6">JARABE</text>`,
-      gotas:`<rect x="66" y="45" width="48" height="65" rx="11" fill="#fff" stroke="#adc2d4"/><path d="M73 45h34l-5-19H78Z" fill="#184f7a"/><path d="M89 67c-8 10-10 13-10 18a11 11 0 0 0 22 0c0-5-3-9-12-18Z" fill="#28a7dc"/><text x="90" y="104" text-anchor="middle" fill="#174c75" font-size="6">${label}</text>`,
-      crema:`<path d="M39 86 53 35h76l14 51-13 21H52Z" fill="url(#w)" stroke="#b6c9d9"/><rect x="50" y="54" width="82" height="30" rx="5" fill="url(#g)"/><rect x="52" y="103" width="78" height="10" rx="4" fill="#174f7a"/><text x="91" y="69" text-anchor="middle" fill="#fff" font-size="8" font-weight="800">${label}</text><text x="91" y="79" text-anchor="middle" fill="#dff5ff" font-size="6">CREMA / GEL</text>`,
-      inyectable:`<rect x="72" y="27" width="36" height="84" rx="8" fill="#f9fdff" stroke="#a8bfd2"/><rect x="75" y="22" width="30" height="18" rx="4" fill="#18527f"/><rect x="77" y="58" width="26" height="31" rx="4" fill="#def1fb"/><path d="M76 83h28" stroke="#28a7dc" stroke-width="3"/><text x="90" y="73" text-anchor="middle" fill="#17527d" font-size="6" font-weight="800">${label}</text>`,
-      aerosol:`<rect x="66" y="38" width="48" height="74" rx="10" fill="url(#w)" stroke="#adc2d4"/><rect x="73" y="27" width="34" height="16" rx="3" fill="#174f7c"/><path d="M107 31h21v7h-21" fill="#174f7c"/><rect x="72" y="61" width="36" height="31" rx="5" fill="url(#g)"/><text x="90" y="75" text-anchor="middle" fill="#fff" font-size="7" font-weight="800">${label}</text>`,
-      polvo:`<path d="M45 31h90l-6 78H51Z" fill="#fff" stroke="#b7c9d9"/><path d="M45 31h90v20H45Z" fill="url(#g)"/><text x="90" y="72" text-anchor="middle" fill="#174f7c" font-size="9" font-weight="800">${label}</text><text x="90" y="85" text-anchor="middle" fill="#678196" font-size="7">POLVO / SOBRE</text>`,
-      solucion:`<rect x="57" y="28" width="66" height="84" rx="14" fill="#fff" stroke="#adc2d4"/><rect x="68" y="18" width="44" height="18" rx="5" fill="#174f7c"/><rect x="64" y="58" width="52" height="36" rx="5" fill="#e2f4fb"/><path d="M64 80c16-9 34 8 52-2v16H64Z" fill="#28a7dc" opacity=".55"/><text x="90" y="73" text-anchor="middle" fill="#174f7c" font-size="7" font-weight="800">${label}</text>`,
-      dispositivo:`<rect x="27" y="34" width="126" height="72" rx="12" fill="#fff" stroke="#b5c8d8"/><path d="M54 83h72M67 56h46" stroke="#28a7dc" stroke-width="9" stroke-linecap="round"/><text x="90" y="101" text-anchor="middle" fill="#174f7c" font-size="7" font-weight="800">${label}</text>`,
-      medicamento:`<rect x="25" y="31" width="130" height="76" rx="10" fill="url(#w)" stroke="#b8cadb"/><path d="M25 47h130V31a10 10 0 0 0-10-10H35a10 10 0 0 0-10 10Z" fill="url(#g)"/><path d="M47 66h15v-15h12v15h15v12H74v15H62V78H47Z" fill="#22a2d9" opacity=".82"/><text x="119" y="67" text-anchor="middle" fill="#174c75" font-size="9" font-weight="800">${label}</text><text x="119" y="82" text-anchor="middle" fill="#6a8195" font-size="6">MI FARMACIA</text>`
+      caja:`<g filter="url(#${uid}shadow)"><path d="M45 41h64l22 13v45H67L45 86Z" fill="url(#${uid}g2)" stroke="#b4c7d8"/><path d="M109 41l22 13v45l-22-13Z" fill="#dce7f1" stroke="#b4c7d8"/><path d="M45 41h64l22 13H67Z" fill="url(#${uid}g1)" opacity=".96"/><rect x="54" y="61" width="22" height="22" rx="5" fill="#39a8df" opacity=".18"/><path d="M61 72h9M65.5 67.5v9" stroke="#2a9ad8" stroke-width="4" stroke-linecap="round"/></g>${mark}`,
+      blister:`<g filter="url(#${uid}shadow)"><rect x="31" y="36" width="118" height="58" rx="10" fill="url(#${uid}g2)" stroke="#b5c8d9"/><rect x="31" y="36" width="118" height="16" rx="10" fill="url(#${uid}g1)"/><g fill="#f9fbfd" stroke="#bbccda"><circle cx="48" cy="62" r="8.5"/><circle cx="76" cy="62" r="8.5"/><circle cx="104" cy="62" r="8.5"/><circle cx="48" cy="80" r="8.5"/><circle cx="76" cy="80" r="8.5"/><circle cx="104" cy="80" r="8.5"/></g></g><text x="90" y="108" text-anchor="middle" fill="#173d60" font-size="8.6" font-weight="800">${label}</text>`,
+      capsulas:`<g filter="url(#${uid}shadow)"><rect x="32" y="36" width="116" height="56" rx="12" fill="url(#${uid}g2)" stroke="#b7c8d9"/><rect x="32" y="36" width="116" height="16" rx="12" fill="url(#${uid}g1)"/><path d="M55 75a10 10 0 0 1 0-14l10-10a10 10 0 1 1 14 14L69 75a10 10 0 0 1-14 0Z" fill="#2aa8df"/><path d="m61 57 12 12" stroke="#fff" stroke-width="2"/><path d="M89 75a10 10 0 0 1 0-14l10-10a10 10 0 1 1 14 14L103 75a10 10 0 0 1-14 0Z" fill="#85d4ff"/><path d="m95 57 12 12" stroke="#fff" stroke-width="2"/></g>${mark}`,
+      botella:`<g filter="url(#${uid}shadow)"><rect x="71" y="25" width="38" height="15" rx="5" fill="#174f7d"/><rect x="61" y="38" width="58" height="62" rx="16" fill="url(#${uid}g3)" stroke="#aec2d5"/><path d="M64 73h52v20a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16Z" fill="url(#${uid}liq)" opacity=".85"/><rect x="68" y="55" width="44" height="22" rx="7" fill="url(#${uid}g1)"/><text x="90" y="69" text-anchor="middle" fill="#fff" font-size="8" font-weight="800">${label}</text></g>`,
+      jarabe:`<g filter="url(#${uid}shadow)"><rect x="72" y="19" width="36" height="18" rx="5" fill="#6b4120"/><rect x="61" y="35" width="58" height="66" rx="14" fill="#fefefe" stroke="#b3c4d5"/><path d="M65 69h50v20a12 12 0 0 1-12 12H77a12 12 0 0 1-12-12Z" fill="#c57f42" opacity=".82"/><rect x="68" y="53" width="44" height="20" rx="6" fill="url(#${uid}g1)"/><text x="90" y="66" text-anchor="middle" fill="#fff" font-size="8" font-weight="800">${label}</text><rect x="127" y="56" width="10" height="35" rx="4" fill="#f0f5fa" stroke="#b3c3d3"/><path d="M132 56v35" stroke="#cc9d63"/></g>`,
+      gotero:`<g filter="url(#${uid}shadow)"><path d="M82 20h16l5 13H77Z" fill="#174f7d"/><rect x="69" y="31" width="42" height="68" rx="14" fill="url(#${uid}g3)" stroke="#afc2d4"/><path d="M73 69h34v18a12 12 0 0 1-12 12H85a12 12 0 0 1-12-12Z" fill="#45b4eb" opacity=".78"/><rect x="74" y="51" width="32" height="16" rx="6" fill="url(#${uid}g1)"/><text x="90" y="62" text-anchor="middle" fill="#fff" font-size="6.7" font-weight="800">${label}</text><path d="M132 46c6 9 9 16 9 22a9 9 0 0 1-18 0c0-6 3-13 9-22Z" fill="#59b7ec" opacity=".8"/></g>`,
+      tubo:`<g filter="url(#${uid}shadow)"><path d="M58 31h58l10 56H68Z" fill="url(#${uid}g2)" stroke="#b2c5d6"/><path d="M58 31h58l4 19H62Z" fill="url(#${uid}g1)"/><path d="M69 87h58l-6 17H75Z" fill="#cfdce8" stroke="#afc1d2"/><text x="91" y="67" text-anchor="middle" fill="#174c75" font-size="8.2" font-weight="800">${label}</text></g>`,
+      bolsa:`<g filter="url(#${uid}shadow)"><path d="M58 27h64l8 72H50Z" fill="url(#${uid}g2)" stroke="#b5c7d8"/><path d="M58 27h64l3 19H55Z" fill="url(#${uid}g1)"/><path d="M80 57h20v20H80z" fill="#39a8df" opacity=".18"/><path d="M85 67h10M90 62v10" stroke="#28a0dc" stroke-width="4" stroke-linecap="round"/><text x="90" y="85" text-anchor="middle" fill="#174c75" font-size="8" font-weight="800">${label}</text></g>`,
+      lata:`<g filter="url(#${uid}shadow)"><ellipse cx="90" cy="34" rx="31" ry="9" fill="#f4f8fc" stroke="#b6c8d9"/><rect x="59" y="34" width="62" height="60" rx="10" fill="url(#${uid}g2)" stroke="#b6c8d9"/><ellipse cx="90" cy="94" rx="31" ry="9" fill="#dde8f1" stroke="#b6c8d9"/><rect x="62" y="52" width="56" height="20" rx="6" fill="url(#${uid}g1)"/><text x="90" y="65" text-anchor="middle" fill="#fff" font-size="8" font-weight="800">${label}</text></g>`,
+      spray:`<g filter="url(#${uid}shadow)"><rect x="74" y="23" width="26" height="13" rx="4" fill="#174f7d"/><path d="M100 28h13l7 7h-12l-8-4Z" fill="#92a9bc"/><rect x="63" y="35" width="44" height="65" rx="13" fill="url(#${uid}g3)" stroke="#afc2d4"/><rect x="68" y="56" width="34" height="20" rx="6" fill="url(#${uid}g1)"/><text x="85" y="69" text-anchor="middle" fill="#fff" font-size="7.2" font-weight="800">${label}</text></g>`,
+      inyectable:`<g filter="url(#${uid}shadow)"><rect x="48" y="43" width="34" height="47" rx="8" fill="url(#${uid}g2)" stroke="#b6c8d9"/><rect x="55" y="31" width="20" height="14" rx="4" fill="#174f7d"/><path d="M52 70h26v14H52Z" fill="url(#${uid}g1)"/><path d="M104 48h26v8h10v5h-10v8h-26Z" fill="#eef5fb" stroke="#b5c8d8"/><path d="M105 62h34" stroke="#8aa0b2" stroke-width="2"/><path d="M138 66l15-7" stroke="#8aa0b2" stroke-width="2" stroke-linecap="round"/><text x="65" y="101" text-anchor="middle" fill="#173d60" font-size="7.5" font-weight="800">${label}</text></g>`,
+      sobre:`<g filter="url(#${uid}shadow)"><path d="M52 34h76l10 60H42Z" fill="url(#${uid}g2)" stroke="#b5c7d8"/><path d="M52 34h76l4 18H48Z" fill="url(#${uid}g1)"/><text x="90" y="72" text-anchor="middle" fill="#174c75" font-size="8.6" font-weight="800">${label}</text><path d="M50 86h80" stroke="#c8d5e1" stroke-dasharray="4 3"/></g>`,
+      dispositivo:`<g filter="url(#${uid}shadow)"><rect x="38" y="39" width="104" height="48" rx="12" fill="url(#${uid}g2)" stroke="#b6c8d9"/><rect x="49" y="55" width="42" height="16" rx="8" fill="#f0d8be" stroke="#d6b18f"/><path d="M55 63h30" stroke="#d09f7a" stroke-width="3"/><path d="M102 56h22M113 45v22" stroke="#2a9fda" stroke-width="5" stroke-linecap="round"/></g><text x="90" y="100" text-anchor="middle" fill="#173d60" font-size="8.5" font-weight="800">${label}</text>`
     };
-    return common+(variants[t]||variants.medicamento)+`</svg>`;
+    return `${open}${variants[t]||variants.caja}</svg>`;
   }
+
   function productImage(product,overrideUrl=''){
     const custom=text(overrideUrl||product.imagenUrl||IMAGE_MAP[product.id]||IMAGE_MAP[product.codigo]||cachedRemoteImage(product)||'');
     if(custom && (/^https:\/\//i.test(custom) || /^data:image\//i.test(custom))) return `<img class="real-product-image" src="${esc(custom)}" alt="${esc(product.nombre)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.outerHTML=this.dataset.fallback" data-fallback='${esc(imageSvg(product))}'>`;
@@ -535,7 +555,7 @@ window.MI_FARMACIA_IMAGES = window.MI_FARMACIA_IMAGES || {};
   function renderCategories(){
     if(!categories().includes(state.category)) state.category='TODOS';
     $('categoryStrip').innerHTML=categories().map(c=>`<button class="category-chip ${state.category===c?'active':''}" type="button" data-category="${esc(c)}">${c==='TODOS'?'Todos':esc(c)}</button>`).join('');
-    $('rxCatalogNote').hidden=!state.products.some(isAntibiotic);
+    $('rxCatalogNote').hidden=state.category!=='ANTIBIOTICOS';
   }
   function filteredProducts(){
     const q=norm($('searchInput').value); const tokens=q.split(/\s+/).filter(Boolean);
