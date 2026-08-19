@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/sync-product-images.yml'
+      - 'macroxel-config.json'
   schedule:
     - cron: '17,47 * * * *'
 
