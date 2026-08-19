@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T12:09:49.196Z",
+  "updatedAt": "2026-08-19T13:20:11.738Z",
   "products": {
     "42332909": {
       "status": "not_found",
@@ -91,6 +91,12 @@
       "presentation": "",
       "checkedAt": "2026-08-19T11:44:48.453Z",
       "updatedAt": "2026-08-19T11:44:48.453Z"
+    },
+    "75020286": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:20:04.647Z",
+      "name": "SIMILAXOL TABS/50",
+      "presentation": ""
     },
     "3014260846800": {
       "status": "not_found",
@@ -4315,11 +4321,761 @@
       "checkedAt": "2026-08-19T12:09:46.575Z",
       "name": "TANYS BROCHA PARA TINTE BARABA Y BIGOTE",
       "presentation": ""
+    },
+    "7501755559827": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:07:51.641Z",
+      "name": "TANYS CEPILLO DE BOLSILLO REDONDO C/ESPEJO",
+      "presentation": ""
+    },
+    "7501755567440": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:07:58.556Z",
+      "name": "TANYS CEPILLO P/CABELLO",
+      "presentation": ""
+    },
+    "7501825300274": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:08:04.046Z",
+      "name": "DEBEQUIN-C JBE AD",
+      "presentation": ""
+    },
+    "7501825300618": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:08:09.217Z",
+      "name": "NEOMICINA, CAOLIN Y PECTINA",
+      "presentation": "FRASCO CON 90ML"
+    },
+    "7501825300717": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:08:14.123Z",
+      "name": "NAPROXENO-PARACETRAMOL SUSPENSION 100ML",
+      "presentation": ""
+    },
+    "7501825300816": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:08:19.048Z",
+      "name": "METAMIZOL SODICO GTS",
+      "presentation": ""
+    },
+    "7501825300823": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:08:23.957Z",
+      "name": "NITROFURANTOINA",
+      "presentation": "FRASCO CON 12 TABS"
+    },
+    "7501825301721": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:08:28.897Z",
+      "name": "ATENOLOL 50MGS/28TABS",
+      "presentation": ""
+    },
+    "7501825302599": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:08:33.889Z",
+      "name": "TRIMEBUTINA 200MG",
+      "presentation": "TABS"
+    },
+    "7501825304142": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:08:38.813Z",
+      "name": "DIFENHIDRAMINA 50MG C/8TAB",
+      "presentation": ""
+    },
+    "7501836000118": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:08:43.770Z",
+      "name": "PARACETAMOL/METOCARBAMOL 350/400MG TAB 30",
+      "presentation": ""
+    },
+    "7501836000828": {
+      "status": "verified_ean",
+      "image": "assets/products/7501836000828.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/183/600/0828/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "argental",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "SULFADIAZINA DE PLATA 1.0% CREMA",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:08:48.949Z",
+      "updatedAt": "2026-08-19T13:08:48.949Z"
+    },
+    "7501836002969": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:08:53.118Z",
+      "name": "TRIMEBUTINA 200MG 20TABS",
+      "presentation": ""
+    },
+    "7501836009531": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:09:10.672Z",
+      "name": "ALUMINIO/MAGNESIO/SIMETICONA SUSP. 360ML",
+      "presentation": ""
+    },
+    "7501836009661": {
+      "status": "verified_ean",
+      "image": "assets/products/7501836009661.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/183/600/9661/front_es.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "dualgos",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PARACETAMOL C/ IBUPROFENO 325/200MG TABS C/20",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:09:19.790Z",
+      "updatedAt": "2026-08-19T13:09:19.790Z"
+    },
+    "7501836009746": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:09:23.109Z",
+      "name": "PARACETAMOL HIOSCINA TAB",
+      "presentation": ""
+    },
+    "7501839129991": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:09:28.062Z",
+      "name": "TINTE NUTRISSE CAFE-DELICIA",
+      "presentation": ""
+    },
+    "7501842800412": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:09:33.396Z",
+      "name": "AGUA OXIGENADA 1000 ML",
+      "presentation": ""
+    },
+    "7501846500554": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:09:45.113Z",
+      "name": "GEL XIOMARA 250 GR",
+      "presentation": ""
+    },
+    "7501846502305": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:09:50.592Z",
+      "name": "GEL XIOMARA GO TRAVEL 90G",
+      "presentation": ""
+    },
+    "7501846504842": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:09:55.548Z",
+      "name": "GEL XIOMARA BLACK 90G",
+      "presentation": ""
+    },
+    "7501846506266": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:10:00.935Z",
+      "name": "CERA MODELADORA GLOW MAX SHINE",
+      "presentation": "60GRS"
+    },
+    "7501868900110": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:10:12.547Z",
+      "name": "GASA SIMPLE IND",
+      "presentation": "PZ"
+    },
+    "7501868900509": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:10:17.898Z",
+      "name": "TELA ADHESIVA DIBAR",
+      "presentation": ""
+    },
+    "7501868901100": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:10:22.788Z",
+      "name": "ALCOHOL DIBAR 125ML",
+      "presentation": ""
+    },
+    "7501868901117": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:10:27.733Z",
+      "name": "ALCOHOL 250ML DIBAR AZUL",
+      "presentation": ""
+    },
+    "7501868901124": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:10:32.987Z",
+      "name": "ALCOHOL 500ML",
+      "presentation": ""
+    },
+    "7501868902039": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:10:45.437Z",
+      "name": "VENDA 5 CM VENDAMAX",
+      "presentation": ""
+    },
+    "7501868902305": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:10:50.575Z",
+      "name": "VENDA ELASTICA DIBAR 15CM",
+      "presentation": ""
+    },
+    "7501868902602": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:10:55.674Z",
+      "name": "VENDA DIBAR 30CM",
+      "presentation": ""
+    },
+    "7501868902657": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:11:00.539Z",
+      "name": "VENDA DIBAR 30CM",
+      "presentation": ""
+    },
+    "7501868910058": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:11:05.444Z",
+      "name": "ALGODONB DIBAR 10G PAQ",
+      "presentation": ""
+    },
+    "7501868920026": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:11:10.842Z",
+      "name": "ALCOHOL GEL DIBAR 50ML",
+      "presentation": ""
+    },
+    "7501877651485": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:11:16.214Z",
+      "name": "MIYAKO TELA ADHESIVA 5CM",
+      "presentation": ""
+    },
+    "7501943418509": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:11:21.169Z",
+      "name": "KOTEX NOCTURNA EXTRA LARGA",
+      "presentation": "BOLSA 8 TOALLAS"
+    },
+    "7501943424562": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:11:26.147Z",
+      "name": "KOTEX ANATOM C ALAS10PZS",
+      "presentation": ""
+    },
+    "7501943453265": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:11:34.046Z",
+      "name": "DEPEND PREDOBLADO C/10",
+      "presentation": ""
+    },
+    "7501943454743": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:11:45.329Z",
+      "name": "HUGGIES TOALLAS HUMEDAS C/ 80 NATURAL CARE",
+      "presentation": ""
+    },
+    "7501943454811": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:11:51.106Z",
+      "name": "HUGGIES NATURA CARE TOALL HUME 80PZS",
+      "presentation": ""
+    },
+    "7501943454873": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:11:56.365Z",
+      "name": "TAC HUGGIES HUMRELAJREP80 111",
+      "presentation": ""
+    },
+    "7501943462175": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:12:07.308Z",
+      "name": "COTTONELLE TOALLAS HUMEDAS C/42",
+      "presentation": ""
+    },
+    "7501943468054": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:12:12.682Z",
+      "name": "DIAPRO TOALLAS HUM C/ALOE AD 42PZ",
+      "presentation": ""
+    },
+    "7501943471337": {
+      "status": "verified_ean",
+      "image": "assets/products/7501943471337.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/194/347/1337/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Kleen bebe",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "TOALLITAS HUMEDAS ABSORSEC",
+      "presentation": "BOLSA 90 PZAS",
+      "checkedAt": "2026-08-19T13:12:26.322Z",
+      "updatedAt": "2026-08-19T13:12:26.322Z"
+    },
+    "7501943471900": {
+      "status": "verified_ean",
+      "image": "assets/products/7501943471900.webp",
+      "source": "opf",
+      "sourceUrl": "https://images.openproductsfacts.org/images/products/750/194/347/1900/front_en.9.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Kleen Bebé  Absorsec",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "TOALLAS HUM ABSORSEC C/120 KLEEN BB",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:12:38.407Z",
+      "updatedAt": "2026-08-19T13:12:38.407Z"
+    },
+    "7501943471962": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:12:44.160Z",
+      "name": "KLEEN BEBÉ SUAVELASTIC TOALLAS C/100",
+      "presentation": ""
+    },
+    "7501943474895": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:13:01.039Z",
+      "name": "PAÑAL DIAPRO PRED GEL ADC-10",
+      "presentation": ""
+    },
+    "7501943484207": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:13:12.496Z",
+      "name": "CRA HUGGIES SUPREM CORP 200ML",
+      "presentation": ""
+    },
+    "7501943484238": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:13:34.963Z",
+      "name": "JABON HUGGIES SUPREME 80G",
+      "presentation": ""
+    },
+    "7501943484481": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:13:51.304Z",
+      "name": "KLEENEX CAJA 90 PAÑUELOS",
+      "presentation": ""
+    },
+    "7501943489349": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:13:57.108Z",
+      "name": "CREMA HUGGIES MANZANILLA 250ML",
+      "presentation": ""
+    },
+    "7501943495548": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:14:02.340Z",
+      "name": "DIAPRO PRED GEL  UNIT 1PZ",
+      "presentation": ""
+    },
+    "7502001160019": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:14:12.193Z",
+      "name": "BUTILHIOSCINA,METAMIZOL SODICO",
+      "presentation": ""
+    },
+    "7502001162426": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:14:37.061Z",
+      "name": "ARDOSONS",
+      "presentation": "CAJA CON 20 CAPS"
+    },
+    "7502001162525": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:14:41.987Z",
+      "name": "MECLIZINA/PIRIDOXINA 25/50MG 20TABS",
+      "presentation": ""
+    },
+    "7502001163065": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:14:46.935Z",
+      "name": "DEXTROMETORFANO/SULFAGUAYACOL JAB AD",
+      "presentation": ""
+    },
+    "7502001163089": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:14:58.457Z",
+      "name": "OXOLAMINA 50 MG/5ML JARABE 100 ML",
+      "presentation": ""
+    },
+    "7502001164086": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:03.378Z",
+      "name": "METRONID/NISTATIN/FLUOCINOLON OV 10",
+      "presentation": ""
+    },
+    "7502001164413": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:08.975Z",
+      "name": "CLOTRIMAZOL",
+      "presentation": "CAJA CON 1 OVULO"
+    },
+    "7502001164833": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:14.362Z",
+      "name": "DIPROP/FOSF BETAMETA 5/2MG SOL IMYECTABLE",
+      "presentation": ""
+    },
+    "7502001165038": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:19.258Z",
+      "name": "PIROXICAM 20MG 20CAPS",
+      "presentation": ""
+    },
+    "7502001165045": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:24.686Z",
+      "name": "PIROXICAM GEL",
+      "presentation": ""
+    },
+    "7502001165311": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:30.052Z",
+      "name": "ALGESTONA/ESTRADIOL AMPOLLETA 150MG/10MG",
+      "presentation": ""
+    },
+    "7502001165441": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:34.911Z",
+      "name": "TROBAM/DEXA OFT 3MG1MG 5ML",
+      "presentation": ""
+    },
+    "7502001165489": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:39.816Z",
+      "name": "A-D-KAN RETINOL, ERGOCALCIFEROL",
+      "presentation": "CAJA CON 3 AMPOLLETAS"
+    },
+    "7502001165526": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:44.920Z",
+      "name": "TRIMETRO/SULFAME 80/40 MG 20 TABS",
+      "presentation": ""
+    },
+    "7502001166066": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:49.796Z",
+      "name": "BARMICIL COMPUESTO",
+      "presentation": ""
+    },
+    "7502001166776": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:15:54.689Z",
+      "name": "DEXAMETASONA 8MG/2ML C/3AMP.",
+      "presentation": ""
+    },
+    "7502001169289": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:00.033Z",
+      "name": "TRIMETOPRIMA 160/ SULFAMETOXAZOL 800MG",
+      "presentation": "CAJA CON 14 TABS"
+    },
+    "7502003381672": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:05.072Z",
+      "name": "AMBROXOL C/LEVODROPROPIZINA SOL 300/600 MG 120ML",
+      "presentation": ""
+    },
+    "7502003388107": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:10.255Z",
+      "name": "DIMENHIDRINATO 50MG 20TABS",
+      "presentation": ""
+    },
+    "7502003388510": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:15.454Z",
+      "name": "DEXTROMETORFANO/GUAIFENESINA/CLORFENAMINA JBE",
+      "presentation": ""
+    },
+    "7502004401454": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:20.592Z",
+      "name": "DEXAMETASONA/NEOMICINA GTS OFT",
+      "presentation": ""
+    },
+    "7502004401508": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:25.495Z",
+      "name": "DEXAMETA/NEOMICINA/LIDOCAINA  SOL OTIC  10 ML",
+      "presentation": ""
+    },
+    "7502004402017": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:30.786Z",
+      "name": "HIDROCORTISONA CREMA 15G.",
+      "presentation": ""
+    },
+    "7502004530017": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:35.762Z",
+      "name": "VENDA ELASTICA 5CM SELECTA",
+      "presentation": ""
+    },
+    "7502004530079": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:40.694Z",
+      "name": "VENDA 15CM",
+      "presentation": ""
+    },
+    "7502004530758": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:45.853Z",
+      "name": "AGUA OXIGENADA SELECTA 110ML",
+      "presentation": ""
+    },
+    "7502004531366": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:50.755Z",
+      "name": "AGUA OXIGENADA SELECTA 250ML",
+      "presentation": ""
+    },
+    "7502006920038": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:16:56.299Z",
+      "name": "QUINFAMIDA /ALBENDAZOL 150MG/200MG",
+      "presentation": ""
+    },
+    "7502006921967": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:17:01.285Z",
+      "name": "QUINFA/ALBEND 100/400MG INF SUSP 10ML",
+      "presentation": ""
+    },
+    "7502009740176": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:17:06.191Z",
+      "name": "NAPROXENO 500MG C/10TAB",
+      "presentation": ""
+    },
+    "7502009740213": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:17:11.404Z",
+      "name": "AMOXICILINA/AC.CLAVULANICO 250MGSUSP 60ML",
+      "presentation": ""
+    },
+    "7502009740268": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:17:16.589Z",
+      "name": "DEXTROMETORF/AMBROXO 225MG SOL",
+      "presentation": ""
+    },
+    "7502009740275": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:17:21.730Z",
+      "name": "AMBROXOL/DEXTRO  SUSP INF",
+      "presentation": ""
+    },
+    "7502009740367": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:17:26.853Z",
+      "name": "CLOTRIMAZOL 10MG TBO 20G",
+      "presentation": ""
+    },
+    "7502009740435": {
+      "status": "verified_ean",
+      "image": "assets/products/7502009740435.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/200/974/0435/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "laritol",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "LORATADINA 10MG TAB10",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:17:31.775Z",
+      "updatedAt": "2026-08-19T13:17:31.775Z"
+    },
+    "7502009740503": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:17:35.851Z",
+      "name": "AMOXICILINA/AC CLAVULANICO 400",
+      "presentation": ""
+    },
+    "7502009740763": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:17:40.756Z",
+      "name": "AMOXI",
+      "presentation": "FRASCO CON 10 TABS"
+    },
+    "7502009740916": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:17:51.193Z",
+      "name": "BETAMETASONA INYECTABLE 8MG ERISPAN",
+      "presentation": "PZ 1 AMPOLLETA"
+    },
+    "7502009741005": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:17:56.160Z",
+      "name": "LORATADINA /AMBROXOL TABLETAS",
+      "presentation": ""
+    },
+    "7502009741289": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:18:01.004Z",
+      "name": "CEFALEXINA, BROMHEXINA",
+      "presentation": "CAJA CON 12 CAPS"
+    },
+    "7502009741326": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:18:05.862Z",
+      "name": "CLONIX/ BULTIL SOL. INY.",
+      "presentation": ""
+    },
+    "7502009741487": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:18:15.859Z",
+      "name": "CLONIXINATO DE LISINA 250/10MG",
+      "presentation": "CAJA CON 10 TABS"
+    },
+    "7502009742095": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:18:21.063Z",
+      "name": "MELOXICAM, METOCARBAMOL",
+      "presentation": "CAJA CON 10 CAPS"
+    },
+    "7502009742392": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:18:26.280Z",
+      "name": "CLONIXATO DE LISINA C/ BUTILHIOSCINA 125/10 MG",
+      "presentation": ""
+    },
+    "7502009742736": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:18:31.655Z",
+      "name": "FEMIREM C/60 TAB",
+      "presentation": ""
+    },
+    "7502009743511": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:18:36.841Z",
+      "name": "VITAMINA C 400MG TABS MAST",
+      "presentation": ""
+    },
+    "7502009743856": {
+      "status": "verified_ean",
+      "image": "assets/products/7502009743856.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/200/974/3856/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "laritol d",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "LORATADINA/FENILEFR LIB PROL TAB10",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:18:42.050Z",
+      "updatedAt": "2026-08-19T13:18:42.050Z"
+    },
+    "7502009744105": {
+      "status": "verified_ean",
+      "image": "assets/products/7502009744105.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/200/974/4105/front_en.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "animalin abc",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "ANIMALIN A-D-C SOL. 30ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:18:46.168Z",
+      "updatedAt": "2026-08-19T13:18:46.168Z"
+    },
+    "7502009744891": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:18:49.547Z",
+      "name": "NORFENEFRINA 10MG/ML SOL 24ML",
+      "presentation": ""
+    },
+    "7502009745126": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:18:54.447Z",
+      "name": "CEFUROXIMA 500MG TAB10",
+      "presentation": ""
+    },
+    "7502009745218": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:18:59.377Z",
+      "name": "BETAMETASONA 4MG-ML INY. C/1",
+      "presentation": ""
+    },
+    "7502009745522": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:19:04.755Z",
+      "name": "MAGALDRATO/DIMETICONA 80MG/10MG/1ML",
+      "presentation": ""
+    },
+    "7502009745546": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:19:10.307Z",
+      "name": "NAPROXENO/LIDOCAINA GEL",
+      "presentation": ""
+    },
+    "7502009745584": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:19:21.184Z",
+      "name": "LACTULOSA 19G/15ML 120ML",
+      "presentation": "FRASCO CON 125ML"
+    },
+    "7502009745836": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:19:31.281Z",
+      "name": "MUPIROCINA UNG 2% 15GRS",
+      "presentation": ""
+    },
+    "7502009745928": {
+      "status": "verified_ean",
+      "image": "assets/products/7502009745928.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/200/974/5928/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "cefixima",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "CEFIXIMA 400MG 3 CAPS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:19:36.132Z",
+      "updatedAt": "2026-08-19T13:19:36.132Z"
+    },
+    "7502009745997": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:19:39.787Z",
+      "name": "DEXPANTENOL CREMA 5%",
+      "presentation": ""
+    },
+    "7502009746222": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:19:44.727Z",
+      "name": "DEXKETOPROFENO/TROMETAMOL25MG 10TABS",
+      "presentation": ""
+    },
+    "7502009747052": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:19:49.594Z",
+      "name": "PARACETAMOL 750MG C/10 TAB",
+      "presentation": ""
+    },
+    "7502009747144": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:19:54.513Z",
+      "name": "LADY FEMM PARCHE TERMICO",
+      "presentation": "PZ"
+    },
+    "7502009747205": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:19:59.730Z",
+      "name": "BENZOCAINA GEL 10G",
+      "presentation": ""
+    },
+    "7502208891549": {
+      "status": "verified_ean",
+      "image": "assets/products/7502208891549.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/220/889/1549/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "loperamida",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "LOPERAMIDA 2MG C/12 TAB",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:20:09.809Z",
+      "updatedAt": "2026-08-19T13:20:09.809Z"
     }
   },
   "storeId": "FARMACIA_FARMABIEN_GARDENIAS",
   "totalCatalogProducts": 1151,
-  "totalImageEntries": 147,
-  "totalNotFound": 376,
+  "totalImageEntries": 156,
+  "totalNotFound": 481,
   "totalErrors": 0
 }
