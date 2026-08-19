@@ -1,5 +1,741 @@
 {
   "version": 1,
-  "updatedAt": "",
-  "products": {}
+  "updatedAt": "2026-08-19T09:57:13.848Z",
+  "products": {
+    "42332909": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:53.785Z",
+      "name": "NIVEA DECLARADONATURAL 50G",
+      "presentation": ""
+    },
+    "42332930": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:59.372Z",
+      "name": "DESOD NIVEA BLACK AND WHITE INV.",
+      "presentation": "50GRS"
+    },
+    "75000950": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:55:06.663Z",
+      "name": "CREMA NIVEA LATA 20 ML",
+      "presentation": ""
+    },
+    "75001872": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:55:11.952Z",
+      "name": "PALMOLIVE BRILLANTINA 52ML",
+      "presentation": ""
+    },
+    "75002275": {
+      "status": "verified_ean",
+      "image": "assets/products/75002275.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/000/007/500/2275/front_es.66.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Choco Roles",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "CHOCO ROLES PIÑA",
+      "presentation": "",
+      "checkedAt": "2026-08-19T09:55:25.692Z",
+      "updatedAt": "2026-08-19T09:55:25.692Z"
+    },
+    "75002794": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:55:29.019Z",
+      "name": "PALMOLIVE OPTIMS VITAL KERATINA 2 EN 1",
+      "presentation": "200ML"
+    },
+    "3014260846800": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:46:56.609Z",
+      "name": "CEPILLO ORAL B COMPLET MED 2X1",
+      "presentation": ""
+    },
+    "310119034347": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:47:03.219Z",
+      "name": "RENU-PLUS NO RUB SOL 60 ML",
+      "presentation": ""
+    },
+    "3311000001209": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:47:08.209Z",
+      "name": "ACEITE DE ALMENDRAS 55ML",
+      "presentation": ""
+    },
+    "3311000001292": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:47:13.187Z",
+      "name": "ACEITE DE RICINO 55ML",
+      "presentation": ""
+    },
+    "3311000001391": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:47:18.913Z",
+      "name": "ACEITE DE AGUACATE MRCURIO 50ML",
+      "presentation": ""
+    },
+    "3311000001407": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:47:24.320Z",
+      "name": "GLICERINA  55ML",
+      "presentation": ""
+    },
+    "3311000001537": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:47:29.295Z",
+      "name": "ACEITE DE ROMERO MERCURIO 50ML",
+      "presentation": ""
+    },
+    "3311000001582": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:47:34.978Z",
+      "name": "ACEITE DE OLIVO MERCURIO 50ML",
+      "presentation": ""
+    },
+    "3311000001667": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:47:40.268Z",
+      "name": "GLICERINA QP MERCURIO 250ML",
+      "presentation": ""
+    },
+    "3311000003722": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:47:45.861Z",
+      "name": "OXIDO DE ZING MERCURIO",
+      "presentation": ""
+    },
+    "3401053831356": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:47:51.130Z",
+      "name": "AFRIN AGUA DE MAR 50ML",
+      "presentation": ""
+    },
+    "354312225133": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:01.661Z",
+      "name": "VITACILINA UNGUENTO 28 GR",
+      "presentation": ""
+    },
+    "354312225140": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:06.648Z",
+      "name": "VITACILINA UNG. CREMA 16 GR",
+      "presentation": ""
+    },
+    "3614225108716": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:11.932Z",
+      "name": "KOLESTON NEGRO AZULADO",
+      "presentation": "PZ"
+    },
+    "4005808571277": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:17.618Z",
+      "name": "NIVEA DESMAQUILLANTE BIFASICO DE OJOS",
+      "presentation": "125ML"
+    },
+    "4005808837311": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:23.154Z",
+      "name": "NIVEA PEAR & BEAUTY DESOD AER 150ML",
+      "presentation": ""
+    },
+    "4005900618993": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:28.122Z",
+      "name": "DESOD NIVEA FRESH EVOKE",
+      "presentation": ""
+    },
+    "4005900632371": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:33.530Z",
+      "name": "NIVEA MEN AMAZONA DESOD AERO 150ML",
+      "presentation": ""
+    },
+    "4005900875013": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:38.509Z",
+      "name": "NIVEA MEN DEEP 150ML",
+      "presentation": ""
+    },
+    "4005900915795": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:43.911Z",
+      "name": "NIVEA MISCELAIR 110ML",
+      "presentation": ""
+    },
+    "4006000035635": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:48:48.812Z",
+      "name": "DESOD NIVEA TONO NAT CLIN STIC 50GR.",
+      "presentation": ""
+    },
+    "4891228530136": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:04.816Z",
+      "name": "RASTRILLO SCHICK XTRENE 4 HOJAS PIEL SENSIBLE",
+      "presentation": "PZ"
+    },
+    "4893948852666": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:10.244Z",
+      "name": "ESPONJA PARA REMOVER MASCARILLAS C/2 PZ",
+      "presentation": ""
+    },
+    "4895225300570": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:15.537Z",
+      "name": "CUBRE BOCA AZUL",
+      "presentation": ""
+    },
+    "4968420727098": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:20.818Z",
+      "name": "JERINGA NIPRO 20ML C/AGUJA",
+      "presentation": ""
+    },
+    "4968420731521": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:26.129Z",
+      "name": "JERINGA NIPRO 5ML VERDE",
+      "presentation": ""
+    },
+    "603553651257": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:31.412Z",
+      "name": "ESTROPAJO CORPORAL COLORES 1PZ",
+      "presentation": ""
+    },
+    "611326105180": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:36.692Z",
+      "name": "PEINE S-BEKA C/COLILLA PZ",
+      "presentation": ""
+    },
+    "619585004213": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:41.912Z",
+      "name": "PAÑAL BEBIN MEDIANO C/14",
+      "presentation": ""
+    },
+    "650240006623": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:46.904Z",
+      "name": "M FORCE MULTI -O",
+      "presentation": ""
+    },
+    "650240006647": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:52.226Z",
+      "name": "ULTRA BENGUE ROJO GEL TBO35G",
+      "presentation": ""
+    },
+    "650240007408": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:49:57.210Z",
+      "name": "SILKA MEDIC GEL 15G",
+      "presentation": ""
+    },
+    "650240007651": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:50:02.190Z",
+      "name": "PARACETAMOL",
+      "presentation": "CAJA CON 24 TABS"
+    },
+    "650240009518": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:50:07.491Z",
+      "name": "PRESEV M-FORCE NATURAL C3 060",
+      "presentation": ""
+    },
+    "650240009525": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:50:12.853Z",
+      "name": "M FORCE TEXTUR IZADO  C/3PZS",
+      "presentation": ""
+    },
+    "650240009563": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:50:17.768Z",
+      "name": "ASEPXIA JABON MATE",
+      "presentation": ""
+    },
+    "650240010507": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:50:22.749Z",
+      "name": "ULTRA BENGUE GEL TBO 35G",
+      "presentation": ""
+    },
+    "650240010538": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:50:28.086Z",
+      "name": "NEXT TABLETAS /10",
+      "presentation": ""
+    },
+    "650240010712": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:50:33.385Z",
+      "name": "TUKOL-D AD JBE 125 ML",
+      "presentation": ""
+    },
+    "650240011153": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:50:38.685Z",
+      "name": "LOMECAN-V  CRA VAG TB 20G",
+      "presentation": ""
+    },
+    "650240013850": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:50:43.956Z",
+      "name": "CRA TEATRICAL AZUL TARRO 52 GR",
+      "presentation": ""
+    },
+    "650240013898": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:50:49.249Z",
+      "name": "TEATRICAL ROSA TRRO52G",
+      "presentation": ""
+    },
+    "650240017094": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:04.427Z",
+      "name": "XL3 XTRA CAPS 12",
+      "presentation": "CAJA CON 12 CAPS"
+    },
+    "650240019180": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:09.710Z",
+      "name": "POMADA-CAMPANA C TEPEZCO 35G 587",
+      "presentation": ""
+    },
+    "650240019999": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:15.144Z",
+      "name": "LOMECAN OVULOS C/3",
+      "presentation": ""
+    },
+    "650240021763": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:20.374Z",
+      "name": "M-FOR RETARD",
+      "presentation": ""
+    },
+    "650240031427": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:25.339Z",
+      "name": "GENOPRAZOL 20MG C/14 CAPS",
+      "presentation": ""
+    },
+    "650240032257": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:30.568Z",
+      "name": "SUEROX MANZANA",
+      "presentation": "630ML"
+    },
+    "650240032264": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:35.562Z",
+      "name": "SUEROX FRESA- KIWI",
+      "presentation": "BOTELLA 630ML"
+    },
+    "650240032271": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:41.675Z",
+      "name": "SUEROX DE UVA 630ML",
+      "presentation": ""
+    },
+    "650240032295": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:47.150Z",
+      "name": "SUEROX MORA AZUL - HIERBABUENA",
+      "presentation": "630ML"
+    },
+    "650240032301": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:52.150Z",
+      "name": "SUEROX NARANJA - MANDARINA",
+      "presentation": "630ML"
+    },
+    "650240032677": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:51:57.689Z",
+      "name": "CRA TEATRICAL CEL-MA HUMEC 100GR.",
+      "presentation": ""
+    },
+    "650240032684": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:03.236Z",
+      "name": "CRA TEATRICAL CELMA ULT 100GR.",
+      "presentation": ""
+    },
+    "650240032691": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:08.244Z",
+      "name": "CRA TEATRICAL CELMANTIA 100GR.",
+      "presentation": ""
+    },
+    "650240036354": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:13.484Z",
+      "name": "GENOPRAZOL 20 MG 7 CAPS",
+      "presentation": ""
+    },
+    "650240052545": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:18.384Z",
+      "name": "XL3 ANTIGRIPAL  C/10 TAB",
+      "presentation": ""
+    },
+    "650240065293": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:23.277Z",
+      "name": "NEXT FWD C/24 TAB",
+      "presentation": ""
+    },
+    "650240066139": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:33.604Z",
+      "name": "SUEROX FRESA- FRUTOS  ROJOS",
+      "presentation": "630ML"
+    },
+    "650240069178": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:38.594Z",
+      "name": "KAOPECTATE",
+      "presentation": "CAJA CON 10 TAB"
+    },
+    "650240069284": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:43.484Z",
+      "name": "QG5",
+      "presentation": "CAJA CON 10 TABS"
+    },
+    "650240069789": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:48.458Z",
+      "name": "LOMECAN DUO OV+CREMA",
+      "presentation": ""
+    },
+    "650240072147": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:53.432Z",
+      "name": "SUEROX DEFENSE NARANJA - MANGO",
+      "presentation": "630ML"
+    },
+    "650240072154": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:52:59.113Z",
+      "name": "SUEROX ENERGY MZ VERDE - LIMON",
+      "presentation": "630ML"
+    },
+    "650240074455": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:53:04.596Z",
+      "name": "SUEROX UVA - MORA AZUL",
+      "presentation": "630ML"
+    },
+    "656599040226": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:53:09.887Z",
+      "name": "DICLOFENACO/ PARACETAMOL 50/500",
+      "presentation": ""
+    },
+    "656599040868": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:53:15.141Z",
+      "name": "METFORMINA 500MG C/30 TAB",
+      "presentation": ""
+    },
+    "656599041018": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:53:20.130Z",
+      "name": "PROPANOLOL 20MG C/24TAB",
+      "presentation": ""
+    },
+    "656599041315": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:53:25.448Z",
+      "name": "SULFATO FERROSO 200MG 30TABS",
+      "presentation": ""
+    },
+    "6650376816169": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:53:30.738Z",
+      "name": "CINTA  MICROPORE  PIEL",
+      "presentation": "PZ2.5 X 9.1"
+    },
+    "6910021007206": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:53:41.600Z",
+      "name": "COLGATE PREMIER CLEAN CEPILLO DENT",
+      "presentation": ""
+    },
+    "6936613288327": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:53:46.879Z",
+      "name": "CORTA UÑAS GRANDE TRY",
+      "presentation": ""
+    },
+    "6936613288358": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:53:52.199Z",
+      "name": "CORTA UÑAS MEDIANO SUPER TRY",
+      "presentation": ""
+    },
+    "714706903212": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:53:57.475Z",
+      "name": "PALETA BON BON BUM",
+      "presentation": ""
+    },
+    "714706911071": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:54:02.775Z",
+      "name": "BRONCOLIN BICOESTOL EUCALIPTO  C/8 PAST",
+      "presentation": ""
+    },
+    "714706911095": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:54:07.745Z",
+      "name": "BRONCOLIN NARANJA BLISTER CON 8 PASTILLAS",
+      "presentation": ""
+    },
+    "714908100228": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:54:13.280Z",
+      "name": "MELATONINA TABS 3MG/60",
+      "presentation": ""
+    },
+    "724869100076": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:54:18.257Z",
+      "name": "MAZAPAN CHICO 12.5GR",
+      "presentation": ""
+    },
+    "725226001913": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:54:23.974Z",
+      "name": "PULPARINDO GIGANTE 28G",
+      "presentation": ""
+    },
+    "736085132069": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:54:29.275Z",
+      "name": "NAZIL OFTENO FCO GOT 15 ML.",
+      "presentation": ""
+    },
+    "736085278507": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:54:34.577Z",
+      "name": "MANZANILLA SOPHIA 15ML GTS",
+      "presentation": ""
+    },
+    "736085410211": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:54:39.868Z",
+      "name": "NAZIL CONTAMINACION  GTS 15 ML",
+      "presentation": ""
+    },
+    "744886298822": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:54:50.059Z",
+      "name": "JARRITO 600ML MANDARINA",
+      "presentation": ""
+    },
+    "744886308828": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:54:55.009Z",
+      "name": "JARRITO 600ML PIÑA",
+      "presentation": ""
+    },
+    "744886318827": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:55:00.314Z",
+      "name": "JARRITO TUTIFRUTI 600 ML",
+      "presentation": "600 ML"
+    },
+    "7500435014342": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:55:34.006Z",
+      "name": "ORAL B CEPILLO CLEAN C/2 PZS",
+      "presentation": ""
+    },
+    "7500435019521": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:55:38.983Z",
+      "name": "SH H&S MEN OLD SPICE 180ML",
+      "presentation": ""
+    },
+    "7500435141796": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:55:44.575Z",
+      "name": "OLD SPICE MAR PROFUNDO DESOD AER 150ML",
+      "presentation": ""
+    },
+    "7500435154420": {
+      "status": "verified_ean",
+      "image": "assets/products/7500435154420.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/043/515/4420/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Gillete prestó barba",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "GILLETTE PRESTOBARBA 2 HOJAS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T09:55:54.290Z",
+      "updatedAt": "2026-08-19T09:55:54.290Z"
+    },
+    "7500435169035": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:55:59.530Z",
+      "name": "HERBAL ESSENCE MOUSSE RIZOS",
+      "presentation": ""
+    },
+    "7500435231244": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:56:05.594Z",
+      "name": "SHAMPOO H&S  ANTICOMEZON 180 ML",
+      "presentation": ""
+    },
+    "7500435241458": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:56:11.121Z",
+      "name": "DESOD SECRET WATERLILY 73GRS",
+      "presentation": ""
+    },
+    "7500462746605": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:56:16.401Z",
+      "name": "AJOLOTIUS JBE 250ML",
+      "presentation": ""
+    },
+    "7500462746612": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:56:22.009Z",
+      "name": "AJOLOTIUS SIN AZUCAR 250ML",
+      "presentation": ""
+    },
+    "7500462746643": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:56:27.583Z",
+      "name": "AJOLOTIUS PASTILLAS MENTA-EUCALIPTO C/10 PASTILLAS",
+      "presentation": ""
+    },
+    "7500462746698": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:56:32.575Z",
+      "name": "AJOLOTIUS JBE C/PROPOLEO",
+      "presentation": ""
+    },
+    "7500465103023": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:56:37.572Z",
+      "name": "TOALLITAS HUMEDAS ALFA WIPES",
+      "presentation": ""
+    },
+    "7500478037896": {
+      "status": "verified_ean",
+      "image": "assets/products/7500478037896.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/047/803/7896/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Cheetos Mix",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "CHEETOS MIX",
+      "presentation": "BOLSA 90GRS",
+      "checkedAt": "2026-08-19T09:56:43.126Z",
+      "updatedAt": "2026-08-19T09:56:43.126Z"
+    },
+    "7500478043958": {
+      "status": "verified_ean",
+      "image": "assets/products/7500478043958.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/047/804/3958/front_en.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Sabritas limón 42g",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "SABRITAS LIMON",
+      "presentation": "BOLSA 42 GRS",
+      "checkedAt": "2026-08-19T09:56:47.022Z",
+      "updatedAt": "2026-08-19T09:56:47.022Z"
+    },
+    "7500478043965": {
+      "status": "verified_ean",
+      "image": "assets/products/7500478043965.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/047/804/3965/front_es.5.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Cremas Y Especias",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "SABRITAS CREMA Y ESPECIAS",
+      "presentation": "BOLSA44GR",
+      "checkedAt": "2026-08-19T09:56:49.739Z",
+      "updatedAt": "2026-08-19T09:56:49.739Z"
+    },
+    "7500478044092": {
+      "status": "verified_ean",
+      "image": "assets/products/7500478044092.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/047/804/4092/front_en.26.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Adobadas",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "SABRITAS ADOBADAS",
+      "presentation": "BOLSA 42 GRS",
+      "checkedAt": "2026-08-19T09:56:54.792Z",
+      "updatedAt": "2026-08-19T09:56:54.792Z"
+    },
+    "7500478044139": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:56:57.653Z",
+      "name": "PAKETAXO QUEXO",
+      "presentation": "BOLSA 81 GRS"
+    },
+    "7500478044146": {
+      "status": "verified_ean",
+      "image": "assets/products/7500478044146.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/047/804/4146/front_es.6.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "PAKETAXO MEZCLADITO",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PAKETAXO MEZCLADITO",
+      "presentation": "BOLSA 81 GRS",
+      "checkedAt": "2026-08-19T09:57:02.947Z",
+      "updatedAt": "2026-08-19T09:57:02.947Z"
+    },
+    "7500478044177": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T09:57:06.270Z",
+      "name": "PAKETAXO BOTANERO",
+      "presentation": "BOLSA 81 GR"
+    },
+    "7500478044191": {
+      "status": "verified_ean",
+      "image": "assets/products/7500478044191.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/047/804/4191/front_es.5.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Paketaxo Flamin Hot",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PAKETAXO XTRA FLAMIN HOT",
+      "presentation": "BOLSA 81 GRS",
+      "checkedAt": "2026-08-19T09:57:11.724Z",
+      "updatedAt": "2026-08-19T09:57:11.724Z"
+    }
+  },
+  "storeId": "FARMACIA_FARMABIEN_GARDENIAS",
+  "totalCatalogProducts": 1151,
+  "totalImageEntries": 8,
+  "totalNotFound": 103,
+  "totalErrors": 0
 }
