@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T14:06:02.814Z",
+  "updatedAt": "2026-08-19T15:02:18.555Z",
   "products": {
     "42332909": {
       "status": "not_found",
@@ -96,6 +96,86 @@
       "status": "not_found",
       "checkedAt": "2026-08-19T13:20:04.647Z",
       "name": "SIMILAXOL TABS/50",
+      "presentation": ""
+    },
+    "75030100": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:52:55.954Z",
+      "name": "DESOD MUM MYSTIC R-ON 60 G",
+      "presentation": ""
+    },
+    "75034498": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:54:22.153Z",
+      "name": "PLAY BOY TEXTURIZED C/3",
+      "presentation": ""
+    },
+    "75047887": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:54:27.379Z",
+      "name": "TUMS SABORES SURTIDOS C/8TAB",
+      "presentation": ""
+    },
+    "75049805": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:54:32.215Z",
+      "name": "NEOMICINA, POLIMIXINA B, GRAMICIDINA. SOL OFTALMICA",
+      "presentation": "FRASCO GOTERO CON 15 ML"
+    },
+    "75050740": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:54:37.070Z",
+      "name": "TOBRAMICINA 3MG/ML SOL GTS 15ML",
+      "presentation": ""
+    },
+    "75062576": {
+      "status": "verified_text",
+      "image": "assets/products/75062576.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/100/844/3033/front_es.5.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "Alka seltzer",
+      "sourceCode": "7501008443033",
+      "matchOverlap": 2,
+      "name": "ALKA SELTZER",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:55:50.808Z",
+      "updatedAt": "2026-08-19T14:55:50.808Z"
+    },
+    "75062835": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:56:05.442Z",
+      "name": "DES ROLL DOVE ORIGINAL 45 G",
+      "presentation": ""
+    },
+    "75064839": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:33.022Z",
+      "name": "DESOD SAVILE AGUA/ROSA STICK",
+      "presentation": ""
+    },
+    "75064860": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:37.889Z",
+      "name": "DESOD EGO SPORT",
+      "presentation": "45GR"
+    },
+    "75064891": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:42.755Z",
+      "name": "DESOD SAVILE AGUA/ROSA R-ON 45 ML",
+      "presentation": ""
+    },
+    "75076870": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:47.848Z",
+      "name": "DES REXONA STICK CLINICAL XTRA 58GR.",
+      "presentation": ""
+    },
+    "75080150": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:52.749Z",
+      "name": "DESOD DOVE INV DRY 50G",
       "presentation": ""
     },
     "3014260846800": {
@@ -5843,11 +5923,731 @@
       "checkedAt": "2026-08-19T14:06:00.317Z",
       "name": "SENOSIDOS A Y B CIRUELA",
       "presentation": "CAJA CON 30 CAPS"
+    },
+    "7503008344211": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:52:24.439Z",
+      "name": "BENZONATATO 100MG C/20 CAPS",
+      "presentation": ""
+    },
+    "7503008344303": {
+      "status": "verified_ean",
+      "image": "assets/products/7503008344303.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/300/834/4303/front_es.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "ladaxgel",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "LADEXGEL CAPS12",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:52:30.921Z",
+      "updatedAt": "2026-08-19T14:52:30.921Z"
+    },
+    "7503008344501": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:52:35.333Z",
+      "name": "OMEGA 3 870MG CAPS60",
+      "presentation": ""
+    },
+    "7503008344716": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:52:40.651Z",
+      "name": "LA FEMME VITAM CAPS 30",
+      "presentation": ""
+    },
+    "7503008344730": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:52:45.532Z",
+      "name": "COMPLEJO",
+      "presentation": "CAJA CON 30 CAPS"
+    },
+    "7503008344785": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:52:50.790Z",
+      "name": "IBUPROFENO 400MG CAP",
+      "presentation": ""
+    },
+    "7503014921819": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:00.830Z",
+      "name": "SANITIZANTE 75ML",
+      "presentation": ""
+    },
+    "7503017500080": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:06.242Z",
+      "name": "POMADA P/LABIOS  SANAX 1PZ",
+      "presentation": ""
+    },
+    "7503017500240": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:11.403Z",
+      "name": "VASELINE 70GR SANAX",
+      "presentation": ""
+    },
+    "7503017713145": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:16.292Z",
+      "name": "JERINGA PERA PARA BEBE 0-6 MESES",
+      "presentation": ""
+    },
+    "7503017713602": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:21.412Z",
+      "name": "JERINGA PERA PARA BEBE 18 MESES",
+      "presentation": ""
+    },
+    "7503022640016": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:26.254Z",
+      "name": "BICARBONATO DE SODIO PURO 80G",
+      "presentation": ""
+    },
+    "7503023533492": {
+      "status": "verified_ean",
+      "image": "assets/products/7503023533492.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/302/353/3492/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Hershey's",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "MENTOS MINT 29G",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:53:31.149Z",
+      "updatedAt": "2026-08-19T14:53:31.149Z"
+    },
+    "7503023533515": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:35.539Z",
+      "name": "MENTOS FRUTAS 29GR",
+      "presentation": ""
+    },
+    "7503023615709": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:41.415Z",
+      "name": "GEL FIJADOR 100G BARBER STYLE",
+      "presentation": ""
+    },
+    "7503023615785": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:46.304Z",
+      "name": "GEL FIJ 100G SUPER FIX",
+      "presentation": ""
+    },
+    "7503027446248": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:51.596Z",
+      "name": "PINAVEIRO/DIMETICONA C/16 CAPS",
+      "presentation": ""
+    },
+    "7503027446279": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:53:56.746Z",
+      "name": "IBUPROFENO 600MG",
+      "presentation": "CAJA CON 10 CAPS"
+    },
+    "7503029151829": {
+      "status": "verified_ean",
+      "image": "assets/products/7503029151829.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/302/915/1829/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "plati volos",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PLATIVOLOS 90GR.",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:54:01.880Z",
+      "updatedAt": "2026-08-19T14:54:01.880Z"
+    },
+    "7503030199995": {
+      "status": "verified_ean",
+      "image": "assets/products/7503030199995.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/303/019/9995/front_es.20.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Roles con canela Pan dulce",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "ROLES CANELA 25",
+      "presentation": "180GRS",
+      "checkedAt": "2026-08-19T14:54:05.628Z",
+      "updatedAt": "2026-08-19T14:54:05.628Z"
+    },
+    "7503030374002": {
+      "status": "verified_ean",
+      "image": "assets/products/7503030374002.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/303/037/4002/front_es.18.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Roles con canela glaseados Pan dulce",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "ROLES GLASEADOS 204 GRS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:54:08.958Z",
+      "updatedAt": "2026-08-19T14:54:08.958Z"
+    },
+    "7503041782186": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:54:12.138Z",
+      "name": "SALES DE EPSON JOY NATURA 25G",
+      "presentation": ""
+    },
+    "7503044875045": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:54:17.278Z",
+      "name": "MINIGELATINA",
+      "presentation": ""
+    },
+    "7506022300690": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:54:41.944Z",
+      "name": "JGA SENSIMEDICAL 10 ML 22GX32MM",
+      "presentation": ""
+    },
+    "7506022300751": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:54:46.787Z",
+      "name": "JERINGA 3ML 21GX32MM",
+      "presentation": ""
+    },
+    "7506022311924": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:54:51.628Z",
+      "name": "TERMOMETRO DIGITAL CLINICO",
+      "presentation": ""
+    },
+    "7506022315281": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:55:06.204Z",
+      "name": "PBA EMBARAZO MEDITEST",
+      "presentation": "CAJA CON 1 TEST"
+    },
+    "7506022327208": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:55:11.589Z",
+      "name": "JERINGA INSULINA 0.3ML 31GX6MM",
+      "presentation": ""
+    },
+    "7506022327635": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:55:16.852Z",
+      "name": "SALBUTAMOL AEROSOL 200 DOSIS",
+      "presentation": ""
+    },
+    "7506192503358": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:55:22.103Z",
+      "name": "GEL EGO MAGNECTIC  200 ML",
+      "presentation": ""
+    },
+    "7506192505451": {
+      "status": "verified_ean",
+      "image": "assets/products/7506192505451.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/619/250/5451/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Vive 100",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "VIVE100",
+      "presentation": "BOTELLA 600ML",
+      "checkedAt": "2026-08-19T14:55:26.975Z",
+      "updatedAt": "2026-08-19T14:55:26.975Z"
+    },
+    "7506192505550": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:55:30.575Z",
+      "name": "SAVILE BIOTINA 180ML",
+      "presentation": ""
+    },
+    "7506192506120": {
+      "status": "verified_ean",
+      "image": "assets/products/7506192506120.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/619/250/6120/front_en.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Savila rosa",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "SH SAVILE PUL SAB COLAGENO 180ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:55:36.861Z",
+      "updatedAt": "2026-08-19T14:55:36.861Z"
+    },
+    "7506192506601": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:55:40.537Z",
+      "name": "EGO GEL ATTRACTION 200ML",
+      "presentation": ""
+    },
+    "7506195148686": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:55:45.406Z",
+      "name": "SH HEADS LIMPIEZA RENOV 90ML",
+      "presentation": ""
+    },
+    "7506267918520": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:55:55.753Z",
+      "name": "SHAMPOO HONEYKEEPER 90 ML",
+      "presentation": ""
+    },
+    "7506267918650": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:56:00.582Z",
+      "name": "BODY LOTION HONEYKEEPER",
+      "presentation": ""
+    },
+    "7506295369363": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:56:10.630Z",
+      "name": "TAMPONES TAMPAX PPEARL REGULAR C 8",
+      "presentation": ""
+    },
+    "7506306202832": {
+      "status": "verified_ean",
+      "image": "assets/products/7506306202832.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/630/620/2832/front_es.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Axe",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "DESOD AXE COLLISION 150ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:56:15.507Z",
+      "updatedAt": "2026-08-19T14:56:15.507Z"
+    },
+    "7506306209763": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:56:19.518Z",
+      "name": "DESOD SAVILE MANZANILLA SPY 150ML",
+      "presentation": ""
+    },
+    "7506306209855": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:56:24.608Z",
+      "name": "DESOD AXE ANARCHY FLOWER AERO 150ML",
+      "presentation": ""
+    },
+    "7506306223875": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:56:29.473Z",
+      "name": "SAVILE CONTROL CASPA SHAMPOO 180ML",
+      "presentation": ""
+    },
+    "7506306245990": {
+      "status": "verified_ean",
+      "image": "assets/products/7506306245990.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/630/624/5990/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "7506306245990",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "JABON ZEST AQUA 135G",
+      "presentation": "PZ",
+      "checkedAt": "2026-08-19T14:56:34.599Z",
+      "updatedAt": "2026-08-19T14:56:34.599Z"
+    },
+    "7506306246652": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:56:38.478Z",
+      "name": "JABON DOVE 90GR",
+      "presentation": "PZ"
+    },
+    "7506306249042": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:56:48.163Z",
+      "name": "VASELINE 85G",
+      "presentation": ""
+    },
+    "7506306249356": {
+      "status": "verified_text",
+      "image": "assets/products/7506306249356.webp",
+      "source": "opf",
+      "sourceUrl": "https://images.openproductsfacts.org/images/products/000/000/028/1124/front_en.3.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "vaseline salicylee 40%",
+      "sourceCode": "00281124",
+      "matchOverlap": 1,
+      "name": "VASELINE 42 GR",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:56:58.095Z",
+      "updatedAt": "2026-08-19T14:56:58.095Z"
+    },
+    "7506306249769": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:02.782Z",
+      "name": "SEDAL CASPA CONTROL",
+      "presentation": ""
+    },
+    "7506309873701": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:07.915Z",
+      "name": "SH PANTENE 2EN1 100ML",
+      "presentation": ""
+    },
+    "7506313800212": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:13.053Z",
+      "name": "MEBENDAZOL/QUINFAMIDA",
+      "presentation": "CAJA CON 2 TABS"
+    },
+    "7506331301005": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:18.237Z",
+      "name": "SERTRALINA 50MG C/14TAB",
+      "presentation": ""
+    },
+    "7506335701207": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:23.050Z",
+      "name": "ONDANSETRON 8MG/4MG",
+      "presentation": "CAJA CON 3 AMPOLLETAS"
+    },
+    "7506339390278": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:27.926Z",
+      "name": "OLD SPICE LEÑA DESOD AERO 150ML",
+      "presentation": ""
+    },
+    "7506339394719": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:32.778Z",
+      "name": "NATURELLA NOCT TOALL 8PZAS",
+      "presentation": ""
+    },
+    "7506339397802": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:37.660Z",
+      "name": "PBA DE EMBARAZO CLEARBLUE PLUS   N",
+      "presentation": ""
+    },
+    "7506346600155": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:42.510Z",
+      "name": "ALGODON KOHN 50GR",
+      "presentation": ""
+    },
+    "7506346600469": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:47.387Z",
+      "name": "VASO COPRO",
+      "presentation": ""
+    },
+    "7506346600551": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:52.257Z",
+      "name": "VENDA ALTA COMPRESION KOHN 15CM 1PZ",
+      "presentation": ""
+    },
+    "7506346601053": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:57:57.519Z",
+      "name": "H DENT KHON 50M FRESH",
+      "presentation": ""
+    },
+    "7506346601275": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:02.615Z",
+      "name": "COLLARIN CERVICAL BLANDO 1PZ",
+      "presentation": ""
+    },
+    "7506346602227": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:07.481Z",
+      "name": "SABANA DESECHABLE",
+      "presentation": "PZ"
+    },
+    "7506352500043": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:12.378Z",
+      "name": "PBA EMBARAZO POSTINOR ULTRA",
+      "presentation": ""
+    },
+    "7506357700011": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:17.197Z",
+      "name": "PLAY BOY PARADISE C/3",
+      "presentation": ""
+    },
+    "7506372603014": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:22.051Z",
+      "name": "COLLARIN CERVICAL GDE ARTBASIC",
+      "presentation": ""
+    },
+    "7506425606924": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:26.918Z",
+      "name": "ESCUDO ANTIBACTERIAL 150G",
+      "presentation": ""
+    },
+    "7506425618200": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:32.043Z",
+      "name": "KLEEN BEBE SUAVELASTIC VITTA C/80",
+      "presentation": ""
+    },
+    "7506425624669": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:36.995Z",
+      "name": "HUGGIES ECO PROTEC 80PZS",
+      "presentation": ""
+    },
+    "7506425624676": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:41.846Z",
+      "name": "KIT CLARO HUGGIES",
+      "presentation": ""
+    },
+    "7506425625550": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:46.719Z",
+      "name": "KOTEX TAMPONES C/12",
+      "presentation": ""
+    },
+    "7506425625574": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:58:51.525Z",
+      "name": "KOTEX UNICA TAMPONES C/12PZ",
+      "presentation": ""
+    },
+    "7506425648610": {
+      "status": "verified_text",
+      "image": "assets/products/7506425648610.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/642/562/7127/front_si.6.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "suavelastic",
+      "sourceCode": "7506425627127",
+      "matchOverlap": 1,
+      "name": "SUAVELASTIC CH E2 C/16",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:58:56.388Z",
+      "updatedAt": "2026-08-19T14:58:56.388Z"
+    },
+    "7506425648634": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:02.048Z",
+      "name": "SUAVELASTIC R/N E1 C/20",
+      "presentation": ""
+    },
+    "7506442701039": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:06.898Z",
+      "name": "LACOSAMIDA 100MG C/28TAB",
+      "presentation": ""
+    },
+    "7506449300051": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:12.161Z",
+      "name": "NAPRO",
+      "presentation": "CAJA CON 12 TABS"
+    },
+    "7506449300112": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:17.546Z",
+      "name": "OMEPRAZOL 20 MG",
+      "presentation": "CAJA CON 14 CAPS"
+    },
+    "7506452400038": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:22.838Z",
+      "name": "AOLOTIUS MENTA EUCALIPTO C/10 PASTILLAS",
+      "presentation": ""
+    },
+    "7506460100111": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:28.189Z",
+      "name": "SICO PIEL CON PIEL C/3",
+      "presentation": ""
+    },
+    "7509546000985": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:59:58.036Z",
+      "name": "COLGATE TRIPLE ACCION",
+      "presentation": "ENVASE 75 ML"
+    },
+    "7509546009179": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:02.935Z",
+      "name": "COLGATE MAXIMA PROTECCION",
+      "presentation": "ENVASE 75ML"
+    },
+    "7509546015545": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:07.835Z",
+      "name": "DESOD LADISS D-DEF A-FRESH GEL 65G",
+      "presentation": ""
+    },
+    "7509546029153": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:13.052Z",
+      "name": "DESODORANTE LADY SPEED STICK",
+      "presentation": ""
+    },
+    "7509546039152": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:17.924Z",
+      "name": "COLGATE MFP CRA 22ML",
+      "presentation": ""
+    },
+    "7509546052885": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:23.058Z",
+      "name": "KIT COLGATE+CEPILLO PORTATIL",
+      "presentation": ""
+    },
+    "7509546054032": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:28.130Z",
+      "name": "COLGATE LUMINOUS WHITE 22ML",
+      "presentation": ""
+    },
+    "7509546057545": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:33.012Z",
+      "name": "LADY SPEED STICK PRO 5EN1 45G",
+      "presentation": ""
+    },
+    "7509546058962": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:37.899Z",
+      "name": "FIJADOR CAPRICE CON EXTRACTO DE SABILA 316ML",
+      "presentation": ""
+    },
+    "7509546058986": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:42.785Z",
+      "name": "CAPRICE KIWI-LAVANDA 316ML SPRAY",
+      "presentation": ""
+    },
+    "7509546060613": {
+      "status": "verified_ean",
+      "image": "assets/products/7509546060613.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/954/606/0613/front_en.9.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "lady Speedy stick",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "LADY SPEED STICK NACAR DERMA 45G",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:00:47.661Z",
+      "updatedAt": "2026-08-19T15:00:47.661Z"
+    },
+    "7509546060712": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:52.272Z",
+      "name": "PALMOLIVE SHAMPOO 60ML",
+      "presentation": ""
+    },
+    "7509546066592": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:00:57.877Z",
+      "name": "STEFANO BLACK DESOD AER 60G",
+      "presentation": ""
+    },
+    "7509546068602": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:02.741Z",
+      "name": "STEFANO IMPERIAL 54G",
+      "presentation": ""
+    },
+    "7509546068909": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:09.872Z",
+      "name": "COLGATE TRIPLE ACCION OFERT 50 G",
+      "presentation": ""
+    },
+    "7509546069982": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:14.710Z",
+      "name": "CEPILLO COLGATE T ACC BLANCURA 2X1",
+      "presentation": ""
+    },
+    "7509546071275": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:19.589Z",
+      "name": "LADY SPEEDS STICK POWER FRESH",
+      "presentation": ""
+    },
+    "7509546655079": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:24.459Z",
+      "name": "JBN PALMO N-BAL CORP BABY 90GR.",
+      "presentation": ""
+    },
+    "7509546657851": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:29.602Z",
+      "name": "CEPILLO DENT COLGATE PREM-CLEAN",
+      "presentation": ""
+    },
+    "7509546659190": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:35.287Z",
+      "name": "SHAM NEUTRO BALANCE BABY 221ML",
+      "presentation": ""
+    },
+    "7509546682280": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:40.543Z",
+      "name": "PALMOLIVE JBN LAVANDA Y CREMA Y CREMA 120G",
+      "presentation": ""
+    },
+    "7509546682334": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:45.687Z",
+      "name": "JABON PALMOLIVE YOGHURT Y FRUTAS",
+      "presentation": ""
+    },
+    "7509546683126": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:50.884Z",
+      "name": "JABON PALMOLIVE DERMO PURIFICANTE 120G",
+      "presentation": ""
+    },
+    "7509546683133": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:01:55.777Z",
+      "name": "JBN PALMOL N-BAL DERMO LIMP 120GR.",
+      "presentation": ""
+    },
+    "7509546686776": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:02:00.649Z",
+      "name": "SH CAPRICE LIMP REFR CASPA 200ML",
+      "presentation": ""
+    },
+    "7509552844801": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:02:05.635Z",
+      "name": "DESOS OBAO R-NAT ALO-KIW SPY 150 ML",
+      "presentation": ""
+    },
+    "7509552876307": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:02:10.872Z",
+      "name": "DESOD OBAO ROLL DERMO HIALURANICO 65G",
+      "presentation": ""
+    },
+    "7509552876390": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:02:15.871Z",
+      "name": "DESOD OBAO MEN TATT A-FRESH 150 ML",
+      "presentation": ""
     }
   },
   "storeId": "FARMACIA_FARMABIEN_GARDENIAS",
   "totalCatalogProducts": 1151,
-  "totalImageEntries": 170,
-  "totalNotFound": 577,
+  "totalImageEntries": 183,
+  "totalNotFound": 680,
   "totalErrors": 0
 }
