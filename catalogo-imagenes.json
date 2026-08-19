@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T10:53:44.195Z",
+  "updatedAt": "2026-08-19T11:11:50.367Z",
   "products": {
     "42332909": {
       "status": "not_found",
@@ -1725,11 +1725,923 @@
       "presentation": "BOLSA 58GR",
       "checkedAt": "2026-08-19T10:53:43.601Z",
       "updatedAt": "2026-08-19T10:53:43.601Z"
+    },
+    "7501017361113": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:02:48.845Z",
+      "name": "KLEENEX BRAND 180 PZ",
+      "presentation": ""
+    },
+    "7501017362950": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:02:55.127Z",
+      "name": "KLEENEX DE BOLSILLO",
+      "presentation": ""
+    },
+    "7501019002069": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:02:59.938Z",
+      "name": "TAS SANT SABA-TEEN NO CA 10",
+      "presentation": ""
+    },
+    "7501019006319": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:04.870Z",
+      "name": "SABA ULTRA INV C/ALAS C/12 TOALLAS",
+      "presentation": ""
+    },
+    "7501019006371": {
+      "status": "verified_ean",
+      "image": "assets/products/7501019006371.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/101/900/6371/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Saba invisible delgada",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "SABA INVISIBLE/CON ALAS 10 TOALLAS FLUJO MODERADO DELGADA",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:03:10.180Z",
+      "updatedAt": "2026-08-19T11:03:10.180Z"
+    },
+    "7501019006609": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:14.407Z",
+      "name": "SABA BUENAS NOCHES S/ALA C/10",
+      "presentation": ""
+    },
+    "7501019007033": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:19.942Z",
+      "name": "SABA CONFORT MANZ REG.C/ 14 TOALLAS",
+      "presentation": ""
+    },
+    "7501019035876": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:25.114Z",
+      "name": "TAS SABA AMORE NOCTURNA",
+      "presentation": ""
+    },
+    "7501019036651": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:29.953Z",
+      "name": "PANTY PROT SABA DIARIOS",
+      "presentation": ""
+    },
+    "7501019040306": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:34.756Z",
+      "name": "TAS SANIT SABA SENSIVI-V U-DEL C/20",
+      "presentation": ""
+    },
+    "7501019043550": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:39.597Z",
+      "name": "TOALLAS SABA MATERNA POST-PARTO CON 10 PZS",
+      "presentation": ""
+    },
+    "7501019050473": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:44.417Z",
+      "name": "TENA TOA HUM P/ADULTO EG C/40",
+      "presentation": ""
+    },
+    "7501019051401": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:49.640Z",
+      "name": "PAÑAL  TENA PREDOBLADO  UNITALLA C/10",
+      "presentation": ""
+    },
+    "7501019068713": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:54.467Z",
+      "name": "PANTY PROT SABA DIARIOS",
+      "presentation": ""
+    },
+    "7501019068911": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:03:59.698Z",
+      "name": "SABA PANTIPROTECTORES LARGO C/28 PZ",
+      "presentation": ""
+    },
+    "7501022009321": {
+      "status": "verified_ean",
+      "image": "assets/products/7501022009321.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/102/200/9321/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Pepsi chico",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PEPSI COLA",
+      "presentation": "BOTELLA 1.75 LTS",
+      "checkedAt": "2026-08-19T11:04:04.870Z",
+      "updatedAt": "2026-08-19T11:04:04.870Z"
+    },
+    "7501022009529": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:04:08.027Z",
+      "name": "GATORADE BEBIDA SABOR MORAS",
+      "presentation": "BOTELLA 350ML"
+    },
+    "7501022014615": {
+      "status": "verified_ean",
+      "image": "assets/products/7501022014615.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/102/201/4615/front_en.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "7up 1.75",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "REFRESCO 7UP SABOR LIMON",
+      "presentation": "BOTELLA 1.75",
+      "checkedAt": "2026-08-19T11:04:13.728Z",
+      "updatedAt": "2026-08-19T11:04:13.728Z"
+    },
+    "7501022015391": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:04:16.999Z",
+      "name": "REFRESCO MANZANITA SOL",
+      "presentation": "BOTELLA 1.75 ML"
+    },
+    "7501022103111": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:04:22.087Z",
+      "name": "SH GRISI RICITOS ORO 100ML 266",
+      "presentation": ""
+    },
+    "7501022104248": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:04:27.343Z",
+      "name": "CREMA RICITOS DE ORO 100ML",
+      "presentation": ""
+    },
+    "7501022105191": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:04:32.177Z",
+      "name": "JABON NEUTRO GRISI 100MG",
+      "presentation": ""
+    },
+    "7501022105344": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:04:37.325Z",
+      "name": "JABON RICITOS DE ORO LAVANDA/LECHUG 90 GR",
+      "presentation": ""
+    },
+    "7501022130063": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:04:42.150Z",
+      "name": "SH GRISI RICITOS ORO MIEL",
+      "presentation": ""
+    },
+    "7501022150221": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:04:47.225Z",
+      "name": "JBN RICITOS ORO NEUTRO 90GR.",
+      "presentation": ""
+    },
+    "7501022183618": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:04:52.314Z",
+      "name": "GRISI RICITOS DE ORO LAVANDA",
+      "presentation": ""
+    },
+    "7501023108818": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:04:57.475Z",
+      "name": "NEXCARE TRANSPORE 2.5CM",
+      "presentation": ""
+    },
+    "7501023108849": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:05:02.663Z",
+      "name": "MICROPORE 3M NEXCA 1/2 BLANC",
+      "presentation": ""
+    },
+    "7501023108887": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:05:07.741Z",
+      "name": "MICROPORE 3M NEXCAR PIEL 1/2",
+      "presentation": ""
+    },
+    "7501024501007": {
+      "status": "verified_ean",
+      "image": "assets/products/7501024501007.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/102/450/1007/front_es.13.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Chocolate Amargo",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "HERSHEYS DARK 41G",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:05:13.014Z",
+      "updatedAt": "2026-08-19T11:05:13.014Z"
+    },
+    "7501024595594": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:05:17.337Z",
+      "name": "HERSHEYS MILK CHOCOLATE 27 GR",
+      "presentation": ""
+    },
+    "7501024599097": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:05:22.824Z",
+      "name": "HERSHEYS ALMOND 27 G",
+      "presentation": ""
+    },
+    "7501026006661": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:05:27.743Z",
+      "name": "JABON ROSA VENUS ROSA 100G.",
+      "presentation": ""
+    },
+    "7501027250612": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:05:32.741Z",
+      "name": "OBAO GARNI WOMEN P-DELICADA ROLL ON 65 GR",
+      "presentation": ""
+    },
+    "7501027278487": {
+      "status": "verified_ean",
+      "image": "assets/products/7501027278487.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/102/727/8487/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Garnier Obao desodorante",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "OBAO GARNIER SUAVE ROLL-ON 65G",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:05:37.565Z",
+      "updatedAt": "2026-08-19T11:05:37.565Z"
+    },
+    "7501027511706": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:05:41.665Z",
+      "name": "BIBERON EVENFLO ADVANCED 60ML (2 OZ)",
+      "presentation": ""
+    },
+    "7501027512918": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:05:46.512Z",
+      "name": "EVENFLO",
+      "presentation": ""
+    },
+    "7501027513601": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:05:51.468Z",
+      "name": "BIB EVENFLO DREAMS 240 ML    549",
+      "presentation": ""
+    },
+    "7501027524317": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:05:56.402Z",
+      "name": "MAMILA EVENFLO CLAS3-12M 4PZ+ESCOB",
+      "presentation": ""
+    },
+    "7501027551306": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:06:01.245Z",
+      "name": "ESCOBILLON EVENFLO",
+      "presentation": ""
+    },
+    "7501027567062": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:06:06.084Z",
+      "name": "PROTECTORES DE LACTANCIA EVENFLO 1PZ",
+      "presentation": ""
+    },
+    "7501027573773": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:06:11.016Z",
+      "name": "BIBERON EVENFLO 240ML",
+      "presentation": ""
+    },
+    "7501027579843": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:06:16.193Z",
+      "name": "PEZONERA EVENFLO ADV 2 PZS",
+      "presentation": ""
+    },
+    "7501030409854": {
+      "status": "verified_ean",
+      "image": "assets/products/7501030409854.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/040/9854/front_en.9.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Nito Duo",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "DUO NITO 124 GRS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:06:25.420Z",
+      "updatedAt": "2026-08-19T11:06:25.420Z"
+    },
+    "7501030418399": {
+      "status": "verified_ean",
+      "image": "assets/products/7501030418399.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/041/8399/front_en.48.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Donitas espolvoreadas",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "DONITAS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:06:36.391Z",
+      "updatedAt": "2026-08-19T11:06:36.391Z"
+    },
+    "7501030426905": {
+      "status": "verified_ean",
+      "image": "assets/products/7501030426905.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/042/6905/front_es.10.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Duo Pay Piña",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PAY DE PIÑA",
+      "presentation": "BOLSA 110 GRS",
+      "checkedAt": "2026-08-19T11:06:42.898Z",
+      "updatedAt": "2026-08-19T11:06:42.898Z"
+    },
+    "7501030426912": {
+      "status": "verified_ean",
+      "image": "assets/products/7501030426912.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/042/6912/front_en.7.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Pau nuez",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PAY DE NUEZ",
+      "presentation": "BOLSA 96 GRS",
+      "checkedAt": "2026-08-19T11:06:49.477Z",
+      "updatedAt": "2026-08-19T11:06:49.477Z"
+    },
+    "7501030472698": {
+      "status": "verified_ean",
+      "image": "assets/products/7501030472698.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/047/2698/front_es.9.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Bimbuñuelos",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "BIMBUÑUELOS",
+      "presentation": "BOLSA 6 PZAS",
+      "checkedAt": "2026-08-19T11:06:52.709Z",
+      "updatedAt": "2026-08-19T11:06:52.709Z"
+    },
+    "7501030474227": {
+      "status": "verified_ean",
+      "image": "assets/products/7501030474227.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/047/4227/front_es.27.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Donas",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "DONAS",
+      "presentation": "158 GRS",
+      "checkedAt": "2026-08-19T11:06:57.191Z",
+      "updatedAt": "2026-08-19T11:06:57.191Z"
+    },
+    "7501030475514": {
+      "status": "verified_ean",
+      "image": "assets/products/7501030475514.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/047/5514/front_es.11.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Mantecadas con nuez",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "MANTECADAS NUEZ",
+      "presentation": "BOLSA",
+      "checkedAt": "2026-08-19T11:07:01.230Z",
+      "updatedAt": "2026-08-19T11:07:01.230Z"
+    },
+    "7501030475521": {
+      "status": "verified_ean",
+      "image": "assets/products/7501030475521.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/047/5521/front_es.19.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Mantecadas sabor Vainilla",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "MANTECADAS VAINILLA",
+      "presentation": "BOLSA",
+      "checkedAt": "2026-08-19T11:07:04.029Z",
+      "updatedAt": "2026-08-19T11:07:04.029Z"
+    },
+    "7501030475743": {
+      "status": "verified_ean",
+      "image": "assets/products/7501030475743.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/047/5743/front_es.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "pinguinos",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PINGUINOS",
+      "presentation": "BOLSA 120 GRS",
+      "checkedAt": "2026-08-19T11:07:06.688Z",
+      "updatedAt": "2026-08-19T11:07:06.688Z"
+    },
+    "7501031310098": {
+      "status": "verified_ean",
+      "image": "assets/products/7501031310098.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/131/0098/front_es.36.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "pepsi 3",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PEPSI",
+      "presentation": "BOTELLA 3LTS",
+      "checkedAt": "2026-08-19T11:07:09.401Z",
+      "updatedAt": "2026-08-19T11:07:09.401Z"
+    },
+    "7501033920332": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:07:12.882Z",
+      "name": "ACIDO VALPROICO 250 MG C/60 CAPS",
+      "presentation": ""
+    },
+    "7501033954061": {
+      "status": "verified_ean",
+      "image": "assets/products/7501033954061.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/395/4061/front_en.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Fórmula para alimentación Ensure Clásico enteral especializada sabor vainilla",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "ENSURE CHOCOLATE",
+      "presentation": "BOTELLA 237 ML",
+      "checkedAt": "2026-08-19T11:07:18.765Z",
+      "updatedAt": "2026-08-19T11:07:18.765Z"
+    },
+    "7501033954078": {
+      "status": "verified_ean",
+      "image": "assets/products/7501033954078.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/395/4078/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "ENSURE ADVANCE FRESA",
+      "presentation": "BOTELLA 237 ML",
+      "checkedAt": "2026-08-19T11:07:21.773Z",
+      "updatedAt": "2026-08-19T11:07:21.773Z"
+    },
+    "7501033954085": {
+      "status": "verified_ean",
+      "image": "assets/products/7501033954085.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/395/4085/front_es.6.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Ensure",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "ENSURE VAINILLA",
+      "presentation": "BOTELLA 237 ML",
+      "checkedAt": "2026-08-19T11:07:24.492Z",
+      "updatedAt": "2026-08-19T11:07:24.492Z"
+    },
+    "7501033958717": {
+      "status": "verified_ean",
+      "image": "assets/products/7501033958717.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/395/8717/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "ENSURE ADVANCE VAINILLA",
+      "presentation": "BOTELLA 237 ML",
+      "checkedAt": "2026-08-19T11:07:27.504Z",
+      "updatedAt": "2026-08-19T11:07:27.504Z"
+    },
+    "7501033960499": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:07:32.176Z",
+      "name": "ENSURE FRESA",
+      "presentation": "BOTELLA 237 ML"
+    },
+    "7501035900264": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:07:37.486Z",
+      "name": "DESODORANTE STEFANO R-ON 50 ML",
+      "presentation": ""
+    },
+    "7501035908116": {
+      "status": "verified_ean",
+      "image": "assets/products/7501035908116.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/590/8116/front_es.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "baby mágico mennen",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "TALCO MENNEN AZUL 100G",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:07:42.743Z",
+      "updatedAt": "2026-08-19T11:07:42.743Z"
+    },
+    "7501035908123": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:07:46.923Z",
+      "name": "TALCO  MENNEN ROSA 100G",
+      "presentation": ""
+    },
+    "7501035908239": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:07:52.488Z",
+      "name": "MENNEN ACEITE 50ML",
+      "presentation": ""
+    },
+    "7501035908246": {
+      "status": "verified_ean",
+      "image": "assets/products/7501035908246.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/590/8246/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Aceite mennen",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "MENNEN ACEITE 100ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:07:57.349Z",
+      "updatedAt": "2026-08-19T11:07:57.349Z"
+    },
+    "7501035909014": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:01.797Z",
+      "name": "DESOD STEFANO SPAZ ST 60 G   377",
+      "presentation": ""
+    },
+    "7501035911376": {
+      "status": "verified_ean",
+      "image": "assets/products/7501035911376.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/103/591/1376/front_fr.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "crema dental crean mint 150 ml",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "COLGATE TOTAL",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:08:07.294Z",
+      "updatedAt": "2026-08-19T11:08:07.294Z"
+    },
+    "7501035914070": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:11.233Z",
+      "name": "WILDROOT 100ML",
+      "presentation": ""
+    },
+    "7501041941930": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:16.172Z",
+      "name": "SAL DE UVAS PICOT SOBRE 1PZ",
+      "presentation": ""
+    },
+    "7501044209815": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:20.993Z",
+      "name": "REPEL FLY OUT EXTRA NAT SPY 265 ML",
+      "presentation": ""
+    },
+    "7501044217940": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:26.332Z",
+      "name": "OLOREX TALCO MENTOL",
+      "presentation": ""
+    },
+    "7501048333301": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:31.168Z",
+      "name": "ALCOHOL  ETILICO",
+      "presentation": "BOTELLA 1 LT"
+    },
+    "7501048351046": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:36.226Z",
+      "name": "GEL ANTIBACTERIAL PROTEC LIMA-LIMON 125 ML",
+      "presentation": ""
+    },
+    "7501048612109": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:41.231Z",
+      "name": "GASA SECA CORTADA DE ALGODON",
+      "presentation": ""
+    },
+    "7501048623006": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:46.065Z",
+      "name": "PROTEC PADS GLICERINA/100",
+      "presentation": ""
+    },
+    "7501048623952": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:51.145Z",
+      "name": "PADS FACIAL PROTEC 60PZS",
+      "presentation": ""
+    },
+    "7501048640751": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:08:55.976Z",
+      "name": "VENDA DE YESO PROTECT",
+      "presentation": ""
+    },
+    "7501048660957": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:00.885Z",
+      "name": "JERINGA 1ML 30GX16MM",
+      "presentation": ""
+    },
+    "7501048670802": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:05.700Z",
+      "name": "TERMOMETRO DIGITAL PROTEC",
+      "presentation": ""
+    },
+    "7501048691005": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:10.599Z",
+      "name": "VENDA PROTEC ALTA COMPRESION 10CM",
+      "presentation": ""
+    },
+    "7501048691104": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:15.440Z",
+      "name": "VENDA ELASTICA 15CM 5",
+      "presentation": ""
+    },
+    "7501048695607": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:20.679Z",
+      "name": "VENDE ELASTICA 10CM",
+      "presentation": ""
+    },
+    "7501050613453": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:25.919Z",
+      "name": "AFRIN SOL NASAL AD 20 ML",
+      "presentation": ""
+    },
+    "7501050624732": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:31.077Z",
+      "name": "AFRIN NO-DRIP EXTRA HUMECTAN 15 ML",
+      "presentation": ""
+    },
+    "7501054500063": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:36.309Z",
+      "name": "CREMA NIVEA 50 ML",
+      "presentation": ""
+    },
+    "7501054549796": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:41.414Z",
+      "name": "NIVEA MILK 100ML",
+      "presentation": ""
+    },
+    "7501054549802": {
+      "status": "verified_ean",
+      "image": "assets/products/7501054549802.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/454/9802/front_es.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Crema",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "NIVEA MILK NUTRI 220",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:09:46.421Z",
+      "updatedAt": "2026-08-19T11:09:46.421Z"
+    },
+    "7501054549819": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:50.372Z",
+      "name": "NIVEA MILK SOFT 100ML",
+      "presentation": ""
+    },
+    "7501054549826": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:09:55.323Z",
+      "name": "NIVEA EXPRESS HYDRATATION 100ML",
+      "presentation": ""
+    },
+    "7501054549895": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:10:00.134Z",
+      "name": "CREMA NIVEA SOFT MILK 220ML",
+      "presentation": ""
+    },
+    "7501054550150": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:10:05.214Z",
+      "name": "CURITAS ANIMALITOS SUELTO",
+      "presentation": "PZ"
+    },
+    "7501055304721": {
+      "status": "verified_ean",
+      "image": "assets/products/7501055304721.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/530/4721/front_es.6.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "AGUA CIEL",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "AGUA CIEL",
+      "presentation": "BOTELLA 1.5 LTS",
+      "checkedAt": "2026-08-19T11:10:14.013Z",
+      "updatedAt": "2026-08-19T11:10:14.013Z"
+    },
+    "7501055304745": {
+      "status": "verified_ean",
+      "image": "assets/products/7501055304745.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/530/4745/front_es.28.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Coca cola",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "COCA COLA 3LTS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:10:17.266Z",
+      "updatedAt": "2026-08-19T11:10:17.266Z"
+    },
+    "7501055307906": {
+      "status": "verified_ean",
+      "image": "assets/products/7501055307906.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/530/7906/front_es.5.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Agua purificada Ciel",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "CIEL 600 L.",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:10:27.217Z",
+      "updatedAt": "2026-08-19T11:10:27.217Z"
+    },
+    "7501055310227": {
+      "status": "verified_ean",
+      "image": "assets/products/7501055310227.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/531/0227/front_es.26.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Coca-Cola 2.5L retornable",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "COCA COLA  RETORNABLE",
+      "presentation": "2.5LTS",
+      "checkedAt": "2026-08-19T11:10:37.477Z",
+      "updatedAt": "2026-08-19T11:10:37.477Z"
+    },
+    "7501055310883": {
+      "status": "verified_ean",
+      "image": "assets/products/7501055310883.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/531/0883/front_es.15.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Ciel",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "CIEL",
+      "presentation": "BOTELLA 1 LT",
+      "checkedAt": "2026-08-19T11:10:44.034Z",
+      "updatedAt": "2026-08-19T11:10:44.034Z"
+    },
+    "7501055313532": {
+      "status": "verified_ean",
+      "image": "assets/products/7501055313532.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/531/3532/front_en.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Coca-Cola",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "COCA COLA 1.75 LTS",
+      "presentation": "BOTELLA",
+      "checkedAt": "2026-08-19T11:10:47.341Z",
+      "updatedAt": "2026-08-19T11:10:47.341Z"
+    },
+    "7501055320639": {
+      "status": "verified_ean",
+      "image": "assets/products/7501055320639.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/532/0639/front_es.17.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Coca cola 600 sin azucar",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "COCA-COLA ZERO 600ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:10:50.708Z",
+      "updatedAt": "2026-08-19T11:10:50.708Z"
+    },
+    "7501055371655": {
+      "status": "verified_ean",
+      "image": "assets/products/7501055371655.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/537/1655/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Coca Cola",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "COCA COLA 1,35L",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:10:54.004Z",
+      "updatedAt": "2026-08-19T11:10:54.004Z"
+    },
+    "7501055917761": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:10:58.641Z",
+      "name": "ALPURA FRESA",
+      "presentation": "ENVASE 220ML"
+    },
+    "7501055917778": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:11:04.098Z",
+      "name": "ALPURA DURAZNO",
+      "presentation": "ENVASE"
+    },
+    "7501056325442": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:11:09.322Z",
+      "name": "PONDS S CRA 50G",
+      "presentation": ""
+    },
+    "7501056330255": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:11:14.277Z",
+      "name": "CRA CLARANT B3 NML SCA 50 G  087",
+      "presentation": ""
+    },
+    "7501056330491": {
+      "status": "verified_ean",
+      "image": "assets/products/7501056330491.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/633/0491/front_fr.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "crema ponds",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "CRE PONDS REJUVENESS DIA 10GR.",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:11:19.577Z",
+      "updatedAt": "2026-08-19T11:11:19.577Z"
+    },
+    "7501056346058": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:11:23.666Z",
+      "name": "CRA PONDS CLAR 100GR.",
+      "presentation": ""
+    },
+    "7501056360412": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:11:33.688Z",
+      "name": "REXONA TALCO EFFICIENT",
+      "presentation": "ENVASE 100GRS"
+    },
+    "7501057005312": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:11:38.486Z",
+      "name": "CALADRYL_X001F_-S LOC 180 ML",
+      "presentation": ""
+    },
+    "7501058368126": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T11:11:43.698Z",
+      "name": "SICO SENSITIVE FEEL 3C RED",
+      "presentation": ""
+    },
+    "7501058631947": {
+      "status": "verified_ean",
+      "image": "assets/products/7501058631947.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/105/863/1947/front_en.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Tin Larin Mini",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "TIN LARIN MINI 12G",
+      "presentation": "",
+      "checkedAt": "2026-08-19T11:11:48.608Z",
+      "updatedAt": "2026-08-19T11:11:48.608Z"
     }
   },
   "storeId": "FARMACIA_FARMABIEN_GARDENIAS",
   "totalCatalogProducts": 1151,
-  "totalImageEntries": 67,
-  "totalNotFound": 131,
+  "totalImageEntries": 100,
+  "totalNotFound": 206,
   "totalErrors": 0
 }
