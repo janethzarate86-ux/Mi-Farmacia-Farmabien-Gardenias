@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T11:46:56.498Z",
+  "updatedAt": "2026-08-19T12:09:49.196Z",
   "products": {
     "42332909": {
       "status": "not_found",
@@ -3617,11 +3617,709 @@
       "checkedAt": "2026-08-19T11:46:53.754Z",
       "name": "OSELTAMIVIR  75MG  C/10 CAPS",
       "presentation": ""
+    },
+    "7501299379233": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:00:08.470Z",
+      "name": "AMBROXOL GOTAS 30ML",
+      "presentation": ""
+    },
+    "7501300408938": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:00:14.563Z",
+      "name": "TAPAZOL 5 MG TAB 20",
+      "presentation": ""
+    },
+    "7501314704156": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:00:24.200Z",
+      "name": "GLICEROL SENOSIAIN SUPOSOTORIO ADULTO",
+      "presentation": "CAJA CON 10"
+    },
+    "7501314704187": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:00:29.203Z",
+      "name": "GLICEROL SENOSIAIN SUPO 10 BEBE",
+      "presentation": ""
+    },
+    "7501318612655": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:00:33.990Z",
+      "name": "ASPIRINA PROTEC CPR28",
+      "presentation": ""
+    },
+    "7501342801131": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:00:39.092Z",
+      "name": "METAMIZOL SODICO 500MG C/10 TAB",
+      "presentation": ""
+    },
+    "7501342803104": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:00:43.854Z",
+      "name": "PREDNISONA 5MG C/20",
+      "presentation": ""
+    },
+    "7501349012004": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:00:48.644Z",
+      "name": "AMCEF I.M",
+      "presentation": "CAJA CON 1 AMPULA"
+    },
+    "7501349012943": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:00:53.755Z",
+      "name": "FLUCONAZOL 150MG CAP 1",
+      "presentation": ""
+    },
+    "7501349020009": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:01:03.317Z",
+      "name": "TRAMADOL SOL. INY 100MG/2ML",
+      "presentation": "CAJA CON 5 AMPOLLETAS"
+    },
+    "7501349020412": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:01:08.090Z",
+      "name": "HIERRO DEXTRAN  100MG /2 ML  3 AMP",
+      "presentation": ""
+    },
+    "7501349020894": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:01:12.871Z",
+      "name": "CIPROFLOXACINO TABLETA",
+      "presentation": ""
+    },
+    "7501349020979": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:01:17.871Z",
+      "name": "KETOPROFENO 100 MG  C/15 CAP",
+      "presentation": ""
+    },
+    "7501349021310": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:01:22.928Z",
+      "name": "SERTRALINA 50MG C/14TAB",
+      "presentation": ""
+    },
+    "7501349021532": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:01:27.697Z",
+      "name": "CIPROFLOXACINO 500MG C/14TAB",
+      "presentation": ""
+    },
+    "7501349021983": {
+      "status": "verified_ean",
+      "image": "assets/products/7501349021983.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/134/902/1983/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "LINCOMICINA",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "LINCOMICINA 600MG/2ML 6AMP",
+      "presentation": "",
+      "checkedAt": "2026-08-19T12:01:32.463Z",
+      "updatedAt": "2026-08-19T12:01:32.463Z"
+    },
+    "7501349022126": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:01:36.768Z",
+      "name": "METAMIZOL SODICO SOL INY 1 G/2ML/C3 AMP",
+      "presentation": ""
+    },
+    "7501349022140": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:01:47.818Z",
+      "name": "METFORMINA 850MG C/30 TAB",
+      "presentation": ""
+    },
+    "7501349022959": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:01:52.602Z",
+      "name": "PREGABALINA 150 CAPS",
+      "presentation": ""
+    },
+    "7501349023369": {
+      "status": "verified_ean",
+      "image": "assets/products/7501349023369.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/134/902/3369/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Ketorolaco",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "KETOROLACO 30MG C/6 TAB SUBLI",
+      "presentation": "",
+      "checkedAt": "2026-08-19T12:01:57.406Z",
+      "updatedAt": "2026-08-19T12:01:57.406Z"
+    },
+    "7501349024045": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:02:06.028Z",
+      "name": "HIOSCINA 20MG SOL INY",
+      "presentation": ""
+    },
+    "7501349024267": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:02:15.893Z",
+      "name": "KETOROLACO SOL 30MG/1ML",
+      "presentation": ""
+    },
+    "7501349024328": {
+      "status": "verified_ean",
+      "image": "assets/products/7501349024328.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/134/902/4328/front_de.5.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Keterolaco subleng. 30 mg",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "KETOROLACO SUB 30 MG C/4 TABS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T12:02:20.680Z",
+      "updatedAt": "2026-08-19T12:02:20.680Z"
+    },
+    "7501349024571": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:02:34.212Z",
+      "name": "FUROSEMIDA SOL INY 20MG/2ML",
+      "presentation": ""
+    },
+    "75013490245717": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:02:39.328Z",
+      "name": "FUROSEMIDA 20MG/2ML",
+      "presentation": "CAJA CON  5 AMPOLLETAS"
+    },
+    "7501349025233": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:02:44.213Z",
+      "name": "METILPREDNISOLONA 40MG INY",
+      "presentation": ""
+    },
+    "7501349025929": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:02:54.099Z",
+      "name": "DICLOFENACO 75MG/3ML C/ 2 AMPOLLETAS",
+      "presentation": ""
+    },
+    "7501349025967": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:02:58.874Z",
+      "name": "PREGABALINA 75MG 14CAPS",
+      "presentation": ""
+    },
+    "7501349026377": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:03:03.669Z",
+      "name": "GENTAMICINA 160MG-2ML INY. C/1",
+      "presentation": ""
+    },
+    "7501349027329": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:03:08.630Z",
+      "name": "DEXAMETASON 8ML/2ML SOL INY",
+      "presentation": ""
+    },
+    "7501349028395": {
+      "status": "verified_text",
+      "image": "assets/products/7501349028395.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/227/685/4064/front_en.3.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "Levocetirizina 5mg",
+      "sourceCode": "7502276854064",
+      "matchOverlap": 1,
+      "name": "LEVOCETIRIZINA 5 MG C/10 TAB",
+      "presentation": "",
+      "checkedAt": "2026-08-19T12:03:13.837Z",
+      "updatedAt": "2026-08-19T12:03:13.837Z"
+    },
+    "7501349028654": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:03:19.911Z",
+      "name": "HIPROMELOSA 5% SOL OFT GTS 10ML",
+      "presentation": ""
+    },
+    "7501349029613": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:03:25.443Z",
+      "name": "COMPLEJO B/DEXA/LIDO",
+      "presentation": ""
+    },
+    "7501349029729": {
+      "status": "verified_ean",
+      "image": "assets/products/7501349029729.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/134/902/9729/front_es.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "telmisartan hidroclorotiazida",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "TELMISARTAN 80MG/HIDROCLOROTIAZIDA 12.5MG",
+      "presentation": "CAJA CON 14 TABS",
+      "checkedAt": "2026-08-19T12:03:30.217Z",
+      "updatedAt": "2026-08-19T12:03:30.217Z"
+    },
+    "7501369200160": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:03:34.174Z",
+      "name": "ESTOMAQUIL C/24 TAB",
+      "presentation": ""
+    },
+    "7501370204577": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:03:38.947Z",
+      "name": "PINZAS T-TIJERA LADY GDE.",
+      "presentation": ""
+    },
+    "7501370204584": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:03:48.105Z",
+      "name": "DEPILADOR PINZA CHICA",
+      "presentation": ""
+    },
+    "7501384504908": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:03:52.956Z",
+      "name": "ACIDO ACETIL SALICILICO 300 MG CON 20 TAB",
+      "presentation": ""
+    },
+    "7501384504915": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:03:57.976Z",
+      "name": "BESAFIFRATO 200 MG",
+      "presentation": "CAJA CON 30 TABS"
+    },
+    "7501385491085": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:02.760Z",
+      "name": "DANZEN 10 MG GRAG 20         415",
+      "presentation": ""
+    },
+    "7501417010253": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:07.753Z",
+      "name": "MAGNESIA COYOACAN",
+      "presentation": ""
+    },
+    "7501441500096": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:12.742Z",
+      "name": "TIRALECHE DE CRISTAL DAN",
+      "presentation": ""
+    },
+    "7501463318013": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:17.509Z",
+      "name": "ORINAL FEMENINO",
+      "presentation": ""
+    },
+    "7501463318020": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:22.264Z",
+      "name": "ORINAL PLASTICO CON TAPA",
+      "presentation": ""
+    },
+    "7501471800210": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:27.045Z",
+      "name": "FLOROGLUCINOL/TRIMETILFLO 80/80MG 20 CAP",
+      "presentation": ""
+    },
+    "7501471800265": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:32.048Z",
+      "name": "PANCLASA C/20 CAPS",
+      "presentation": ""
+    },
+    "7501471887952": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:37.024Z",
+      "name": "CALCIO 500GR. EFERV.",
+      "presentation": ""
+    },
+    "7501471889352": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:41.916Z",
+      "name": "VERAPAMILO 80 MG C/ 20 TABS",
+      "presentation": ""
+    },
+    "7501478315793": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:47.027Z",
+      "name": "DOXICICLINA 100 MG 10 CAPSULAS",
+      "presentation": ""
+    },
+    "7501478316813": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:51.906Z",
+      "name": "IBUPROFENO/CAFEINA 400MG/100MG C/10 CAPS",
+      "presentation": ""
+    },
+    "7501493867680": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:04:56.678Z",
+      "name": "AMLODIPINO 5MG C/10TAB",
+      "presentation": ""
+    },
+    "7501493874695": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:05:01.706Z",
+      "name": "DIFENHIDRAMINA 10MG/1ML SOL. INY",
+      "presentation": ""
+    },
+    "7501516704022": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:05:06.455Z",
+      "name": "PEINE PARA PIOJOS INCREDIBLE",
+      "presentation": ""
+    },
+    "7501537102272": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:05:11.217Z",
+      "name": "HIDROCORTISONA 500MG/4ML SOL INY",
+      "presentation": ""
+    },
+    "7501537102845": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:05:16.235Z",
+      "name": "DICLOFENACO 100MG",
+      "presentation": "CAJA CON 20 TABS"
+    },
+    "7501537102982": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:05:20.998Z",
+      "name": "BETAMETASONA 8MG SOL INY",
+      "presentation": ""
+    },
+    "7501537102999": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:05:35.308Z",
+      "name": "CLORFENAMINA CTA KY6",
+      "presentation": "CAJA CON 10 TABS"
+    },
+    "7501537103422": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:05:40.557Z",
+      "name": "TRIBEDOCE DX C/3 AMP.",
+      "presentation": ""
+    },
+    "7501537163266": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:05:50.724Z",
+      "name": "TRIBEDOCE CPTO SOL INY",
+      "presentation": ""
+    },
+    "7501537164713": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:00.230Z",
+      "name": "DICLOFENACO C / COMPLEJO B GRAGEAS",
+      "presentation": "CAJA CON 30 TABS"
+    },
+    "7501537182960": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:04.988Z",
+      "name": "HIDROXOCOBALAMINA TIAMINA PIRIDOXINA 10 000MCG",
+      "presentation": ""
+    },
+    "7501537193010": {
+      "status": "verified_text",
+      "image": "assets/products/7501537193010.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/789/611/212/1831/front_en.3.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "Naproxeno Sódico 500mg CPD 20Teuto",
+      "sourceCode": "7896112121831",
+      "matchOverlap": 2,
+      "name": "NAPROXENO 500MG C/10 TAB",
+      "presentation": "",
+      "checkedAt": "2026-08-19T12:06:09.990Z",
+      "updatedAt": "2026-08-19T12:06:09.990Z"
+    },
+    "7501537194130": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:15.367Z",
+      "name": "INDOMETACINA CAPSULAS 25 MG",
+      "presentation": ""
+    },
+    "7501547503168": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:20.943Z",
+      "name": "METOCARB/IBUPROF 300/300MG TAB10",
+      "presentation": ""
+    },
+    "7501547509016": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:26.083Z",
+      "name": "INDARZONA CAPS30",
+      "presentation": ""
+    },
+    "7501547522220": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:30.855Z",
+      "name": "CLORU CETILPIRIDINO 1.45MG TAB10",
+      "presentation": ""
+    },
+    "7501563380323": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:35.655Z",
+      "name": "AMBROXOL C/30 COMPRIMIDOS",
+      "presentation": ""
+    },
+    "7501563380637": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:40.671Z",
+      "name": "FENAZOPIRIDINA 100 MG",
+      "presentation": "FRASCO CON 20 TABS"
+    },
+    "7501563666298": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:45.685Z",
+      "name": "PUNZOCAT  16G X 2.0",
+      "presentation": "PZ"
+    },
+    "7501563666601": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:50.720Z",
+      "name": "PUNZOCAT   20G X 1 1/4",
+      "presentation": "PZ"
+    },
+    "7501565605912": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:06:55.767Z",
+      "name": "GASA GALIA ANTIMICROBIANA C/10",
+      "presentation": ""
+    },
+    "7501565609521": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:07:00.520Z",
+      "name": "GASA ESTERIL 10X10 BOLSA C/10",
+      "presentation": ""
+    },
+    "7501571200675": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:07:05.271Z",
+      "name": "METOPROLOL 100MG C/20TAB",
+      "presentation": ""
+    },
+    "7501571202426": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:07:10.282Z",
+      "name": "PREDNISONA 5MG C/20 TAB",
+      "presentation": ""
+    },
+    "7501573900115": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:07:15.084Z",
+      "name": "METAMIZOLBUTILHIOSCINA TABS 10/250MG",
+      "presentation": ""
+    },
+    "7501573900153": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:07:25.175Z",
+      "name": "CLORFENAMINA 4MG",
+      "presentation": "CAJA CON 20 TABS"
+    },
+    "7501573900177": {
+      "status": "verified_ean",
+      "image": "assets/products/7501573900177.webp",
+      "source": "opf",
+      "sourceUrl": "https://images.openproductsfacts.org/images/products/750/157/390/0177/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "paracetamol naproxeno",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "NAPROX/PARACET TAB 10",
+      "presentation": "",
+      "checkedAt": "2026-08-19T12:07:33.394Z",
+      "updatedAt": "2026-08-19T12:07:33.394Z"
+    },
+    "7501573900245": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:07:35.951Z",
+      "name": "METFORMINA/GLIBENCLAMIDA 500MG/2.5MG C/30 TAB",
+      "presentation": ""
+    },
+    "7501573900375": {
+      "status": "verified_ean",
+      "image": "assets/products/7501573900375.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/157/390/0375/front_es.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "furosemida",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "FUROSEMIDA 40MG TAB20",
+      "presentation": "",
+      "checkedAt": "2026-08-19T12:07:44.772Z",
+      "updatedAt": "2026-08-19T12:07:44.772Z"
+    },
+    "7501573900399": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:07:47.928Z",
+      "name": "C-MESSEL (ACIDO ASCORBICO 100MG) C/20TAB",
+      "presentation": ""
+    },
+    "7501573900436": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:07:52.739Z",
+      "name": "PRAVASTATINA 10 MG",
+      "presentation": "CAJA CON 30 TABS"
+    },
+    "7501573900443": {
+      "status": "verified_ean",
+      "image": "assets/products/7501573900443.webp",
+      "source": "opf",
+      "sourceUrl": "https://images.openproductsfacts.org/images/products/750/157/390/0443/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "paracetamol 500",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PARACETAMOL 500MG",
+      "presentation": "CAJA CON 10 TABS",
+      "checkedAt": "2026-08-19T12:08:00.682Z",
+      "updatedAt": "2026-08-19T12:08:00.682Z"
+    },
+    "7501573900535": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:08:03.251Z",
+      "name": "BUTILHISOCINA 10 MG",
+      "presentation": ""
+    },
+    "7501573902584": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:08:08.225Z",
+      "name": "OMEPRAZOL 20MG C/14 CAPS",
+      "presentation": ""
+    },
+    "7501573902614": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:08:13.024Z",
+      "name": "LORATADINA SOL. 60ML",
+      "presentation": ""
+    },
+    "7501573902706": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:08:18.077Z",
+      "name": "AMBROXOL JBE 120ML",
+      "presentation": ""
+    },
+    "7501573902720": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:08:23.099Z",
+      "name": "MICONAZOL 2% 20G",
+      "presentation": ""
+    },
+    "7501573902928": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:08:27.891Z",
+      "name": "KETOCONAZOL 2G/100G",
+      "presentation": ""
+    },
+    "7501573902966": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:08:32.972Z",
+      "name": "TERBINAFINA 1% 15G CRE",
+      "presentation": ""
+    },
+    "7501573904151": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:08:37.795Z",
+      "name": "BIOSTAFEX 120MG",
+      "presentation": "CAJA CON 10 TABS"
+    },
+    "7501573904212": {
+      "status": "verified_text",
+      "image": "assets/products/7501573904212.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/222/370/3155/front_en.3.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "Fexofenadina 180mg",
+      "sourceCode": "7502223703155",
+      "matchOverlap": 2,
+      "name": "FEXOFENADINA 180MG",
+      "presentation": "CAJA CON 10 TABS",
+      "checkedAt": "2026-08-19T12:08:42.560Z",
+      "updatedAt": "2026-08-19T12:08:42.560Z"
+    },
+    "7501573904755": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:08:52.717Z",
+      "name": "SILDENAFIL 50MG",
+      "presentation": "CAJA CON 1 TAB"
+    },
+    "7501573904762": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:08:57.950Z",
+      "name": "SILDENAFIL 50MG C/4TAB",
+      "presentation": ""
+    },
+    "7501573904861": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:09:02.765Z",
+      "name": "LOSARTAN 100MG",
+      "presentation": "CAJA CON 30 TABS"
+    },
+    "7501573905417": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:09:07.867Z",
+      "name": "DEXTROMETORFANO-GUAIFENESINA JRB INF 120 ML",
+      "presentation": ""
+    },
+    "7501573906346": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:09:12.648Z",
+      "name": "G CETIRIZINA 100MG 50ML",
+      "presentation": ""
+    },
+    "7501573908104": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:09:17.465Z",
+      "name": "NAPROXENO 550MG 12TABS",
+      "presentation": ""
+    },
+    "7501573909859": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:09:22.271Z",
+      "name": "OMEPRAZOL 20MG",
+      "presentation": "CAJA CON 28 CAPS"
+    },
+    "7501573909965": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:09:27.197Z",
+      "name": "KETOROLACO 10 MG",
+      "presentation": "CAJA CON 10 TABS"
+    },
+    "7501590211232": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:09:32.235Z",
+      "name": "POSTINOR UNIDOSIS 1.5MG C/1TAB",
+      "presentation": ""
+    },
+    "7501590222214": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:09:37.002Z",
+      "name": "ACIDO FOLICO 400MCG 90TABS",
+      "presentation": ""
+    },
+    "7501685171113": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:09:41.794Z",
+      "name": "PRESERV SICO U SENSE C/3",
+      "presentation": ""
+    },
+    "7501755554594": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T12:09:46.575Z",
+      "name": "TANYS BROCHA PARA TINTE BARABA Y BIGOTE",
+      "presentation": ""
     }
   },
   "storeId": "FARMACIA_FARMABIEN_GARDENIAS",
   "totalCatalogProducts": 1151,
-  "totalImageEntries": 137,
-  "totalNotFound": 283,
+  "totalImageEntries": 147,
+  "totalNotFound": 376,
   "totalErrors": 0
 }
