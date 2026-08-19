@@ -1,0 +1,54 @@
+name: Macroxel - Catalogo automatico de imagenes
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-product-images.yml'
+  schedule:
+    - cron: '17,47 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: macroxel-image-catalog
+  cancel-in-progress: false
+
+jobs:
+  sync-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar procesador de imagenes
+        run: npm install --prefix image-bot --no-audit --no-fund
+
+      - name: Sincronizar catalogo de imagenes
+        env:
+          MACROXEL_FIREBASE_URL: ${{ vars.MACROXEL_FIREBASE_URL }}
+          MAX_IMAGE_LOOKUPS: '120'
+        run: node image-bot/sync-product-images.mjs
+
+      - name: Publicar nuevas imagenes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add catalogo-imagenes.json assets/products
+          if git diff --cached --quiet; then
+            echo "Catalogo de imagenes sin cambios."
+            exit 0
+          fi
+          git commit -m "chore: actualizar catalogo automatico de imagenes"
+          git push
