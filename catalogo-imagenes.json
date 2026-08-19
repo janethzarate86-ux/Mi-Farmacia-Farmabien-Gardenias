@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T15:02:18.555Z",
+  "updatedAt": "2026-08-19T15:53:33.548Z",
   "products": {
     "42332909": {
       "status": "not_found",
@@ -176,6 +176,38 @@
       "status": "not_found",
       "checkedAt": "2026-08-19T14:59:52.749Z",
       "name": "DESOD DOVE INV DRY 50G",
+      "presentation": ""
+    },
+    "75313036": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:45:25.185Z",
+      "name": "ANTISEPTICO JALOMA 360 30ML",
+      "presentation": ""
+    },
+    "75916565": {
+      "status": "verified_ean",
+      "image": "assets/products/75916565.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/000/007/591/6565/front_es.12.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Alcohol",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "VICK VAPORUB LATITA 12G",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:45:47.217Z",
+      "updatedAt": "2026-08-19T15:45:47.217Z"
+    },
+    "78924338": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:36.207Z",
+      "name": "REXONA WOM POWDER ROLL ON 50ML",
+      "presentation": ""
+    },
+    "78924345": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:41.378Z",
+      "name": "REXONA WOMEN BAMBOO",
       "presentation": ""
     },
     "3014260846800": {
@@ -6643,11 +6675,733 @@
       "checkedAt": "2026-08-19T15:02:15.871Z",
       "name": "DESOD OBAO MEN TATT A-FRESH 150 ML",
       "presentation": ""
+    },
+    "7509552910346": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:45:09.477Z",
+      "name": "NUTRISSE 60 RUBIO",
+      "presentation": ""
+    },
+    "7509552911633": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:45:15.247Z",
+      "name": "DESODORANTE NIVEA",
+      "presentation": ""
+    },
+    "7509552911688": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:45:20.441Z",
+      "name": "DESO OBAO MEN",
+      "presentation": ""
+    },
+    "757528013882": {
+      "status": "verified_text",
+      "image": "assets/products/757528013882.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/075/752/801/3882/front_es.6.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "Duvalín Tri Sabor",
+      "sourceCode": "0757528013882",
+      "matchOverlap": 1,
+      "name": "DUVALIN AVELLANA-FRESA-VAINILLA",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:45:29.939Z",
+      "updatedAt": "2026-08-19T15:45:29.939Z"
+    },
+    "7590002012468": {
+      "status": "verified_ean",
+      "image": "assets/products/7590002012468.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/759/000/201/2468/front_en.8.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Vick VapoRub",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "VICK VAPORUB 50G",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:45:35.096Z",
+      "updatedAt": "2026-08-19T15:45:35.096Z"
+    },
+    "7590002037157": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:45:38.389Z",
+      "name": "VICK 44 EXP JBE 120ML",
+      "presentation": ""
+    },
+    "7591066701015": {
+      "status": "verified_ean",
+      "image": "assets/products/7591066701015.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/759/106/670/1015/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Presto barva",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "RASTRILLO SCHICK XTRENE 3 PIEL SENSIBLE",
+      "presentation": "PZ",
+      "checkedAt": "2026-08-19T15:45:43.179Z",
+      "updatedAt": "2026-08-19T15:45:43.179Z"
+    },
+    "759684076435": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:45:50.485Z",
+      "name": "ALGODON FACIAL JALOMA C/30PZS",
+      "presentation": ""
+    },
+    "759684151309": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:45:55.271Z",
+      "name": "BIBERON JALOMA 8 OZ",
+      "presentation": ""
+    },
+    "759684154102": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:00.389Z",
+      "name": "ACEITE PARA BEBE 60ML",
+      "presentation": ""
+    },
+    "759684154140": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:05.385Z",
+      "name": "ANTIBAC",
+      "presentation": "ENVASE 120ML"
+    },
+    "759684154232": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:10.356Z",
+      "name": "JALOMA GEL ANTIBACTERIAL 60ML",
+      "presentation": ""
+    },
+    "759684154768": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:15.119Z",
+      "name": "GEL ANTIBACTERIAL",
+      "presentation": "ENVASE 250 ML"
+    },
+    "759684154935": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:19.994Z",
+      "name": "ACEITE JALOMA BEBE LAVANDA 120 GR",
+      "presentation": ""
+    },
+    "759684273094": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:25.242Z",
+      "name": "COTONETES KIUT C/50 PZS",
+      "presentation": ""
+    },
+    "759684311505": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:30.035Z",
+      "name": "ALCOHOL ETILICO",
+      "presentation": "FRASCO CON 240ML"
+    },
+    "759684313073": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:35.019Z",
+      "name": "MERTIOLATE JAMOLA 40ML",
+      "presentation": ""
+    },
+    "759684313172": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:39.792Z",
+      "name": "MERTODOL BCO JALOMA 40ML 31322",
+      "presentation": ""
+    },
+    "759684317071": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:44.916Z",
+      "name": "VIOLETA DE GENCIANA 40ML",
+      "presentation": ""
+    },
+    "759684431050": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:49.660Z",
+      "name": "ACETONA JALOMA",
+      "presentation": "ENVASE 60ML"
+    },
+    "759684432071": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:46:59.404Z",
+      "name": "VASELINA BLANCA",
+      "presentation": "ENVASE 60GRS"
+    },
+    "759684433054": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:47:04.163Z",
+      "name": "PASADORES JALOMA C/50 PZS",
+      "presentation": ""
+    },
+    "759684437151": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:47:09.302Z",
+      "name": "ACETONA JALOMA 120ML",
+      "presentation": ""
+    },
+    "759684471452": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:47:14.081Z",
+      "name": "REPELENTE DE INSECTOS JALOMA",
+      "presentation": "ENVASE 60ML"
+    },
+    "759684901058": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:47:18.842Z",
+      "name": "BICARBONATO DE SODIO PURO",
+      "presentation": "CAJA CON 100GRS"
+    },
+    "7622210267818": {
+      "status": "verified_ean",
+      "image": "assets/products/7622210267818.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/762/221/026/7818/front_es.5.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Halls Menta",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "HALLS MENTA TB 9 PZAS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:47:23.631Z",
+      "updatedAt": "2026-08-19T15:47:23.631Z"
+    },
+    "7622210267832": {
+      "status": "verified_ean",
+      "image": "assets/products/7622210267832.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/762/221/026/7832/front_en.5.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Halls yerbabuena",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "HALLS YERBABUENA 9PZ 25.2G S",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:47:27.626Z",
+      "updatedAt": "2026-08-19T15:47:27.626Z"
+    },
+    "7622210267856": {
+      "status": "verified_ean",
+      "image": "assets/products/7622210267856.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/762/221/026/7856/front_de.15.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Halls",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "HALLS MORA",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:47:30.858Z",
+      "updatedAt": "2026-08-19T15:47:30.858Z"
+    },
+    "7622210267863": {
+      "status": "verified_ean",
+      "image": "assets/products/7622210267863.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/762/221/026/7863/front_es.6.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "halls",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "HALLS SABOR LIMON CON MIEL 25.2 GR",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:47:34.042Z",
+      "updatedAt": "2026-08-19T15:47:34.042Z"
+    },
+    "7622210267870": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:47:37.286Z",
+      "name": "HALLS COLORS",
+      "presentation": ""
+    },
+    "7622210529220": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:47:47.070Z",
+      "name": "BUBBALOO MIX",
+      "presentation": "PZA"
+    },
+    "7622210529671": {
+      "status": "verified_ean",
+      "image": "assets/products/7622210529671.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/762/221/052/9671/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Halls Extra Strong",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "HALLS MENTOL Y EUCALIPTO",
+      "presentation": "PZ",
+      "checkedAt": "2026-08-19T15:47:52.029Z",
+      "updatedAt": "2026-08-19T15:47:52.029Z"
+    },
+    "7622210529688": {
+      "status": "verified_ean",
+      "image": "assets/products/7622210529688.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/762/221/052/9688/front_en.9.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Halls extra strong",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "HALLS MENTOL Y EUCALIPTO",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:47:55.871Z",
+      "updatedAt": "2026-08-19T15:47:55.871Z"
+    },
+    "7702003010774": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:47:59.083Z",
+      "name": "CURITAS C/10PZ",
+      "presentation": ""
+    },
+    "7702003469282": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:48:03.846Z",
+      "name": "CURITAS TRANSPIEL C/10PZS",
+      "presentation": ""
+    },
+    "7702003476594": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:48:13.603Z",
+      "name": "CURITAS TRANSPIEL 1 PZ",
+      "presentation": ""
+    },
+    "7702018053469": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:48:18.586Z",
+      "name": "GUILLETTE ESPUMA DE AFEITAR MENTOL 175G",
+      "presentation": ""
+    },
+    "7702018913664": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:48:23.800Z",
+      "name": "DESOD GUILLETTE GEL COOL WAVE 82G",
+      "presentation": ""
+    },
+    "7702031036746": {
+      "status": "verified_ean",
+      "image": "assets/products/7702031036746.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/770/203/103/6746/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "CRA JOHNSONS LIQ ANTES/DORM 200ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:48:28.640Z",
+      "updatedAt": "2026-08-19T15:48:28.640Z"
+    },
+    "7702031244486": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:48:32.868Z",
+      "name": "LUBRIDERM PIEL NORMAL 120ML",
+      "presentation": ""
+    },
+    "7702031244493": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:48:38.425Z",
+      "name": "CREMA LUBRIDERM PIEL NORMAL 200 ML",
+      "presentation": ""
+    },
+    "7702031291534": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:48:43.216Z",
+      "name": "JOHNSONS SHAMPOO BABY 100ML",
+      "presentation": ""
+    },
+    "7702031415046": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:48:48.087Z",
+      "name": "CRA LUBRIDERM MEN 3-1 FRA-L 120 ML",
+      "presentation": ""
+    },
+    "7702031887911": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:48:52.857Z",
+      "name": "ENJ BUCAL LISTERINE CARE ZERO MENTA 180 ML",
+      "presentation": ""
+    },
+    "7702035432117": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:48:57.764Z",
+      "name": "ENJ BUCAL LIST COOL MINT MTA 180ML",
+      "presentation": ""
+    },
+    "7702035469151": {
+      "status": "verified_ean",
+      "image": "assets/products/7702035469151.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/770/203/546/9151/front_en.5.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "lubriderm",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "LUBRIDERM PROTEC SOLAR 120 ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:49:02.554Z",
+      "updatedAt": "2026-08-19T15:49:02.554Z"
+    },
+    "7791293025780": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:49:06.628Z",
+      "name": "DESODORANTE AXE APOLLO",
+      "presentation": "LATA"
+    },
+    "7791293025797": {
+      "status": "verified_ean",
+      "image": "assets/products/7791293025797.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/779/129/302/5797/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Axe dark temptation chovolate",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "DESOSDORANTE AXE CHOCOLATE",
+      "presentation": "LATA",
+      "checkedAt": "2026-08-19T15:49:11.396Z",
+      "updatedAt": "2026-08-19T15:49:11.396Z"
+    },
+    "7791293025810": {
+      "status": "verified_ean",
+      "image": "assets/products/7791293025810.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/779/129/302/5810/front_en.4.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Axe fusion",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "DESOD AXE MEN FUSION SPY 150ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:49:15.345Z",
+      "updatedAt": "2026-08-19T15:49:15.345Z"
+    },
+    "7791293025865": {
+      "status": "verified_ean",
+      "image": "assets/products/7791293025865.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/779/129/302/5865/front_es.7.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Axe Gold",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "DESODORANTE AXE GOLD TEMPTATION",
+      "presentation": "LATA",
+      "checkedAt": "2026-08-19T15:49:18.572Z",
+      "updatedAt": "2026-08-19T15:49:18.572Z"
+    },
+    "7791293028781": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:49:21.813Z",
+      "name": "DESODORANTE AXE BLACK",
+      "presentation": "LATA"
+    },
+    "7791293032412": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:49:26.602Z",
+      "name": "DESODORANTE REXONA SEXY BOUQUET",
+      "presentation": "LATA"
+    },
+    "7791293032436": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:49:31.376Z",
+      "name": "DESODORANTE REXONA POWER DRY",
+      "presentation": "LATA"
+    },
+    "7800005082024": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:49:36.203Z",
+      "name": "HILO ORAL-N ESSENTIAL ENCER 50M",
+      "presentation": ""
+    },
+    "780083140212": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:49:40.982Z",
+      "name": "DIYODOHIDROXIQUINOLEINA, CARB VEG,FURAZOLIDA",
+      "presentation": "CAJA CON"
+    },
+    "780083140588": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:49:45.829Z",
+      "name": "HIDROX. ALUM/MAGNES/DIMET 50 TAB.MAST.",
+      "presentation": ""
+    },
+    "780083141066": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:49:50.817Z",
+      "name": "DICLOFENACO GEL",
+      "presentation": "TUBO CON 60 GRS"
+    },
+    "780083141585": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:49:55.586Z",
+      "name": "ACICLOVIR CREMA 5 GR",
+      "presentation": ""
+    },
+    "780083141875": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:00.546Z",
+      "name": "AMOXICILINA 250 SUSP75ML",
+      "presentation": ""
+    },
+    "780083141882": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:05.528Z",
+      "name": "AMOXICILINA SUSP. 500MG/5ML",
+      "presentation": ""
+    },
+    "780083142285": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:10.354Z",
+      "name": "MELOXICAM 7.5MG C/20TAB",
+      "presentation": ""
+    },
+    "780083142827": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:15.137Z",
+      "name": "PREDNISONA 20MG TAB30",
+      "presentation": ""
+    },
+    "780083143275": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:19.912Z",
+      "name": "AZITROMICINA 500MG C/3TAB",
+      "presentation": ""
+    },
+    "780083144296": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:24.659Z",
+      "name": "COLLIFRIN (OXIMETAZOLINA) 0.025% SOL NASAL INF",
+      "presentation": ""
+    },
+    "780083144807": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:29.722Z",
+      "name": "NAFAZOLINA 1MG SOL OFT 15ML",
+      "presentation": ""
+    },
+    "780083146207": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:34.806Z",
+      "name": "NAFAZOLINA/FENIRAMINA SOL OGT GTS 15ML",
+      "presentation": ""
+    },
+    "780083146856": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:39.632Z",
+      "name": "LEVOFLOXACINO 750 MG 7 TABS",
+      "presentation": ""
+    },
+    "780083148645": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:44.359Z",
+      "name": "LORATA/BETAME 5MG/025MG 10TABS",
+      "presentation": ""
+    },
+    "780083148805": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:49.131Z",
+      "name": "IBUPROFENO 800MG",
+      "presentation": "CAJA CON 10 TABS"
+    },
+    "780083148829": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:53.864Z",
+      "name": "IBUPROFENO 400MG TABS",
+      "presentation": ""
+    },
+    "780083148843": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:50:58.631Z",
+      "name": "IBUPROFENO 600MG 10TABS",
+      "presentation": ""
+    },
+    "780083148966": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:51:03.605Z",
+      "name": "GELMICIN BETA/GENTA/CLIT CREMA 40GR",
+      "presentation": ""
+    },
+    "780083149888": {
+      "status": "verified_text",
+      "image": "assets/products/780083149888.webp",
+      "source": "opf",
+      "sourceUrl": "https://images.openproductsfacts.org/images/products/750/009/375/4628/front_es.3.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "Paracetamol, Cafeína",
+      "sourceCode": "7500093754628",
+      "matchOverlap": 2,
+      "name": "PARACETAMOL/CAFEINA C/24 TAB",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:51:08.605Z",
+      "updatedAt": "2026-08-19T15:51:08.605Z"
+    },
+    "785118752477": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:51:13.509Z",
+      "name": "FENAZOPIRIDINA 100 MG",
+      "presentation": ""
+    },
+    "785118752866": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:51:18.247Z",
+      "name": "DICLOFENACO DIETILAMONIO GEL \\ 60G",
+      "presentation": ""
+    },
+    "785118752941": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:51:23.276Z",
+      "name": "CLINDAMICINA 2GR/KETOCONAZOL 8GRS",
+      "presentation": "TUBO 30GRS"
+    },
+    "785118753597": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:51:28.356Z",
+      "name": "ACICLOVIR 5% CRA TBO 5G",
+      "presentation": ""
+    },
+    "785118753825": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:51:33.421Z",
+      "name": "SILDENAFIL 100MG",
+      "presentation": "CAJA CON 4 TABS"
+    },
+    "785118754204": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:51:42.929Z",
+      "name": "METFORMINA/GLIBENCLAMIDA 500MG/5MG C/60 TAB",
+      "presentation": ""
+    },
+    "785120753349": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:51:47.689Z",
+      "name": "NITROFURANTOINA 100 MG",
+      "presentation": "CAJA CON"
+    },
+    "785120753530": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:51:52.715Z",
+      "name": "ACICLOVIR 400MG",
+      "presentation": ""
+    },
+    "785120754773": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:51:57.457Z",
+      "name": "KETOROLACO 30 MG",
+      "presentation": "SOLUCION INYEC"
+    },
+    "785120754858": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:02.309Z",
+      "name": "ATORVASTATINA 40MG C/10 TAB",
+      "presentation": ""
+    },
+    "785120755022": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:07.068Z",
+      "name": "KETOROL-TRAMAD 10/25 MG TAB SUBLI 4",
+      "presentation": ""
+    },
+    "786759223227": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:11.843Z",
+      "name": "SOL. BAXTER 250ML HARTMAN",
+      "presentation": "BOLSA 250ML"
+    },
+    "7891010037185": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:16.935Z",
+      "name": "CRA JOHNSON´S BABY LIQ 200ML",
+      "presentation": ""
+    },
+    "7891024027363": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:21.933Z",
+      "name": "ENJ BUCAL PLAX ICE INFINITY 60 ML",
+      "presentation": ""
+    },
+    "7891024028827": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:26.686Z",
+      "name": "COLGATE TOTAL ENJUAGUE 60ML",
+      "presentation": ""
+    },
+    "7891024039625": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:31.437Z",
+      "name": "ENJUAGUE BUCAL",
+      "presentation": ""
+    },
+    "7898909175447": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:46.169Z",
+      "name": "PUNZOCAT  18G  X  1  1/4",
+      "presentation": "PZ"
+    },
+    "7898909175478": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:50.941Z",
+      "name": "PUNZOCAT   20G X 1   1/4",
+      "presentation": "PZ"
+    },
+    "7898909175508": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:52:56.122Z",
+      "name": "PUNZOCAT  22G  X 1\"",
+      "presentation": "PZ"
+    },
+    "7898909175539": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:53:00.863Z",
+      "name": "PUNZOCAT  24G  X  3/4",
+      "presentation": "PZ"
+    },
+    "793888543904": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:53:05.676Z",
+      "name": "VASO RECOLECTOR",
+      "presentation": "PZ"
+    },
+    "793969378241": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:53:10.412Z",
+      "name": "CORTA PASTILLAS",
+      "presentation": ""
+    },
+    "797038010780": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:53:15.188Z",
+      "name": "CHICLES BUBLI",
+      "presentation": ""
+    },
+    "8000500267035": {
+      "status": "verified_ean",
+      "image": "assets/products/8000500267035.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/800/050/026/7035/front_es.404.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Kinder Delice paquete individual",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "KINDER DELICE CACAO 39G",
+      "presentation": "",
+      "checkedAt": "2026-08-19T15:53:20.417Z",
+      "updatedAt": "2026-08-19T15:53:20.417Z"
+    },
+    "821998000434": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:53:24.955Z",
+      "name": "BROMURO DE PINAVERIO 100MG",
+      "presentation": ""
+    },
+    "821998000700": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T15:53:30.758Z",
+      "name": "METOPROLOL 100MG C/20TAB",
+      "presentation": ""
     }
   },
   "storeId": "FARMACIA_FARMABIEN_GARDENIAS",
   "totalCatalogProducts": 1151,
-  "totalImageEntries": 183,
-  "totalNotFound": 680,
+  "totalImageEntries": 200,
+  "totalNotFound": 766,
   "totalErrors": 0
 }
