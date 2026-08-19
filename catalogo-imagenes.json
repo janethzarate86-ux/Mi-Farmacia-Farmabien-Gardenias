@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T13:20:11.738Z",
+  "updatedAt": "2026-08-19T14:06:02.814Z",
   "products": {
     "42332909": {
       "status": "not_found",
@@ -5071,11 +5071,783 @@
       "presentation": "",
       "checkedAt": "2026-08-19T13:20:09.809Z",
       "updatedAt": "2026-08-19T13:20:09.809Z"
+    },
+    "7502208892355": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:56:40.598Z",
+      "name": "ACIDO FOLICO 5MGS",
+      "presentation": ""
+    },
+    "7502208892645": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:56:46.571Z",
+      "name": "AMOXICILINA + AC. CLV. 875MG/125MG",
+      "presentation": "FRACSO CON 10 TABS"
+    },
+    "7502208892737": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:56:51.732Z",
+      "name": "DICLOXACILINA 500MG CAPS20",
+      "presentation": ""
+    },
+    "7502208894779": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:56:56.430Z",
+      "name": "TRIBEDOCE C/30 TAB",
+      "presentation": ""
+    },
+    "7502208894922": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:01.402Z",
+      "name": "TRAMADOL/PARACETAMOL 37.5MG/325MG",
+      "presentation": ""
+    },
+    "7502208894946": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:06.508Z",
+      "name": "ALOPURINOL 300MG",
+      "presentation": "CAJA CON 20 TABS"
+    },
+    "7502209810235": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:11.556Z",
+      "name": "PREDNISONA 5MG C/20TAB",
+      "presentation": ""
+    },
+    "7502209858107": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:16.244Z",
+      "name": "ITRACONAZOL 100MG C/15 CAPS",
+      "presentation": ""
+    },
+    "7502211780359": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:20.936Z",
+      "name": "IBUPROFENO 2.0G/100ML SUSP 120ML",
+      "presentation": ""
+    },
+    "7502211783527": {
+      "status": "verified_ean",
+      "image": "assets/products/7502211783527.webp",
+      "source": "opf",
+      "sourceUrl": "https://images.openproductsfacts.org/images/products/750/221/178/3527/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "AZITROMICINA",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "AZITROMICINA 4G/5ML SUSP",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:57:26.011Z",
+      "updatedAt": "2026-08-19T13:57:26.011Z"
+    },
+    "7502211783657": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:29.093Z",
+      "name": "TERBINAFINA 250MG",
+      "presentation": "CAJA C/ 7 TABS"
+    },
+    "7502211784197": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:38.979Z",
+      "name": "BENCIDAMINA  ENJUAGUE SOLUCION  360ML",
+      "presentation": "BOTELLA 360ML"
+    },
+    "7502211788843": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:44.112Z",
+      "name": "METRONIDAZOL C/ CENTELLA ASIAT/NITROF C/12 OVULOS",
+      "presentation": ""
+    },
+    "7502211789031": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:49.247Z",
+      "name": "BENCIDAMINA SOL SPRAY 30ML",
+      "presentation": ""
+    },
+    "7502213040819": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:54.443Z",
+      "name": "BETANETASONA 4MG/1ML C/1 AMP",
+      "presentation": ""
+    },
+    "7502213042486": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:57:59.131Z",
+      "name": "MULTIVITAMINICO 1 AMP 5ML",
+      "presentation": ""
+    },
+    "7502213341305": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:58:03.992Z",
+      "name": "ALCOHOL ETILICO",
+      "presentation": "FRASCO CON 500ML"
+    },
+    "7502213341367": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:58:08.705Z",
+      "name": "ALCOHOL ETILICO",
+      "presentation": "FRASCO CON 125 ML"
+    },
+    "7502214980015": {
+      "status": "verified_ean",
+      "image": "assets/products/7502214980015.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/221/498/0015/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Prudence Clásico",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PRESERV PRUDENCE CLASIC 3PZS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:58:13.424Z",
+      "updatedAt": "2026-08-19T13:58:13.424Z"
+    },
+    "7502214980329": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:58:17.205Z",
+      "name": "PRUDENCE MIX SENSACIONES C/5 COND",
+      "presentation": ""
+    },
+    "7502214982965": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:58:21.959Z",
+      "name": "PRUDENCE CONDON 1PZ",
+      "presentation": ""
+    },
+    "7502214983375": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:58:31.393Z",
+      "name": "LEVONOGESTREL 1.5 MG TAB 1",
+      "presentation": "CAJA CON 1 TAB"
+    },
+    "7502214985386": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:58:36.103Z",
+      "name": "PRUDENCE SUPER PUNTOS DE PLACER",
+      "presentation": ""
+    },
+    "7502214986031": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:58:40.873Z",
+      "name": "PRUDENCE",
+      "presentation": "ENVASE 100ML"
+    },
+    "7502214986055": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:58:45.571Z",
+      "name": "PRUDENCE GEL LUB MENTA",
+      "presentation": ""
+    },
+    "7502214986598": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:58:50.662Z",
+      "name": "PRUDENCE ZERO C/3 COND",
+      "presentation": ""
+    },
+    "7502216792579": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:00.215Z",
+      "name": "G CAPTOPRIL 25 MG 30TAB",
+      "presentation": ""
+    },
+    "7502216792784": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:05.445Z",
+      "name": "COMPLEJO B",
+      "presentation": "FRASCO CON 30 TABS"
+    },
+    "7502216792845": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:10.147Z",
+      "name": "ENALAPRIL 10 MG TAB 30          GOB",
+      "presentation": ""
+    },
+    "7502216795204": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:14.847Z",
+      "name": "LOSARTAN/HIDROCLOROTIAZIDA 50MG/12.5MG C/30TAB",
+      "presentation": ""
+    },
+    "7502216796331": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:19.536Z",
+      "name": "NIFEDIPINO 30 MG",
+      "presentation": "CAJA CON 30 COMPRIMIDOS"
+    },
+    "7502216796829": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:24.227Z",
+      "name": "SILDENAFIL 50",
+      "presentation": "CAJA CON 4TABS"
+    },
+    "7502216796836": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:29.130Z",
+      "name": "SILDENAFIL 100MG",
+      "presentation": "CAJA CON 1 TAB"
+    },
+    "7502216796843": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:33.808Z",
+      "name": "SILDENAFIL 100MG C/4 TAB",
+      "presentation": ""
+    },
+    "7502216798373": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:38.671Z",
+      "name": "AC. ACETILSALICILICO 100MG C/30TAB",
+      "presentation": ""
+    },
+    "7502216799813": {
+      "status": "verified_ean",
+      "image": "assets/products/7502216799813.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/221/679/9813/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "pregabalina",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "PREGABALINA 75MG C/28 CAPS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T13:59:43.373Z",
+      "updatedAt": "2026-08-19T13:59:43.373Z"
+    },
+    "7502216802919": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:47.086Z",
+      "name": "DICLOFENACO 100MG C/20 TABLETAS",
+      "presentation": ""
+    },
+    "7502216803282": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:51.764Z",
+      "name": "QUETIAPINA 100MG C/60TAB",
+      "presentation": ""
+    },
+    "7502216803862": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T13:59:56.453Z",
+      "name": "DICLOFENACO 100MG",
+      "presentation": "CAJA CON 20 TABS"
+    },
+    "7502216803992": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:01.336Z",
+      "name": "OMEPRAZOL 20MG 7 CAPS",
+      "presentation": ""
+    },
+    "7502216804661": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:06.031Z",
+      "name": "AMLODIPINO 5 MG. C / 30 TAB.",
+      "presentation": ""
+    },
+    "7502216807372": {
+      "status": "verified_text",
+      "image": "assets/products/7502216807372.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/134/902/9729/front_es.4.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "telmisartan hidroclorotiazida",
+      "sourceCode": "7501349029729",
+      "matchOverlap": 2,
+      "name": "TELMISARTAN 80 MG/ HIDROCLOROTIAZIDA 12.5 MG",
+      "presentation": "CAJA CON 14 TABS",
+      "checkedAt": "2026-08-19T14:00:11.284Z",
+      "updatedAt": "2026-08-19T14:00:11.284Z"
+    },
+    "7502216808614": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:16.353Z",
+      "name": "TADALAFIL 20MG",
+      "presentation": "CAJA CON 1TAB"
+    },
+    "7502216935082": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:21.046Z",
+      "name": "ACETILCISTEINA 600MG 20TABS",
+      "presentation": ""
+    },
+    "7502216936263": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:25.974Z",
+      "name": "ACETILCISTEINA 200MG C/20 TAB",
+      "presentation": ""
+    },
+    "7502221011849": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:30.672Z",
+      "name": "TAS HUM DODYS SCHOOLS PLAY C/30",
+      "presentation": ""
+    },
+    "7502221012303": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:35.591Z",
+      "name": "TAS HUM CLARIS DESMAQ ALOE C 40 PZAS",
+      "presentation": ""
+    },
+    "7502221012334": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:40.279Z",
+      "name": "CLARIS PREMIUN DESMAQUILLANTE C 25",
+      "presentation": ""
+    },
+    "7502221184437": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:45.065Z",
+      "name": "TALCO AMMENS PIES 60 GR",
+      "presentation": ""
+    },
+    "7502222650542": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:49.731Z",
+      "name": "BOLERO CERA LIQUIDA NEGRA 60ML",
+      "presentation": ""
+    },
+    "7502223112193": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:54.415Z",
+      "name": "GUAIFESINA CITRATAO DE OXOLAMINA",
+      "presentation": ""
+    },
+    "7502223112353": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:00:59.339Z",
+      "name": "HIERRO-ACIDO FOLICO 100MG-800MCG C/30 TAB",
+      "presentation": ""
+    },
+    "7502224240659": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:01:08.803Z",
+      "name": "GUANTE ESTERIL MEDIANO AMBIDERM",
+      "presentation": "PZ"
+    },
+    "7502224241977": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:01:13.934Z",
+      "name": "ABATELENGUAS DE MADERA",
+      "presentation": "BOLSA C 10 PZAS"
+    },
+    "7502226294773": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:01:18.621Z",
+      "name": "ERITROMICINA 500 MG TABLETAS",
+      "presentation": ""
+    },
+    "7502227420324": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:01:23.317Z",
+      "name": "AMBROXOL/DEXTROMETORFANO C/10 CAPS",
+      "presentation": ""
+    },
+    "7502227424407": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:01:28.202Z",
+      "name": "IBUPROFENO 200 MG ALGIDOL",
+      "presentation": ""
+    },
+    "7502227425039": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:01:37.596Z",
+      "name": "NIFEDIPINO 10 MG C/20 CAPS",
+      "presentation": ""
+    },
+    "7502227426852": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:01:42.633Z",
+      "name": "CLOTRIMAZOL CREMA 2% TUBO CON 20 G C/3 APLICADORES",
+      "presentation": ""
+    },
+    "7502227870532": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:01:47.436Z",
+      "name": "KETOROLACO 10MG 10TABS",
+      "presentation": ""
+    },
+    "7502227870716": {
+      "status": "verified_ean",
+      "image": "assets/products/7502227870716.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/222/787/0716/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "ondanserton",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "ONDANSETRON 8.00MG",
+      "presentation": "CAJA CON 10 TABS",
+      "checkedAt": "2026-08-19T14:01:55.913Z",
+      "updatedAt": "2026-08-19T14:01:55.913Z"
+    },
+    "7502227871348": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:01:59.064Z",
+      "name": "AZITROMICINA 500MG C/3 TAB",
+      "presentation": ""
+    },
+    "7502227874158": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:02:03.777Z",
+      "name": "SILDENAFIL 100MG",
+      "presentation": "CAJA CON 4 TABS"
+    },
+    "7502240450070": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:02:08.755Z",
+      "name": "LOSARTAN 50MG 30TABS",
+      "presentation": ""
+    },
+    "7502242701101": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:02:13.647Z",
+      "name": "QUETIAPINA 25MG C/30TAB",
+      "presentation": ""
+    },
+    "7502245720116": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:02:18.320Z",
+      "name": "SILKHAIR NJA 60 ML SILICA",
+      "presentation": ""
+    },
+    "7502245720222": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:02:23.009Z",
+      "name": "SILKHAIR CEREZA 60 ML SILICA",
+      "presentation": ""
+    },
+    "7502245720581": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:02:27.689Z",
+      "name": "SILICA PETALOS 60ML",
+      "presentation": ""
+    },
+    "7502246642073": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:02:32.543Z",
+      "name": "MICRODACYN 60 ML",
+      "presentation": ""
+    },
+    "7502274791736": {
+      "status": "verified_text",
+      "image": "assets/products/7502274791736.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/890/153/000/4020/front_en.3.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "Celecoxib 200mg",
+      "sourceCode": "8901530004020",
+      "matchOverlap": 2,
+      "name": "CELECOXIB 200MG C/10 CAPS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:02:37.225Z",
+      "updatedAt": "2026-08-19T14:02:37.225Z"
+    },
+    "7502274791828": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:02:42.241Z",
+      "name": "ACIDO FOLICO 0.4MG",
+      "presentation": "FRASCO CON 90 TABS"
+    },
+    "7502276040375": {
+      "status": "verified_ean",
+      "image": "assets/products/7502276040375.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/227/604/0375/front_en.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Desenfriol",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "DESENFRIOL C/12 TABLETAS",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:02:46.935Z",
+      "updatedAt": "2026-08-19T14:02:46.935Z"
+    },
+    "7502276040597": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:02:50.366Z",
+      "name": "MEXSANA POLVO DESOD 80GR",
+      "presentation": ""
+    },
+    "7502280170341": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:02:55.047Z",
+      "name": "TIRALECHE DE VIDRIO ARFAM",
+      "presentation": ""
+    },
+    "7502280170372": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:03:00.202Z",
+      "name": "COMODO ADULTO",
+      "presentation": ""
+    },
+    "7502280170563": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:03:05.112Z",
+      "name": "ACEITE DE ARGAN",
+      "presentation": ""
+    },
+    "7502283680168": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:03:10.074Z",
+      "name": "AGUA MISCELAR 120ML",
+      "presentation": ""
+    },
+    "7502304290246": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:03:14.955Z",
+      "name": "KIT GUM CEP DENT MAS GEL DEN BOB ESPONJA",
+      "presentation": ""
+    },
+    "7503000422283": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:03:19.648Z",
+      "name": "SULFAMETOXAZOL, TRIMETOPRIMA 800/160 MG",
+      "presentation": "CAJA CON 14 TABS"
+    },
+    "7503000422511": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:03:24.344Z",
+      "name": "SULFAMETOXA/TRIMETRO SUSP 120ML",
+      "presentation": ""
+    },
+    "7503000422672": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:03:29.244Z",
+      "name": "AMPICILINA 1GR",
+      "presentation": "CAJA CON 8TABS"
+    },
+    "7503000504033": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:03:33.941Z",
+      "name": "AGUA OXIGENADA ESTRELLA 460ML",
+      "presentation": ""
+    },
+    "7503001007168": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:03:38.826Z",
+      "name": "AMPICILINA 500MG CAPS20",
+      "presentation": ""
+    },
+    "7503001007199": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:03:48.280Z",
+      "name": "AMOXICILINA+ AC. CLAV 500MG/ 125MG",
+      "presentation": "CAJA CON 10 TABS"
+    },
+    "7503001007250": {
+      "status": "verified_ean",
+      "image": "assets/products/7503001007250.webp",
+      "source": "opf",
+      "sourceUrl": "https://images.openproductsfacts.org/images/products/750/300/100/7250/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "AMOXICILINA/AC CLAVULQNIO 875/125MG C/10 TAB",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:03:52.952Z",
+      "updatedAt": "2026-08-19T14:03:52.952Z"
+    },
+    "7503001007649": {
+      "status": "verified_text",
+      "image": "assets/products/7503001007649.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/789/600/471/6299/front_en.3.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "Paracetamol bebe 100mg 15ml",
+      "sourceCode": "7896004716299",
+      "matchOverlap": 2,
+      "name": "PARACETAMOL SOL. 100MG/ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:03:55.916Z",
+      "updatedAt": "2026-08-19T14:03:55.916Z"
+    },
+    "7503001007694": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:04:01.323Z",
+      "name": "AMBROXOL-SALBUTAMOL 2MG-7.5MG-5ML SOL. 120ML",
+      "presentation": ""
+    },
+    "7503001009407": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:04:06.124Z",
+      "name": "AMOXICILINA 500 MG",
+      "presentation": "CAJA CON 15 CAPS"
+    },
+    "7503002057698": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:04:10.822Z",
+      "name": "SENSUAL TEA SBR 10G",
+      "presentation": ""
+    },
+    "7503002057810": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:04:15.691Z",
+      "name": "THE SENSUAL TEA ZISEN  TAB",
+      "presentation": ""
+    },
+    "7503002163023": {
+      "status": "verified_ean",
+      "image": "assets/products/7503002163023.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/300/216/3023/front_en.11.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Xtreme gel 250g",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "GEL EXTREME 250GR",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:04:20.388Z",
+      "updatedAt": "2026-08-19T14:04:20.388Z"
+    },
+    "7503002772508": {
+      "status": "verified_ean",
+      "image": "assets/products/7503002772508.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/300/277/2508/front_es.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "sucralfato",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "SUCRALFATO 1 GRS",
+      "presentation": "CAJA CON 40 TABS",
+      "checkedAt": "2026-08-19T14:04:27.491Z",
+      "updatedAt": "2026-08-19T14:04:27.491Z"
+    },
+    "7503003134701": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:04:30.976Z",
+      "name": "NISTATINA 100,000 UI",
+      "presentation": ""
+    },
+    "7503003406051": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:04:35.672Z",
+      "name": "GASA QUIRMEX 10CMX10CM",
+      "presentation": ""
+    },
+    "7503003406129": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:04:40.773Z",
+      "name": "GASA 7.5CMX5CM C/10PZ",
+      "presentation": ""
+    },
+    "7503003406143": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:04:45.450Z",
+      "name": "GASA 7.5CMX5CM 1PZ",
+      "presentation": ""
+    },
+    "7503003406181": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:04:50.143Z",
+      "name": "CINTA MICROPOROSA BLANCA 2.50CMX10M",
+      "presentation": ""
+    },
+    "7503003738404": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:04:55.347Z",
+      "name": "ROSEL AMANTADINA CLORFENAMINA PARACETAMOL",
+      "presentation": ""
+    },
+    "7503003738879": {
+      "status": "verified_text",
+      "image": "assets/products/7503003738879.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/222/370/8167/front_en.3.400.jpg",
+      "matchedBy": "TEXT",
+      "sourceProductName": "Paracetamol 300mg/ Amantadina 50mg /Clorfenamina 3mg",
+      "sourceCode": "7502223708167",
+      "matchOverlap": 3,
+      "name": "AMANTADINA/CLORFENAMINA/PARACETAMOL C/15 TAB",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:05:00.069Z",
+      "updatedAt": "2026-08-19T14:05:00.069Z"
+    },
+    "7503003939320": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:05:05.119Z",
+      "name": "LIMA ACOGINADA CHICA",
+      "presentation": ""
+    },
+    "7503004908684": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:05:09.872Z",
+      "name": "ACIDO ACETILSALICILICO 500MG TAB 20",
+      "presentation": ""
+    },
+    "7503005405113": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:05:19.280Z",
+      "name": "ESTROPAJO F-CLEAN BABY BODY",
+      "presentation": "PZ"
+    },
+    "7503005405120": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:05:24.399Z",
+      "name": "ZACATE BABY CARICIA",
+      "presentation": ""
+    },
+    "7503006698316": {
+      "status": "verified_ean",
+      "image": "assets/products/7503006698316.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/300/669/8316/front_en.3.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "microdacyn",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "MICRODACYN SOL 120ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:05:29.156Z",
+      "updatedAt": "2026-08-19T14:05:29.156Z"
+    },
+    "7503006897016": {
+      "status": "verified_ean",
+      "image": "assets/products/7503006897016.webp",
+      "source": "off",
+      "sourceUrl": "https://images.openfoodfacts.org/images/products/750/300/689/7016/front_en.21.400.jpg",
+      "matchedBy": "EAN",
+      "sourceProductName": "Red Cola",
+      "sourceCode": "",
+      "matchOverlap": 0,
+      "name": "RED COLA 600 ML",
+      "presentation": "",
+      "checkedAt": "2026-08-19T14:05:32.899Z",
+      "updatedAt": "2026-08-19T14:05:32.899Z"
+    },
+    "7503006897191": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:05:36.173Z",
+      "name": "JARRITO MANZANA 600ML",
+      "presentation": ""
+    },
+    "7503006897603": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:05:46.228Z",
+      "name": "JARRITOS UVA 600ML",
+      "presentation": ""
+    },
+    "7503007704573": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:05:50.905Z",
+      "name": "HIDRASEC 10MG SB 18",
+      "presentation": ""
+    },
+    "7503007704597": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:05:55.617Z",
+      "name": "HIDRASEC 100MG C/9 CAPS",
+      "presentation": ""
+    },
+    "7503008344150": {
+      "status": "not_found",
+      "checkedAt": "2026-08-19T14:06:00.317Z",
+      "name": "SENOSIDOS A Y B CIRUELA",
+      "presentation": "CAJA CON 30 CAPS"
     }
   },
   "storeId": "FARMACIA_FARMABIEN_GARDENIAS",
   "totalCatalogProducts": 1151,
-  "totalImageEntries": 156,
-  "totalNotFound": 481,
+  "totalImageEntries": 170,
+  "totalNotFound": 577,
   "totalErrors": 0
 }
