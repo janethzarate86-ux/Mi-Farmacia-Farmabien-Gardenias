@@ -1,7 +1,6 @@
 {
   "version": 1,
-  "firebaseUrl": "",
-  "githubUrl": "",
-  "tiendaId": "",
-  "updatedAt": ""
+  "firebaseUrl": "https://resetsistemainventariomacroxel-default-rtdb.firebaseio.com",
+  "githubUrl": "https://janethzarate86-ux.github.io/Mi-Farmacia-Farmabien-Gardenias/",
+  "tiendaId": ""
 }
