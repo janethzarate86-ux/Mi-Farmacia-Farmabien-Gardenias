@@ -95,7 +95,7 @@ jobs:
       - name: Pruebas estaticas del visor
         shell: python
         run: |
-          import json, re
+          import json
           from pathlib import Path
 
           html = Path('index.html').read_text(encoding='utf-8')
@@ -156,3 +156,5 @@ jobs:
           git add index.html
           git commit -m 'Corregir conexion Firebase de Mi Farmacia'
           git push
+
+# activacion solicitada desde ChatGPT
