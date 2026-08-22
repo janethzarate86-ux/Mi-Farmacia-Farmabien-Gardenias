@@ -47,9 +47,19 @@ jobs:
           count=len(products) if isinstance(products,dict) else 0
           if count<1: raise RuntimeError('Firebase responde pero no hay productos')
           if not tienda: raise RuntimeError('No existe tienda publicada')
-          print('PRODUCTOS=',count)
-          print('REVISION=',meta.get('revision'))
-          open('/tmp/firebase-ok.txt','w',encoding='utf-8').write(f'PRODUCTOS={count}\nREVISION={meta.get("revision")}\n')
+          sig=meta.get('firmaCatalogo') if isinstance(meta,dict) else None
+          pub=tienda.get('clavePublicaFirmaCatalogo') if isinstance(tienda,dict) else None
+          lines=[
+            f'PRODUCTOS={count}',
+            f'REVISION={meta.get("revision") if isinstance(meta,dict) else None}',
+            f'META_VERSION={meta.get("version") if isinstance(meta,dict) else None}',
+            f'CLAVE_PEDIDOS_ID={bool(tienda.get("clavePedidosId")) if isinstance(tienda,dict) else False}',
+            f'CLAVE_FIRMA_ID={bool(tienda.get("claveFirmaCatalogoId")) if isinstance(tienda,dict) else False}',
+            f'CLAVE_PUBLICA_FIRMA={bool(isinstance(pub,dict) and pub.get("x") and pub.get("y"))}',
+            f'FIRMA_CATALOGO={bool(isinstance(sig,dict) and sig.get("value") and sig.get("keyId"))}',
+          ]
+          print('\n'.join(lines))
+          open('/tmp/firebase-ok.txt','w',encoding='utf-8').write('\n'.join(lines)+'\n')
 
       - name: Probar index en navegador real
         shell: bash
@@ -66,19 +76,29 @@ jobs:
           fi
           "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=35000 --dump-dom "http://127.0.0.1:8765/index.html?test=$(date +%s)" >/tmp/dom.html 2>/tmp/chrome.err
           CODE=$?
+          python3 - <<'PY' > /tmp/dom-state.txt
+          import re, html
+          s=open('/tmp/dom.html',encoding='utf-8',errors='ignore').read()
+          for key in ['emptyMessage','connectionState','connectionCatalog','storeName']:
+              m=re.search(r'id=["\']'+re.escape(key)+r'["\'][^>]*>(.*?)</[^>]+>',s,re.S|re.I)
+              val=html.unescape(re.sub(r'<[^>]+>',' ',m.group(1) if m else '')).strip()
+              print(f'{key}={val}')
+          print('HIOSCINA_COUNT='+str(len(re.findall('HIOSCINA',s,re.I))))
+          print('PRODUCT_CARD_COUNT='+str(len(re.findall('class="product-card',s,re.I))))
+          PY
+          cat /tmp/dom-state.txt > /tmp/browser-result.txt
           if [ "$CODE" != "0" ]; then
-            tail -80 /tmp/chrome.err > /tmp/browser-result.txt
-            exit 1
-          fi
-          if grep -qi 'HIOSCINA' /tmp/dom.html; then
-            echo "DOM_OK=HIOSCINA_VISIBLE" > /tmp/browser-result.txt
-            grep -oi 'HIOSCINA' /tmp/dom.html | wc -l | awk '{print "HIOSCINA_COUNT=" $1}' >> /tmp/browser-result.txt
-          else
-            echo "DOM_FAIL=PRODUCTOS_NO_VISIBLES" > /tmp/browser-result.txt
-            grep -o -E '.{0,120}(Cargando catálogo|No se pudo conectar|Sin sincronizar|Firebase|catálogo|configuración).{0,220}' /tmp/dom.html | head -30 >> /tmp/browser-result.txt || true
+            echo "CHROME_CODE=$CODE" >> /tmp/browser-result.txt
             tail -80 /tmp/chrome.err >> /tmp/browser-result.txt
             exit 1
           fi
+          if grep -q '^HIOSCINA_COUNT=[1-9]' /tmp/dom-state.txt; then
+            echo "DOM_OK=HIOSCINA_VISIBLE" >> /tmp/browser-result.txt
+            exit 0
+          fi
+          echo "DOM_FAIL=PRODUCTOS_NO_VISIBLES" >> /tmp/browser-result.txt
+          tail -80 /tmp/chrome.err >> /tmp/browser-result.txt
+          exit 1
 
       - name: Registrar prueba aprobada
         if: success()
