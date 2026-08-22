@@ -1,0 +1,43 @@
+name: Corrección directa runtime Mi Farmacia
+
+on:
+  push:
+    paths:
+      - 'macroxel-config.json'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Agregar loadCatalogCache faltante
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          if 'function loadCatalogCache()' not in s:
+              pat=r'(  function saveCatalogCache\(productos,meta\)\{.*?\n  \}\n)'
+              fn="""  function loadCatalogCache(){
+    const cache=readJsonStorage(STORAGE_CATALOG,null);
+    if(!cache||Number(cache?.version||0)!==2||!cache?.productos||typeof cache.productos!=='object') return null;
+    return cache;
+  }
+"""
+              s,n=re.subn(pat,lambda m:m.group(1)+fn,s,count=1,flags=re.S)
+              if n!=1: raise SystemExit('No se pudo insertar loadCatalogCache')
+          s=s.replace('root-single-index-v1.8.1','root-single-index-v1.8.2-cachefix',1)
+          p.write_text(s,encoding='utf-8')
+      - name: Guardar cambio
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Fix Mi Farmacia: restaurar loadCatalogCache"
+          git push
