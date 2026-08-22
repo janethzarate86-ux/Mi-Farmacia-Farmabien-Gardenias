@@ -1,0 +1,57 @@
+SITE=https://janethzarate86-ux.github.io/Mi-Farmacia-Farmabien-Gardenias/
+PAGES_GET_HTTP=200
+{
+  "url": "https://api.github.com/repos/janethzarate86-ux/Mi-Farmacia-Farmabien-Gardenias/pages",
+  "status": "errored",
+  "cname": null,
+  "custom_404": false,
+  "html_url": "https://janethzarate86-ux.github.io/Mi-Farmacia-Farmabien-Gardenias/",
+  "build_type": "legacy",
+  "source": {
+    "branch": "main",
+    "path": "/docs"
+  },
+  "public": true,
+  "protected_domain_state": null,
+  "pending_domain_unverified_at": null,
+  "https_enforced": true
+}
+
+PAGES_PUT_HTTP=403
+{
+  "message": "Resource not accessible by integration",
+  "documentation_url": "https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site",
+  "status": "403"
+}
+
+espera=1 http=200
+espera=2 http=200
+espera=3 http=200
+espera=4 http=200
+espera=5 http=200
+espera=6 http=200
+espera=7 http=200
+espera=8 http=200
+espera=9 http=200
+espera=10 http=200
+espera=11 http=200
+espera=12 http=200
+espera=13 http=200
+espera=14 http=200
+espera=15 http=200
+espera=16 http=200
+espera=17 http=200
+espera=18 http=200
+espera=19 http=200
+espera=20 http=200
+espera=21 http=200
+espera=22 http=200
+espera=23 http=200
+espera=24 http=200
+espera=25 http=200
+espera=26 http=200
+espera=27 http=200
+espera=28 http=200
+espera=29 http=200
+espera=30 http=200
+RESULT=FAIL_HTML
