@@ -74,9 +74,15 @@ async function fetchJson(url) {
 }
 
 async function resolveFirebase(bootstrap) {
-  const current = text(bootstrap).replace(/\/+$/, '');
-  if (!/^https:\/\//i.test(current)) throw new Error('firebaseUrl HTTPS no encontrado en macroxel-config.json');
-  const publication = await fetchJson(firebasePath(current, 'mi_farmacia/publicacion')) || {};
+  let current = text(bootstrap).replace(/\/+$/, '');
+  if (!/^https:\/\//i.test(current)) throw new Error('bootstrapUrl HTTPS no encontrado en index.html');
+  let publication = null;
+  for (let hop = 0; hop < 4; hop += 1) {
+    publication = await fetchJson(firebasePath(current, 'mi_farmacia/publicacion')) || {};
+    const next = text(publication.firebaseUrl).replace(/\/+$/, '');
+    if (next && next !== current) { current = next; continue; }
+    break;
+  }
   const storeId = text(publication?.tiendaId);
   if (!storeId) throw new Error('Mi Farmacia todavía no publicó tiendaId. Sincroniza desde Macroxel.');
   return { firebaseUrl: current, storeId };
@@ -174,12 +180,9 @@ function shouldLookup(entry, assetExists, now) {
 }
 
 async function readRuntimeBootstrap() {
-  try {
-    const cfg = JSON.parse(await fs.readFile(RUNTIME_CONFIG, 'utf8'));
-    return text(cfg?.firebaseUrl);
-  } catch (_) {
-    return '';
-  }
+  const env = text(process.env.MACROXEL_FIREBASE_URL);
+  if (env) return env;
+  try { const cfg = JSON.parse(await fs.readFile(RUNTIME_CONFIG, 'utf8')); return text(cfg?.firebaseUrl); } catch (_) { return ''; }
 }
 
 async function writeRuntimeConfig(firebaseUrl, storeId) {
@@ -205,7 +208,7 @@ async function writeRuntimeConfig(firebaseUrl, storeId) {
 
 async function main() {
   const bootstrap = await readRuntimeBootstrap();
-  if (!bootstrap) throw new Error('macroxel-config.json no contiene la conexión generada por el sistema principal.');
+  if (!bootstrap) throw new Error('Configura la variable del repositorio MACROXEL_FIREBASE_URL con la URL Firebase de este cliente.');
   const { firebaseUrl, storeId } = await resolveFirebase(bootstrap);
   await writeRuntimeConfig(firebaseUrl, storeId);
   const products = await fetchJson(firebasePath(firebaseUrl, `mi_farmacia/catalogo/${storeId}/productos`)) || {};
