@@ -1,14 +1,15 @@
-name: Sincronizar imágenes de productos
+name: Macroxel - Catalogo automatico de imagenes
 
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
-      - 'image-bot/**'
-      - 'macroxel-config.json'
       - '.github/workflows/sync-product-images.yml'
+      - 'docs/macroxel-config.json'
+      - 'docs/image-bot/**'
   schedule:
-    - cron: '17 */6 * * *'
+    - cron: '17,47 * * * *'
 
 permissions:
   contents: write
@@ -20,45 +21,35 @@ concurrency:
 jobs:
   sync-images:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
-      - name: Descargar repositorio
+      - name: Obtener repositorio
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Preparar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '20'
 
-      - name: Validar archivos integrados
-        shell: bash
-        run: |
-          test -s index.html
-          test -s macroxel-config.json
-          test -s catalogo-imagenes.json
-          test -s image-bot/package.json
-          test -s image-bot/sync-product-images.mjs
-          node --check image-bot/sync-product-images.mjs
-          node -e "JSON.parse(require('fs').readFileSync('macroxel-config.json','utf8')); JSON.parse(require('fs').readFileSync('catalogo-imagenes.json','utf8'));"
+      - name: Instalar procesador de imagenes
+        run: npm install --prefix docs/image-bot --no-audit --no-fund
 
-      - name: Instalar dependencias
-        working-directory: image-bot
-        run: npm install --no-audit --no-fund
-
-      - name: Buscar y actualizar imágenes
+      - name: Sincronizar catalogo por EAN y presentación
         env:
           MAX_IMAGE_LOOKUPS: '120'
-        run: node image-bot/sync-product-images.mjs
+        run: node docs/image-bot/sync-product-images.mjs
 
-      - name: Guardar cambios
+      - name: Publicar nuevas imagenes
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add catalogo-imagenes.json assets/products macroxel-config.json
+          git add docs/macroxel-config.json docs/catalogo-imagenes.json docs/assets/products
           if git diff --cached --quiet; then
-            echo "Sin cambios nuevos de imágenes."
+            echo "Catalogo de imagenes sin cambios."
             exit 0
           fi
-          git commit -m "Actualizar catálogo automático de imágenes"
+          git commit -m "chore: actualizar catalogo automatico de imagenes"
           git push
