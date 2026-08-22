@@ -2,6 +2,11 @@ name: Sincronizar imágenes de productos
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'image-bot/**'
+      - 'macroxel-config.json'
+      - '.github/workflows/sync-product-images.yml'
   schedule:
     - cron: '17 */6 * * *'
 
@@ -24,8 +29,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: npm
-          cache-dependency-path: image-bot/package.json
+
+      - name: Validar archivos integrados
+        shell: bash
+        run: |
+          test -s index.html
+          test -s macroxel-config.json
+          test -s catalogo-imagenes.json
+          test -s image-bot/package.json
+          test -s image-bot/sync-product-images.mjs
+          node --check image-bot/sync-product-images.mjs
+          node -e "JSON.parse(require('fs').readFileSync('macroxel-config.json','utf8')); JSON.parse(require('fs').readFileSync('catalogo-imagenes.json','utf8'));"
 
       - name: Instalar dependencias
         working-directory: image-bot
