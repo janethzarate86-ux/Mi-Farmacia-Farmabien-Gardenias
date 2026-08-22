@@ -1,12 +1,19 @@
-name: Validar Mi Farmacia limpia
+name: Validar publicación Mi Farmacia
 
 on:
-  pull_request:
+  push:
     branches: [main]
-  workflow_dispatch:
+    paths:
+      - 'docs/index.html'
+      - 'docs/mi-farmacia.css'
+      - 'docs/mi-farmacia.js'
+      - 'docs/macroxel-config.json'
+      - 'docs/catalogo-imagenes.json'
+      - 'docs/image-bot/**'
+      - '.github/workflows/validate-on-push.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   validar:
@@ -14,6 +21,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Validar estructura y JavaScript
         shell: bash
@@ -34,40 +43,50 @@ jobs:
           node --check docs/mi-farmacia.js
           node --check docs/image-bot/sync-product-images.mjs
 
-      - name: Probar conexión real y catálogo Firebase
+      - name: Probar Firebase y guardar resultado
         shell: python
         run: |
-          import json, urllib.request, urllib.parse
+          import json, urllib.request, urllib.parse, datetime
           from pathlib import Path
-
           cfg=json.loads(Path('docs/macroxel-config.json').read_text(encoding='utf-8'))
-          assert int(cfg.get('version',0)) >= 2, cfg
+          assert int(cfg.get('version',0)) >= 2
           base=str(cfg.get('firebaseUrl','')).rstrip('/')
           store=str(cfg.get('tiendaId','')).strip()
           assert base.startswith('https://') and store
-
           def get(path):
               url=f"{base}/{path.strip('/')}.json"
               req=urllib.request.Request(url,headers={'Accept':'application/json','User-Agent':'Macroxel-GitHub-Validation/1.0'})
               with urllib.request.urlopen(req,timeout=40) as r:
                   raw=r.read().decode('utf-8')
-                  assert r.status==200, (r.status,url)
+                  assert r.status==200
                   return json.loads(raw) if raw else None
-
           tienda=get(f"mi_farmacia/tiendas/{urllib.parse.quote(store,safe='')}") or {}
           meta=get(f"mi_farmacia/catalogo/{urllib.parse.quote(store,safe='')}/meta") or {}
           productos=get(f"mi_farmacia/catalogo/{urllib.parse.quote(store,safe='')}/productos") or {}
-
-          assert isinstance(tienda,dict) and tienda, 'Tienda vacía'
-          assert isinstance(meta,dict) and int(meta.get('version',0))==2, meta
+          assert isinstance(tienda,dict) and tienda
+          assert isinstance(meta,dict) and int(meta.get('version',0))==2
           revision=int(meta.get('revision',0) or 0)
-          assert revision>0, meta
-          assert isinstance(productos,dict), type(productos)
-          cantidad=len(productos)
-          assert cantidad>0, 'Catálogo sin productos'
-          assert str(tienda.get('clavePedidosId','')).strip(), 'Falta clavePedidosId'
-          assert str(tienda.get('claveFirmaCatalogoId','')).strip(), 'Falta claveFirmaCatalogoId'
-          assert isinstance(tienda.get('clavePublicaFirmaCatalogo'),dict), 'Falta clave pública de firma'
+          assert revision>0
+          assert isinstance(productos,dict) and len(productos)>0
+          assert str(tienda.get('clavePedidosId','')).strip()
+          assert str(tienda.get('claveFirmaCatalogoId','')).strip()
+          assert isinstance(tienda.get('clavePublicaFirmaCatalogo'),dict)
           firma=meta.get('firmaCatalogo') or {}
-          assert isinstance(firma,dict) and firma.get('value'), 'Falta firma del catálogo'
-          print(f'VALIDACION_OK tienda={store} productos={cantidad} revision={revision}')
+          assert isinstance(firma,dict) and firma.get('value')
+          Path('VALIDATION_RESULT.txt').write_text(
+              'RESULT=OK\n'
+              f'PRODUCTOS={len(productos)}\n'
+              f'REVISION={revision}\n'
+              f'TIENDA={store}\n'
+              f'VALIDATED_AT={datetime.datetime.now(datetime.timezone.utc).isoformat()}\n',
+              encoding='utf-8'
+          )
+
+      - name: Publicar resultado de validación
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add VALIDATION_RESULT.txt
+          git commit -m "VALIDACION OK Mi Farmacia: catálogo y conexión"
+          git push
