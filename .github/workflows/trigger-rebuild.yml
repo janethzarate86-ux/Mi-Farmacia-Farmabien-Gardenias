@@ -1,0 +1,20 @@
+name: Disparar reconstruccion limpia
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/trigger-rebuild.yml'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ejecutar reconstruccion limpia
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run rebuild-clean.yml --ref main
