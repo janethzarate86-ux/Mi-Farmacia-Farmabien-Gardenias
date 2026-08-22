@@ -1,8 +1,11 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
-const ROOT = process.cwd();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ROOT = path.resolve(__dirname, '..');
 const RUNTIME_CONFIG = path.join(ROOT, 'macroxel-config.json');
 const MANIFEST = path.join(ROOT, 'catalogo-imagenes.json');
 const ASSET_DIR = path.join(ROOT, 'assets', 'products');
@@ -25,7 +28,6 @@ const informativeTokens = value => {
     .replace(/[^A-Z0-9]+/g, ' ')
     .split(/\s+/)
     .map(v => v.trim())
-    // Los números solos (500, 10, 20) nunca acreditan identidad de un medicamento.
     .filter(v => v.length >= 3 && !/^\d+$/.test(v) && !stop.has(v));
 };
 
@@ -45,9 +47,7 @@ function scoreCandidate(product, candidateName) {
   const identityOverlap = identity.filter(token => actual.has(token)).length;
   const presentationOverlap = presentation.filter(token => actual.has(token)).length;
   const requiredIdentity = identity.length >= 4 ? 2 : 1;
-  // Sin coincidencia del nombre/sustancia no se acepta una imagen aunque coincidan dosis o números.
   const okIdentity = identity.length > 0 && identityOverlap >= Math.min(requiredIdentity, identity.length);
-  // Si existe una presentación realmente informativa, exigimos al menos un término compatible.
   const okPresentation = presentation.length === 0 || presentationOverlap > 0;
   return { overlap: identityOverlap + presentationOverlap, identityOverlap, presentationOverlap, ok: okIdentity && okPresentation };
 }
@@ -108,7 +108,6 @@ async function lookupImage(product, code) {
   return null;
 }
 
-
 async function searchImageByText(product) {
   const terms = buildSearchTerms(product);
   if (!terms.length) return null;
@@ -165,7 +164,7 @@ async function readManifest() {
 
 function shouldLookup(entry, assetExists, now) {
   const status = text(entry?.status).toLowerCase();
-  if ((status === 'verified_ean' || status === 'verified_text') && assetExists) return false;
+  if ((status === 'verified_ean' || status === 'verified_text' || status === 'manual' || status === 'manual_local') && assetExists) return false;
   if (status === 'not_found') {
     const checked = Date.parse(entry.checkedAt || '') || 0;
     if (now - checked < RETRY_NOT_FOUND_MS) return false;
@@ -186,20 +185,23 @@ async function writeRuntimeConfig(firebaseUrl, storeId) {
   let current = {};
   try { current = JSON.parse(await fs.readFile(RUNTIME_CONFIG, 'utf8')) || {}; } catch (_) {}
   const payload = {
-    version: 1,
+    version: 2,
+    source: 'Macroxel FarmaControl',
     firebaseUrl: text(firebaseUrl).replace(/\/+$/, ''),
     githubUrl: text(current.githubUrl || ''),
-    tiendaId: text(storeId || current.tiendaId || '')
+    tiendaId: text(storeId || current.tiendaId || ''),
+    updatedAt: text(current.updatedAt || '')
   };
   const normalizedCurrent = {
-    version: Number(current.version) || 1,
+    version: Number(current.version) || 2,
+    source: text(current.source || 'Macroxel FarmaControl'),
     firebaseUrl: text(current.firebaseUrl).replace(/\/+$/, ''),
     githubUrl: text(current.githubUrl || ''),
-    tiendaId: text(current.tiendaId || '')
+    tiendaId: text(current.tiendaId || ''),
+    updatedAt: text(current.updatedAt || '')
   };
   if (JSON.stringify(payload) === JSON.stringify(normalizedCurrent)) return false;
-  await fs.writeFile(RUNTIME_CONFIG, `${JSON.stringify(payload, null, 2)}
-`, 'utf8');
+  await fs.writeFile(RUNTIME_CONFIG, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
   return true;
 }
 
@@ -209,9 +211,7 @@ async function main() {
   const { firebaseUrl, storeId } = await resolveFirebase(bootstrap);
   await writeRuntimeConfig(firebaseUrl, storeId);
   const products = await fetchJson(firebasePath(firebaseUrl, `mi_farmacia/catalogo/${storeId}/productos`)) || {};
-  if (!Object.keys(products).length) {
-    console.log('No hay productos publicados todavía para Mi Farmacia.');
-  }
+  if (!Object.keys(products).length) console.log('No hay productos publicados todavía para Mi Farmacia.');
   const manifest = await readManifest();
   await fs.mkdir(ASSET_DIR, { recursive: true });
 
@@ -221,11 +221,12 @@ async function main() {
     if (!product || product.activo === false) continue;
     const code = validBarcode(product.imagenClave || product.codigo);
     const manifestKey = safeManifestKey({ ...product, id }, code);
-    const asset = path.join(ASSET_DIR, `${manifestKey}.webp`);
+    const currentEntry = manifest.products[manifestKey];
+    const currentImage = text(currentEntry?.image);
+    const asset = currentImage ? path.join(ROOT, currentImage) : path.join(ASSET_DIR, `${manifestKey}.webp`);
     let exists = false;
     try { await fs.access(asset); exists = true; } catch (_) {}
-    const entry = manifest.products[manifestKey];
-    if (shouldLookup(entry, exists, now)) candidates.push({ id, product, code, manifestKey, asset });
+    if (shouldLookup(currentEntry, exists, now)) candidates.push({ id, product, code, manifestKey, asset: path.join(ASSET_DIR, `${manifestKey}.webp`) });
   }
 
   candidates.sort((a, b) => {
@@ -252,11 +253,8 @@ async function main() {
     }
     if (!hit) {
       manifest.products[item.manifestKey] = {
-        status: 'not_found',
-        checkedAt,
-        sourceCode: item.code,
-        name: text(item.product.nombre),
-        presentation: text(item.product.presentacion)
+        status: 'not_found', checkedAt, sourceCode: item.code,
+        name: text(item.product.nombre), presentation: text(item.product.presentacion)
       };
       continue;
     }
@@ -280,13 +278,8 @@ async function main() {
     } catch (error) {
       console.log(`[${item.manifestKey}] descarga: ${error.message}`);
       manifest.products[item.manifestKey] = {
-        status: 'error_retry',
-        checkedAt,
-        source: hit.source,
-        sourceUrl: hit.imageUrl,
-        matchedBy,
-        name: text(item.product.nombre),
-        presentation: text(item.product.presentacion)
+        status: 'error_retry', checkedAt, source: hit.source, sourceUrl: hit.imageUrl,
+        matchedBy, name: text(item.product.nombre), presentation: text(item.product.presentacion)
       };
     }
   }
@@ -299,7 +292,7 @@ async function main() {
   manifest.updatedAt = new Date().toISOString();
   manifest.storeId = storeId;
   manifest.totalCatalogProducts = Object.keys(products).length;
-  manifest.totalImageEntries = Object.values(manifest.products).filter(v => ['verified_ean','verified_text'].includes(text(v?.status).toLowerCase())).length;
+  manifest.totalImageEntries = Object.values(manifest.products).filter(v => ['verified_ean','verified_text','manual','manual_local'].includes(text(v?.status).toLowerCase())).length;
   manifest.totalNotFound = Object.values(manifest.products).filter(v => text(v?.status).toLowerCase() === 'not_found').length;
   manifest.totalErrors = Object.values(manifest.products).filter(v => text(v?.status).toLowerCase() === 'error_retry').length;
   await fs.writeFile(MANIFEST, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
