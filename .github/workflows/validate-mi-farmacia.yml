@@ -31,6 +31,7 @@ jobs:
           grep -q "new URL('macroxel-config.json',document.baseURI)" docs/mi-farmacia.js
           grep -q 'mi_farmacia/catalogo/' docs/mi-farmacia.js
           grep -q 'renderProducts' docs/mi-farmacia.js
+          if grep -q 'loadCatalogCache is not defined' docs/mi-farmacia.js; then exit 1; fi
           node --check docs/mi-farmacia.js
           node --check docs/image-bot/sync-product-images.mjs
 
