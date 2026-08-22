@@ -1,0 +1,158 @@
+name: Corregir conexion Firebase Mi Farmacia
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-mi-farmacia-firebase.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  corregir-y-probar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Corregir cliente REST de Firebase
+        shell: python
+        run: |
+          from pathlib import Path
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          old_builder = """  function firebaseUrl(path){
+    const base = cleanBaseUrl(state.firebaseUrl);
+    if(!base) throw new Error('La conexión de Mi Farmacia aún no ha sido publicada desde Macroxel.');
+    const split = base.split('?');
+    const root = split[0].replace(/\\/+$/,'');
+    const query = split[1] ? `?${split[1]}&ts=${Date.now()}` : `?ts=${Date.now()}`;
+    return `${root}/${String(path||'').replace(/^\\/+|\\/+$/g,'')}.json${query}`;
+  }
+
+  async function request(path,{method='GET',body}={}){
+    const options = {method,headers:{Accept:'application/json'}};
+    if(body !== undefined){ options.headers['Content-Type']='application/json'; options.body=JSON.stringify(body); }
+    const r = await fetch(firebaseUrl(path),options);
+    const txt = await r.text();
+    let data = null; try{ data = txt ? JSON.parse(txt) : null; }catch(_){ data=txt; }
+    if(!r.ok) throw new Error((data && data.error) || `Firebase ${r.status}`);
+    return data;
+  }
+"""
+
+          new_builder = """  function firebaseUrl(path){
+    const base = cleanBaseUrl(state.firebaseUrl);
+    if(!base) throw new Error('La conexión de Mi Farmacia aún no ha sido publicada desde Macroxel.');
+    const split = base.split('?');
+    const root = split[0].replace(/\\/+$/,'');
+    const query = split[1] ? `?${split[1]}` : '';
+    return `${root}/${String(path||'').replace(/^\\/+|\\/+$/g,'')}.json${query}`;
+  }
+
+  async function request(path,{method='GET',body}={}){
+    const controller = new AbortController();
+    const timer = setTimeout(()=>controller.abort(),20000);
+    const options = {method,headers:{Accept:'application/json'},cache:'no-store',signal:controller.signal};
+    if(body !== undefined){ options.headers['Content-Type']='application/json'; options.body=JSON.stringify(body); }
+    try{
+      const r = await fetch(firebaseUrl(path),options);
+      const txt = await r.text();
+      let data = null; try{ data = txt ? JSON.parse(txt) : null; }catch(_){ data=txt; }
+      if(!r.ok) throw new Error((data && data.error) || `Firebase ${r.status}`);
+      return data;
+    }catch(error){
+      if(error?.name==='AbortError') throw new Error('Firebase tardó demasiado en responder. Intenta nuevamente.');
+      throw error;
+    }finally{
+      clearTimeout(timer);
+    }
+  }
+"""
+
+          if old_builder not in s:
+              raise SystemExit('No se encontró el bloque Firebase esperado; se cancela para no dañar index.html')
+          s = s.replace(old_builder, new_builder, 1)
+
+          old_error = """      if(!state.products.length){$('emptyState').hidden=false;$('emptyMessage').textContent='Catálogo temporalmente no disponible. La farmacia debe sincronizar desde Macroxel.';}
+      if(!quiet)toast(navigator.onLine?'No se pudo actualizar el catálogo.':'Sin conexión a internet.'); return false;
+"""
+          new_error = """      if(!state.products.length){$('emptyState').hidden=false;$('emptyMessage').textContent=state.lastError?`No se pudo conectar: ${state.lastError}`:'Catálogo temporalmente no disponible. La farmacia debe sincronizar desde Macroxel.';}
+      if(!quiet)toast(navigator.onLine?(state.lastError||'No se pudo actualizar el catálogo.'):'Sin conexión a internet.'); return false;
+"""
+          if old_error not in s:
+              raise SystemExit('No se encontró el bloque de error esperado')
+          s = s.replace(old_error, new_error, 1)
+
+          s = s.replace('single-file-v1.6.1', 'single-file-v1.6.2', 1)
+          p.write_text(s, encoding='utf-8')
+
+      - name: Pruebas estaticas del visor
+        shell: python
+        run: |
+          import json, re
+          from pathlib import Path
+
+          html = Path('index.html').read_text(encoding='utf-8')
+          cfg = json.loads(Path('macroxel-config.json').read_text(encoding='utf-8'))
+
+          assert 'single-file-v1.6.2' in html
+          assert "const query = split[1] ? `?${split[1]}` : '';" in html
+          assert "&ts=${Date.now()}" not in html
+          assert "`?ts=${Date.now()}`" not in html
+          assert "cache:'no-store'" in html
+          assert 'AbortController' in html
+          assert cfg.get('firebaseUrl','').startswith('https://')
+          assert cfg.get('tiendaId')
+          print('Pruebas estaticas: OK')
+
+      - name: Probar Firebase real
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=$(python -c "import json; print(json.load(open('macroxel-config.json',encoding='utf-8'))['firebaseUrl'].rstrip('/'))")
+          STORE=$(python -c "import json; print(json.load(open('macroxel-config.json',encoding='utf-8'))['tiendaId'])")
+
+          curl --fail --silent --show-error --max-time 20 "$BASE/mi_farmacia/publicacion.json" -o /tmp/publicacion.json
+          curl --fail --silent --show-error --max-time 20 "$BASE/mi_farmacia/tiendas/$STORE.json" -o /tmp/tienda.json
+          curl --fail --silent --show-error --max-time 20 "$BASE/mi_farmacia/catalogo/$STORE/meta.json" -o /tmp/meta.json
+          curl --fail --silent --show-error --max-time 45 "$BASE/mi_farmacia/catalogo/$STORE/productos.json" -o /tmp/productos.json
+
+          python - <<'PY'
+          import json
+          pub=json.load(open('/tmp/publicacion.json'))
+          tienda=json.load(open('/tmp/tienda.json'))
+          meta=json.load(open('/tmp/meta.json'))
+          productos=json.load(open('/tmp/productos.json'))
+          assert isinstance(pub,dict) and pub, 'publicacion vacia'
+          assert isinstance(tienda,dict) and tienda, 'tienda vacia'
+          assert isinstance(meta,dict) and int(meta.get('version',0))==2, 'meta version incorrecta'
+          assert int(meta.get('revision',0))>0, 'revision invalida'
+          assert isinstance(productos,dict) and len(productos)>0, 'catalogo sin productos'
+          assert tienda.get('clavePedidosId'), 'falta clavePedidosId'
+          assert tienda.get('claveFirmaCatalogoId'), 'falta claveFirmaCatalogoId'
+          firma=meta.get('firmaCatalogo') or {}
+          assert firma.get('value') and firma.get('keyId'), 'falta firma del catalogo'
+          print('Firebase real: OK')
+          print('Productos publicados:',len(productos))
+          print('Revision:',meta.get('revision'))
+          PY
+
+      - name: Guardar correccion en GitHub
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- index.html; then
+            echo 'index.html ya estaba corregido'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Corregir conexion Firebase de Mi Farmacia'
+          git push
