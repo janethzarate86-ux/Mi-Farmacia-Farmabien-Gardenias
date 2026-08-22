@@ -1,0 +1,107 @@
+name: Prueba real de integración Mi Farmacia
+
+on:
+  push:
+    paths:
+      - '.github/workflows/integration-test.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validar archivos y JavaScript
+        shell: bash
+        run: |
+          set -e
+          test -s index.html
+          test -s macroxel-config.json
+          test -s catalogo-imagenes.json
+          test -s image-bot/package.json
+          test -s image-bot/sync-product-images.mjs
+          test -s assets/products/7501125199950.jpg
+          node --check image-bot/sync-product-images.mjs
+          node -e "JSON.parse(require('fs').readFileSync('macroxel-config.json','utf8')); JSON.parse(require('fs').readFileSync('catalogo-imagenes.json','utf8'));"
+
+      - name: Confirmar catálogo real en Firebase
+        shell: python
+        run: |
+          import json, urllib.request, urllib.parse
+          cfg=json.load(open('macroxel-config.json',encoding='utf-8'))
+          base=cfg['firebaseUrl'].rstrip('/')
+          store=cfg['tiendaId']
+          def get(path):
+              req=urllib.request.Request(base+'/'+path.strip('/')+'.json',headers={'Accept':'application/json','User-Agent':'Macroxel-Integration-Test/1.0'})
+              with urllib.request.urlopen(req,timeout=30) as r:
+                  if r.status!=200: raise RuntimeError(f'HTTP {r.status}: {path}')
+                  raw=r.read().decode('utf-8')
+                  return json.loads(raw) if raw else None
+          products=get('mi_farmacia/catalogo/'+urllib.parse.quote(store,safe='')+'/productos') or {}
+          meta=get('mi_farmacia/catalogo/'+urllib.parse.quote(store,safe='')+'/meta') or {}
+          tienda=get('mi_farmacia/tiendas/'+urllib.parse.quote(store,safe='')) or {}
+          count=len(products) if isinstance(products,dict) else 0
+          if count<1: raise RuntimeError('Firebase responde pero no hay productos')
+          if not tienda: raise RuntimeError('No existe tienda publicada')
+          print('PRODUCTOS=',count)
+          print('REVISION=',meta.get('revision'))
+          open('/tmp/firebase-ok.txt','w',encoding='utf-8').write(f'PRODUCTOS={count}\nREVISION={meta.get("revision")}\n')
+
+      - name: Probar index en navegador real
+        shell: bash
+        run: |
+          set +e
+          python3 -m http.server 8765 >/tmp/http.log 2>&1 &
+          PID=$!
+          trap 'kill $PID || true' EXIT
+          sleep 2
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)
+          if [ -z "$CHROME" ]; then
+            echo "Sin Chrome en runner" > /tmp/browser-result.txt
+            exit 1
+          fi
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=35000 --dump-dom "http://127.0.0.1:8765/index.html?test=$(date +%s)" >/tmp/dom.html 2>/tmp/chrome.err
+          CODE=$?
+          if [ "$CODE" != "0" ]; then
+            tail -80 /tmp/chrome.err > /tmp/browser-result.txt
+            exit 1
+          fi
+          if grep -qi 'HIOSCINA' /tmp/dom.html; then
+            echo "DOM_OK=HIOSCINA_VISIBLE" > /tmp/browser-result.txt
+            grep -oi 'HIOSCINA' /tmp/dom.html | wc -l | awk '{print "HIOSCINA_COUNT=" $1}' >> /tmp/browser-result.txt
+          else
+            echo "DOM_FAIL=PRODUCTOS_NO_VISIBLES" > /tmp/browser-result.txt
+            grep -o -E '.{0,120}(Cargando catálogo|No se pudo conectar|Sin sincronizar|Firebase|catálogo|configuración).{0,220}' /tmp/dom.html | head -30 >> /tmp/browser-result.txt || true
+            tail -80 /tmp/chrome.err >> /tmp/browser-result.txt
+            exit 1
+          fi
+
+      - name: Registrar prueba aprobada
+        if: success()
+        shell: bash
+        run: |
+          cat /tmp/firebase-ok.txt > INTEGRATION_TEST.txt
+          cat /tmp/browser-result.txt >> INTEGRATION_TEST.txt
+          echo "RESULT=OK" >> INTEGRATION_TEST.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add INTEGRATION_TEST.txt
+          git commit -m "PRUEBA INTEGRACION OK Mi Farmacia"
+          git push
+
+      - name: Registrar prueba fallida
+        if: failure()
+        shell: bash
+        run: |
+          echo "RESULT=FAIL" > INTEGRATION_TEST.txt
+          [ -f /tmp/firebase-ok.txt ] && cat /tmp/firebase-ok.txt >> INTEGRATION_TEST.txt
+          [ -f /tmp/browser-result.txt ] && cat /tmp/browser-result.txt >> INTEGRATION_TEST.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add INTEGRATION_TEST.txt
+          git commit -m "PRUEBA INTEGRACION FALLIDA Mi Farmacia" || true
+          git push || true
