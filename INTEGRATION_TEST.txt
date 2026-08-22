@@ -1,48 +1,34 @@
 RESULT=FAIL
 PRODUCTOS=1151
 REVISION=1787413255183
+META_VERSION=2
+CLAVE_PEDIDOS_ID=True
+CLAVE_FIRMA_ID=True
+CLAVE_PUBLICA_FIRMA=True
+FIRMA_CATALOGO=True
+emptyMessage=Prueba otra búsqueda.
+connectionState=Sin sincronizar
+connectionCatalog=Esperando sincronización
+storeName=Catálogo en línea
+HIOSCINA_COUNT=0
+PRODUCT_CARD_COUNT=1
 DOM_FAIL=PRODUCTOS_NO_VISIBLES
-      <div class="connection-status offline"><i id="connectionDot"></i><strong id="connectionState">Sin sincronizar</strong></div>
-      <p class="connection-note">La conexión se recibe desde la configuración central generada por el sistema principal. Este visor no almacena ni muestra direcciones de Firebase.</p>
-    <section id="loadingState" class="state-card"><div class="spinner"></div><strong>Cargando catálogo…</strong><span>Consultando disponibilidad y precios.</span></section>
-      <p class="privacy-note">Tus datos no se publican en el catálogo. Solo se usan para identificar los pedidos que tú envíes a esta farmacia.</p>
-  Cada instalación usa sus propias URLs. No hay Firebase ni GitHub del cliente
-  incrustados en este archivo. La conexión se resuelve desde la configuración
-  La página consulta primero ese catálogo por EAN/GTIN y solo usa bases públicas
-    const r = await fetchConTiempo(firebaseUrl(path),options,timeoutMs,'Firebase');
-    if(!r.ok) throw new Error((data && data.error) || `Firebase ${r.status}`);
-    // Conservamos solo metadatos no sensibles; nunca la URL Firebase.
-    $('connectionState').textContent=online?'Conectado al sistema principal':(navigator.onLine?'Sin sincronizar':'Sin internet');
-     if(!data||Number(data.version||0)!==1||!data.products||typeof data.products!=='object')throw new Error('Formato de catálogo de imágenes no válido');
-    if(!signature?.value||!signature?.keyId||!jwk?.x||!jwk?.y) throw new Error('El catálogo aún no tiene firma de integridad. Sincroniza Mi Farmacia desde Macroxel.');
-    if(expectedId && text(signature.keyId)!==expectedId) throw new Error('La firma del catálogo no corresponde a esta farmacia.');
-    if(!window.crypto?.subtle) throw new Error('Este navegador no permite validar el catálogo de forma segura.');
-    if(!ok) throw new Error('No se pudo validar la integridad del catálogo. Sincroniza nuevamente desde Macroxel.');
-    if(!text(store.clavePedidosId)) throw new Error('La farmacia aún no ha publicado su configuración. Sincroniza desde Macroxel.');
-    if(!bootstrap) throw new Error('Mi Farmacia no tiene configuración central. Genera macroxel-config.json desde el sistema principal y publícalo en este GitHub.');
-    // La configuración central ya contiene el Firebase y tiendaId del cliente.
-      // Primera visita: tienda + meta + catálogo viajan en paralelo. Así el visor
-      if(Number(meta.version||0)!==2||!Number(meta.revision||0)) throw new Error('El catálogo todavía no ha sido sincronizado con la versión móvil actual.');
-      setStatus(false,navigator.onLine?'Sin sincronizar':'Sin internet'); refreshConnectionInfo(); $('loadingState').hidden=true;
-      if(!quiet)toast(navigator.onLine?'No se pudo actualizar el catálogo.':'Sin conexión a internet.'); return false;
-      $('loadingState').hidden=true;setStatus(false,navigator.onLine?'Sin sincronizar':'Sin internet');refreshConnectionInfo();
-      else toast('No se pudo validar la conexión nueva; se muestra el último catálogo guardado.');
-[2322:2345:0822/162222.648021:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2322:2345:0822/162222.648910:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2322:2345:0822/162222.780505:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2322:2345:0822/162222.823911:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2322:2322:0822/162222.965469:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
-[2322:2322:0822/162222.965693:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
-[2322:2345:0822/162222.966815:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2322:2345:0822/162222.966831:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2322:2322:0822/162222.968343:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
-[2322:2322:0822/162222.970941:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
-[2322:2322:0822/162223.025412:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
-[2322:2322:0822/162223.026591:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
-[2322:2345:0822/162223.028231:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2322:2322:0822/162223.078968:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
-[2322:2345:0822/162223.079075:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2322:2322:0822/162223.079101:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.UPower was not provided by any .service files
-[2322:2322:0822/162223.101358:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
-[2322:2345:0822/162223.101434:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
-[2322:2322:0822/162223.136051:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2121:2145:0822/162359.789477:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2121:2145:0822/162359.801938:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2121:2145:0822/162400.814022:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2121:2145:0822/162401.156000:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2121:2121:0822/162403.605639:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2121:2121:0822/162403.605878:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2121:2145:0822/162403.606405:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2121:2145:0822/162403.606419:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2121:2121:0822/162403.624658:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2121:2121:0822/162403.657279:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2121:2121:0822/162404.066793:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2121:2121:0822/162404.116667:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2121:2145:0822/162404.116774:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2121:2121:0822/162404.285947:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.UPower was not provided by any .service files
+[2121:2121:0822/162404.286324:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2121:2145:0822/162404.286388:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2121:2121:0822/162404.414319:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2121:2145:0822/162404.414400:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2121:2121:0822/162404.470426:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
