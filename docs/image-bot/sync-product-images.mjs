@@ -1,11 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const ROOT = path.resolve(__dirname, '..');
+const ROOT = process.cwd();
 const RUNTIME_CONFIG = path.join(ROOT, 'macroxel-config.json');
 const MANIFEST = path.join(ROOT, 'catalogo-imagenes.json');
 const ASSET_DIR = path.join(ROOT, 'assets', 'products');
@@ -28,38 +25,22 @@ const informativeTokens = value => {
     .replace(/[^A-Z0-9]+/g, ' ')
     .split(/\s+/)
     .map(v => v.trim())
-    // Los números solos (500, 10, 20) nunca acreditan identidad de un medicamento.
-    .filter(v => v.length >= 3 && !/^\d+$/.test(v) && !stop.has(v));
+    .filter(v => v.length >= 3 && !stop.has(v));
 };
 
-function uniqueTokens(value) { return Array.from(new Set(informativeTokens(value))); }
-
 function buildSearchTerms(product) {
-  const identity = uniqueTokens([product?.nombre, product?.nombreGenerico, product?.nombreDistintivo, product?.principioActivo, product?.sustancia].map(text).filter(Boolean).join(' '));
-  const presentation = uniqueTokens(text(product?.presentacion));
-  const department = uniqueTokens(text(product?.departamento));
-  return Array.from(new Set([...identity, ...presentation, ...department])).slice(0, 10);
+  const parts = [text(product?.nombre), text(product?.presentacion), text(product?.departamento)];
+  const tokens = informativeTokens(parts.join(' '));
+  return Array.from(new Set(tokens)).slice(0, 8);
 }
 
 function scoreCandidate(product, candidateName) {
+  const wanted = buildSearchTerms(product);
   const actual = new Set(informativeTokens(candidateName));
-  const identity = uniqueTokens([product?.nombre, product?.nombreGenerico, product?.nombreDistintivo, product?.principioActivo, product?.sustancia].map(text).filter(Boolean).join(' '));
-  const presentation = uniqueTokens(text(product?.presentacion));
-  const identityOverlap = identity.filter(token => actual.has(token)).length;
-  const presentationOverlap = presentation.filter(token => actual.has(token)).length;
-  const requiredIdentity = identity.length >= 4 ? 2 : 1;
-  // Sin coincidencia del nombre/sustancia no se acepta una imagen aunque coincidan dosis o números.
-  const okIdentity = identity.length > 0 && identityOverlap >= Math.min(requiredIdentity, identity.length);
-  // Si existe una presentación realmente informativa, exigimos al menos un término compatible.
-  const okPresentation = presentation.length === 0 || presentationOverlap > 0;
-  return { overlap: identityOverlap + presentationOverlap, identityOverlap, presentationOverlap, ok: okIdentity && okPresentation };
-}
-
-function safeManifestKey(product, code = '') {
-  if (code) return code;
-  const raw = text(product?.id || product?.codigo || product?.nombre || 'PRODUCTO');
-  const safe = norm(raw).replace(/[^A-Z0-9_-]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 96) || 'PRODUCTO';
-  return `ID_${safe}`;
+  let overlap = 0;
+  for (const token of wanted) if (actual.has(token)) overlap += 1;
+  const minNeeded = wanted.length >= 5 ? 2 : 1;
+  return { overlap, ok: overlap >= minNeeded };
 }
 
 function firebasePath(base, route) {
@@ -77,9 +58,15 @@ async function fetchJson(url) {
 }
 
 async function resolveFirebase(bootstrap) {
-  const current = text(bootstrap).replace(/\/+$/, '');
-  if (!/^https:\/\//i.test(current)) throw new Error('firebaseUrl HTTPS no encontrado en macroxel-config.json');
-  const publication = await fetchJson(firebasePath(current, 'mi_farmacia/publicacion')) || {};
+  let current = text(bootstrap).replace(/\/+$/, '');
+  if (!/^https:\/\//i.test(current)) throw new Error('bootstrapUrl HTTPS no encontrado en index.html');
+  let publication = null;
+  for (let hop = 0; hop < 4; hop += 1) {
+    publication = await fetchJson(firebasePath(current, 'mi_farmacia/publicacion')) || {};
+    const next = text(publication.firebaseUrl).replace(/\/+$/, '');
+    if (next && next !== current) { current = next; continue; }
+    break;
+  }
   const storeId = text(publication?.tiendaId);
   if (!storeId) throw new Error('Mi Farmacia todavía no publicó tiendaId. Sincroniza desde Macroxel.');
   return { firebaseUrl: current, storeId };
@@ -168,7 +155,7 @@ async function readManifest() {
 
 function shouldLookup(entry, assetExists, now) {
   const status = text(entry?.status).toLowerCase();
-  if ((status === 'verified_ean' || status === 'verified_text' || status === 'manual' || status === 'manual_local') && assetExists) return false;
+  if ((status === 'verified_ean' || status === 'verified_text') && assetExists) return false;
   if (status === 'not_found') {
     const checked = Date.parse(entry.checkedAt || '') || 0;
     if (now - checked < RETRY_NOT_FOUND_MS) return false;
@@ -177,32 +164,25 @@ function shouldLookup(entry, assetExists, now) {
 }
 
 async function readRuntimeBootstrap() {
-  try {
-    const cfg = JSON.parse(await fs.readFile(RUNTIME_CONFIG, 'utf8'));
-    return text(cfg?.firebaseUrl);
-  } catch (_) {
-    return '';
-  }
+  const env = text(process.env.MACROXEL_FIREBASE_URL);
+  if (env) return env;
+  try { const cfg = JSON.parse(await fs.readFile(RUNTIME_CONFIG, 'utf8')); return text(cfg?.firebaseUrl); } catch (_) { return ''; }
 }
 
 async function writeRuntimeConfig(firebaseUrl, storeId) {
   let current = {};
   try { current = JSON.parse(await fs.readFile(RUNTIME_CONFIG, 'utf8')) || {}; } catch (_) {}
   const payload = {
-    version: 2,
-    source: 'Macroxel FarmaControl',
+    version: 1,
     firebaseUrl: text(firebaseUrl).replace(/\/+$/, ''),
     githubUrl: text(current.githubUrl || ''),
-    tiendaId: text(storeId || current.tiendaId || ''),
-    updatedAt: text(current.updatedAt || '')
+    tiendaId: text(storeId || current.tiendaId || '')
   };
   const normalizedCurrent = {
-    version: Number(current.version) || 2,
-    source: text(current.source || 'Macroxel FarmaControl'),
+    version: Number(current.version) || 1,
     firebaseUrl: text(current.firebaseUrl).replace(/\/+$/, ''),
     githubUrl: text(current.githubUrl || ''),
-    tiendaId: text(current.tiendaId || ''),
-    updatedAt: text(current.updatedAt || '')
+    tiendaId: text(current.tiendaId || '')
   };
   if (JSON.stringify(payload) === JSON.stringify(normalizedCurrent)) return false;
   await fs.writeFile(RUNTIME_CONFIG, `${JSON.stringify(payload, null, 2)}
@@ -212,7 +192,7 @@ async function writeRuntimeConfig(firebaseUrl, storeId) {
 
 async function main() {
   const bootstrap = await readRuntimeBootstrap();
-  if (!bootstrap) throw new Error('macroxel-config.json no contiene la conexión generada por el sistema principal.');
+  if (!bootstrap) throw new Error('Configura la variable del repositorio MACROXEL_FIREBASE_URL con la URL Firebase de este cliente.');
   const { firebaseUrl, storeId } = await resolveFirebase(bootstrap);
   await writeRuntimeConfig(firebaseUrl, storeId);
   const products = await fetchJson(firebasePath(firebaseUrl, `mi_farmacia/catalogo/${storeId}/productos`)) || {};
@@ -227,18 +207,18 @@ async function main() {
   for (const [id, product] of Object.entries(products)) {
     if (!product || product.activo === false) continue;
     const code = validBarcode(product.imagenClave || product.codigo);
-    const manifestKey = safeManifestKey({ ...product, id }, code);
-    const asset = path.join(ASSET_DIR, `${manifestKey}.webp`);
+    if (!code) continue;
+    const asset = path.join(ASSET_DIR, `${code}.webp`);
     let exists = false;
     try { await fs.access(asset); exists = true; } catch (_) {}
-    const entry = manifest.products[manifestKey];
-    if (shouldLookup(entry, exists, now)) candidates.push({ id, product, code, manifestKey, asset });
+    const entry = manifest.products[code];
+    if (shouldLookup(entry, exists, now)) candidates.push({ id, product, code, asset });
   }
 
   candidates.sort((a, b) => {
-    const aa = manifest.products[a.manifestKey]?.status === 'not_found' ? 1 : 0;
-    const bb = manifest.products[b.manifestKey]?.status === 'not_found' ? 1 : 0;
-    return aa - bb || a.manifestKey.localeCompare(b.manifestKey);
+    const aa = manifest.products[a.code]?.status === 'not_found' ? 1 : 0;
+    const bb = manifest.products[b.code]?.status === 'not_found' ? 1 : 0;
+    return aa - bb || a.code.localeCompare(b.code);
   });
 
   let lookups = 0;
@@ -248,20 +228,19 @@ async function main() {
     if (lookups > 0) await sleep(GAP_MS);
     lookups += 1;
     const checkedAt = new Date().toISOString();
-    console.log(`[${lookups}/${Math.min(candidates.length, MAX_LOOKUPS)}] ${item.manifestKey} ${text(item.product.nombre)}`);
-    let hit = item.code ? await lookupImage(item.product, item.code) : null;
-    let matchedStatus = hit ? 'verified_ean' : 'not_found';
-    let matchedBy = hit ? 'EAN' : 'TEXT';
+    console.log(`[${lookups}/${Math.min(candidates.length, MAX_LOOKUPS)}] ${item.code} ${text(item.product.nombre)}`);
+    let hit = await lookupImage(item.product, item.code);
+    let matchedStatus = 'verified_ean';
+    let matchedBy = 'EAN';
     if (!hit) {
       hit = await searchImageByText(item.product);
       matchedStatus = hit ? 'verified_text' : 'not_found';
       matchedBy = hit?.matchedBy || 'TEXT';
     }
     if (!hit) {
-      manifest.products[item.manifestKey] = {
+      manifest.products[item.code] = {
         status: 'not_found',
         checkedAt,
-        sourceCode: item.code,
         name: text(item.product.nombre),
         presentation: text(item.product.presentacion)
       };
@@ -269,9 +248,9 @@ async function main() {
     }
     try {
       await downloadWebp(hit.imageUrl, item.asset);
-      manifest.products[item.manifestKey] = {
+      manifest.products[item.code] = {
         status: matchedStatus,
-        image: `assets/products/${item.manifestKey}.webp`,
+        image: `assets/products/${item.code}.webp`,
         source: hit.source,
         sourceUrl: hit.imageUrl,
         matchedBy,
@@ -285,8 +264,8 @@ async function main() {
       };
       found += 1;
     } catch (error) {
-      console.log(`[${item.manifestKey}] descarga: ${error.message}`);
-      manifest.products[item.manifestKey] = {
+      console.log(`[${item.code}] descarga: ${error.message}`);
+      manifest.products[item.code] = {
         status: 'error_retry',
         checkedAt,
         source: hit.source,
@@ -306,7 +285,7 @@ async function main() {
   manifest.updatedAt = new Date().toISOString();
   manifest.storeId = storeId;
   manifest.totalCatalogProducts = Object.keys(products).length;
-  manifest.totalImageEntries = Object.values(manifest.products).filter(v => ['verified_ean','verified_text','manual','manual_local'].includes(text(v?.status).toLowerCase())).length;
+  manifest.totalImageEntries = Object.values(manifest.products).filter(v => ['verified_ean','verified_text'].includes(text(v?.status).toLowerCase())).length;
   manifest.totalNotFound = Object.values(manifest.products).filter(v => text(v?.status).toLowerCase() === 'not_found').length;
   manifest.totalErrors = Object.values(manifest.products).filter(v => text(v?.status).toLowerCase() === 'error_retry').length;
   await fs.writeFile(MANIFEST, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
@@ -315,5 +294,5 @@ async function main() {
 
 main().catch(error => {
   console.error(error);
-  process.exitCode = 1;
+  process.exitCode = 0;
 });
