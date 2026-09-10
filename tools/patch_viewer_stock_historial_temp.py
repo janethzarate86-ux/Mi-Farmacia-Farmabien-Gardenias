@@ -1,5 +1,4 @@
 from pathlib import Path
-import re
 p=Path('docs/index.html')
 s=p.read_text(encoding='utf-8')
 
@@ -42,8 +41,10 @@ history_fn=r'''  function renderOrderHistory(){
     renderOrderHistory();
   }
 '''
-s,n=re.subn(r"  function renderOrderHistory\(\)\{.*?\n  \}\n  function addLocalOrder", history_fn+'  function addLocalOrder', s, count=1, flags=re.S)
-if n!=1: raise SystemExit('No se pudo actualizar renderOrderHistory')
+start=s.find('  function renderOrderHistory(){')
+end=s.find('  function addLocalOrder',start)
+if start<0 or end<0: raise SystemExit('No se pudo ubicar renderOrderHistory')
+s=s[:start]+history_fn+s[end:]
 
 s=s.replace("$('orderHistoryButton').addEventListener('click',openHistory);document.querySelectorAll('[data-close=\"history\"]').forEach(el=>el.addEventListener('click',closeHistory));", "$('orderHistoryButton').addEventListener('click',openHistory);document.querySelectorAll('[data-close=\"history\"]').forEach(el=>el.addEventListener('click',closeHistory));$('orderHistoryList').addEventListener('click',e=>{const row=e.target.closest('[data-history-order]');if(row)toggleHistoryOrderDetail(row.dataset.historyOrder)});$('orderHistoryList').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-history-order]')){e.preventDefault();toggleHistoryOrderDetail(e.target.dataset.historyOrder)}});", 1)
 
