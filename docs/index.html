@@ -260,7 +260,8 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
   const MAX_ORDER_QTY = 99;
   const META_POLL_MS = 60000;
   const ORDER_STATUS_POLL_MS = 15000;
-  const MAX_LOCAL_ORDERS = 8;
+  const MAX_LOCAL_ORDERS = 200;
+  const MAX_STATUS_CHECK_ORDERS = 30;
   const CONFIG_REQUEST_TIMEOUT_MS = 2500;
   const FIREBASE_META_TIMEOUT_MS = 4000;
   const FIREBASE_CATALOG_TIMEOUT_MS = 7000;
@@ -845,8 +846,11 @@ function changeCart(id,delta){const item=state.cart.get(id);if(!item)return;cons
   }
   async function onFacadeSelected(){const file=$('deliveryFacade').files?.[0];if(!file){clearFacade();return}try{$('checkoutMessage').textContent='Procesando fotografía…';state.facadeData=await fileToCompressedDataUrl(file);$('facadePreviewImage').src=state.facadeData;$('facadePreview').hidden=false;$('checkoutMessage').textContent='';}catch(e){clearFacade();$('checkoutMessage').textContent=e.message||String(e)}}
   function statusToken(){const bytes=new Uint8Array(20);crypto.getRandomValues(bytes);return `ST_${Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('')}`}
-  function localOrders(){const rows=readJsonStorage(STORAGE_ORDERS,[]);return Array.isArray(rows)?rows:[]}
-  function saveLocalOrders(rows){writeJsonStorage(STORAGE_ORDERS,(Array.isArray(rows)?rows:[]).slice(0,MAX_LOCAL_ORDERS))}
+  function localDayKey(raw){const d=raw instanceof Date?raw:new Date(raw);if(!Number.isFinite(d.getTime()))return '';return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+  function historyAllowedDayKeys(){const hoy=new Date();const ayer=new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate()-1);return new Set([localDayKey(hoy),localDayKey(ayer)])}
+  function depurarHistorialLocal(rows){const permitidos=historyAllowedDayKeys();return (Array.isArray(rows)?rows:[]).filter(o=>permitidos.has(localDayKey(o?.createdAt))).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0)).slice(0,MAX_LOCAL_ORDERS)}
+  function localOrders(){const original=readJsonStorage(STORAGE_ORDERS,[]);const rows=depurarHistorialLocal(original);if(Array.isArray(original)&&rows.length!==original.length)writeJsonStorage(STORAGE_ORDERS,rows);return rows}
+  function saveLocalOrders(rows){writeJsonStorage(STORAGE_ORDERS,depurarHistorialLocal(rows))}
   function localOrderDate(raw){try{return new Date(raw).toLocaleString('es-MX',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(_){return raw||'—'}}
 function publicOrderStatusLabel(estado=''){const e=text(estado||'NUEVO').toUpperCase();return e==='EN_PROCESO'?'SURTIENDO':e.replace(/_/g,' ')}
 function orderVoiceText(estado=''){
@@ -863,7 +867,7 @@ function speakOrderStatus(estado=''){
 function renderOrderHistory(){
     const rows=localOrders();const cont=$('orderHistoryList');if(!cont)return;
     if(!rows.length){cont.innerHTML='<div class="order-history-empty">Cuando envíes un pedido aparecerá aquí y podrás ver si fue surtido o cancelado.</div>';return}
-    cont.innerHTML=rows.slice(0,8).map(o=>{
+    cont.innerHTML=rows.map(o=>{
       const estado=text(o.estado||'NUEVO').toUpperCase();
       const tipo=o.entrega?.tipo==='DOMICILIO'?'Entrega a domicilio':'Recoger en sucursal';
       const abierto=state.historyOrderOpenId===o.id;
@@ -886,7 +890,8 @@ function renderOrderHistory(){
 function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id);rows.unshift(order);saveLocalOrders(rows);renderOrderHistory()}
   async function refreshOrderStatuses(){
     if(state.orderStatusBusy||!navigator.onLine||!state.firebaseUrl)return;const rows=localOrders();if(!rows.length)return;state.orderStatusBusy=true;let changed=false;
-    try{for(const o of rows.slice(0,MAX_LOCAL_ORDERS)){if(!o.token||!o.storeId)continue;try{const remote=await request(`mi_farmacia/pedidos_estado/${o.storeId}/${o.token}`,{timeoutMs:3500});if(!remote||!remote.estado)continue;const next=text(remote.estado).toUpperCase();const before=text(o.estado).toUpperCase();o.estado=next;o.mensaje=text(remote.mensaje)||o.mensaje;o.updatedAt=remote.actualizadoEn||nowISO();if(next!==before){changed=true;const msg=o.mensaje||`El pedido ${o.id} cambió a ${publicOrderStatusLabel(next)}.`;toast(msg);speakOrderStatus(next);if('Notification'in window&&Notification.permission==='granted'){try{new Notification('Mi Farmacia',{body:msg,tag:`pedido-${o.id}`})}catch(_){}}}}catch(_){/* pedido antiguo/sin reglas de seguimiento */}}
+    const pendientes=rows.filter(o=>!['SURTIDO','CANCELADO'].includes(text(o?.estado).toUpperCase())).slice(0,MAX_STATUS_CHECK_ORDERS);
+    try{for(const o of pendientes){if(!o.token||!o.storeId)continue;try{const remote=await request(`mi_farmacia/pedidos_estado/${o.storeId}/${o.token}`,{timeoutMs:3500});if(!remote||!remote.estado)continue;const next=text(remote.estado).toUpperCase();const before=text(o.estado).toUpperCase();o.estado=next;o.mensaje=text(remote.mensaje)||o.mensaje;o.updatedAt=remote.actualizadoEn||nowISO();if(next!==before){changed=true;const msg=o.mensaje||`El pedido ${o.id} cambió a ${publicOrderStatusLabel(next)}.`;toast(msg);speakOrderStatus(next);if('Notification'in window&&Notification.permission==='granted'){try{new Notification('Mi Farmacia',{body:msg,tag:`pedido-${o.id}`})}catch(_){}}}}catch(_){/* pedido antiguo/sin reglas de seguimiento */}}
     }finally{state.orderStatusBusy=false;if(changed)saveLocalOrders(rows);renderOrderHistory()}
   }
   async function enableOrderNotifications(){if(!('Notification'in window)){toast('Este navegador no admite avisos del sistema.');return}try{const p=await Notification.requestPermission();toast(p==='granted'?'Avisos de pedidos activados.':'Los avisos del navegador no fueron autorizados.');refreshNotificationButton()}catch(_){toast('No se pudieron activar los avisos.')}}
