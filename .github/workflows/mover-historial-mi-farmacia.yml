@@ -1,0 +1,83 @@
+name: Mover historial Mi Farmacia
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/mover-historial-mi-farmacia.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mover historial a panel lateral
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('docs/index.html')
+          s=p.read_text(encoding='utf-8')
+          if 'id="historyDrawer"' in s:
+              print('El historial ya está en panel lateral.')
+              raise SystemExit(0)
+
+          s=s.replace('single-file-v1.6.2-fast-bootstrap-v1.7.1-runtime-fixed-orders-status-delivery-large-images','single-file-v1.6.2-fast-bootstrap-v1.7.1-runtime-fixed-orders-status-delivery-large-images-history-drawer')
+
+          css_anchor='.order-history{margin:0 0 12px;border:1px solid #dce8f1;border-radius:16px;background:#fff;overflow:hidden}'
+          css_insert='.history-button{position:relative;width:39px;height:39px;border:1px solid #d6e3ee;border-radius:14px;background:#fff;color:var(--navy);font-size:1.05rem;box-shadow:0 8px 20px rgba(7,59,111,.10);display:grid;place-items:center}.history-button:active{transform:scale(.97)}.history-drawer .drawer-panel{width:min(520px,94vw)}.history-drawer .order-history{flex:1;min-height:0;margin:10px 0 0;border:0;border-radius:0;overflow:auto;box-shadow:none}.history-drawer .order-history-head{position:sticky;top:0;z-index:2;padding:11px 2px;background:#fff}.history-drawer .order-history-list{padding:9px 1px 18px}'
+          assert css_anchor in s
+          s=s.replace(css_anchor,css_insert+css_anchor,1)
+
+          old_header='      <span id="statusChip" class="status-chip offline"><i></i><span>Conectando</span></span>\n      <button id="cartButton" class="cart-button" type="button" aria-label="Abrir carrito">🛒<b id="cartCount">0</b></button>'
+          new_header='      <span id="statusChip" class="status-chip offline"><i></i><span>Conectando</span></span>\n      <button id="orderHistoryButton" class="history-button" type="button" aria-label="Abrir historial de pedidos" title="Historial de pedidos">🧾</button>\n      <button id="cartButton" class="cart-button" type="button" aria-label="Abrir carrito">🛒<b id="cartCount">0</b></button>'
+          assert old_header in s
+          s=s.replace(old_header,new_header,1)
+
+          old_inline='    <section id="orderHistoryPanel" class="order-history" aria-label="Historial de pedidos"><div class="order-history-head"><div><strong>Mis pedidos</strong><small>Historial reciente guardado en este dispositivo</small></div><button id="enableOrderNotifications" type="button">🔔 Activar avisos</button></div><div id="orderHistoryList" class="order-history-list"></div></section>\n'
+          assert old_inline in s
+          s=s.replace(old_inline,'',1)
+
+          cart_anchor='  <div id="cartDrawer" class="drawer" hidden>\n'
+          history_html='''  <div id="historyDrawer" class="drawer history-drawer" hidden>\n    <div class="drawer-backdrop" data-close="history"></div>\n    <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="historyTitle">\n      <div class="drawer-head"><div><small>TUS PEDIDOS</small><h2 id="historyTitle">Historial</h2></div><button class="icon-button" type="button" data-close="history" aria-label="Cerrar historial">✕</button></div>\n      <section id="orderHistoryPanel" class="order-history" aria-label="Historial de pedidos"><div class="order-history-head"><div><strong>Mis pedidos</strong><small>Historial reciente guardado en este dispositivo</small></div><button id="enableOrderNotifications" type="button">🔔 Activar avisos</button></div><div id="orderHistoryList" class="order-history-list"></div></section>\n    </aside>\n  </div>\n\n'''
+          assert cart_anchor in s
+          s=s.replace(cart_anchor,history_html+cart_anchor,1)
+
+          old_close="  function closeModal(id){ $(id).hidden=true; if($('quantityModal').hidden&&$('checkoutModal').hidden&&$('successModal').hidden&&$('cartDrawer').hidden) document.body.style.overflow=''; }"
+          new_close="  function closeModal(id){ $(id).hidden=true; if($('quantityModal').hidden&&$('checkoutModal').hidden&&$('successModal').hidden&&$('cartDrawer').hidden&&$('historyDrawer').hidden) document.body.style.overflow=''; }"
+          assert old_close in s
+          s=s.replace(old_close,new_close,1)
+
+          old_cart="  function openCart(){renderCart();$('cartDrawer').hidden=false;document.body.style.overflow='hidden'}\n  function closeCart(){closeModal('cartDrawer')}"
+          new_cart="  function openHistory(){if(!$('cartDrawer').hidden)closeCart();renderOrderHistory();refreshOrderStatuses();$('historyDrawer').hidden=false;document.body.style.overflow='hidden'}\n  function closeHistory(){closeModal('historyDrawer')}\n  function openCart(){if(!$('historyDrawer').hidden)closeHistory();renderCart();$('cartDrawer').hidden=false;document.body.style.overflow='hidden'}\n  function closeCart(){closeModal('cartDrawer')}"
+          assert old_cart in s
+          s=s.replace(old_cart,new_cart,1)
+
+          old_bind="    $('cartButton').addEventListener('click',openCart);document.querySelectorAll('[data-close=\"cart\"]').forEach(el=>el.addEventListener('click',closeCart));"
+          new_bind="    $('orderHistoryButton').addEventListener('click',openHistory);document.querySelectorAll('[data-close=\"history\"]').forEach(el=>el.addEventListener('click',closeHistory));\n    $('cartButton').addEventListener('click',openCart);document.querySelectorAll('[data-close=\"cart\"]').forEach(el=>el.addEventListener('click',closeCart));"
+          assert old_bind in s
+          s=s.replace(old_bind,new_bind,1)
+
+          old_escape="    document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('connectionPanel').hidden)closeConnectionPanel();else if(!$('quantityModal').hidden)closeModal('quantityModal');else if(!$('cartDrawer').hidden)closeCart();else if(!$('checkoutModal').hidden)closeModal('checkoutModal')}});"
+          new_escape="    document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('connectionPanel').hidden)closeConnectionPanel();else if(!$('quantityModal').hidden)closeModal('quantityModal');else if(!$('historyDrawer').hidden)closeHistory();else if(!$('cartDrawer').hidden)closeCart();else if(!$('checkoutModal').hidden)closeModal('checkoutModal')}});"
+          assert old_escape in s
+          s=s.replace(old_escape,new_escape,1)
+
+          p.write_text(s,encoding='utf-8')
+          print('Historial movido a panel lateral.')
+          PY
+      - name: Guardar cambio
+        shell: bash
+        run: |
+          git config user.name "janethzarate86-ux"
+          git config user.email "janeth.zarate86@gmail.com"
+          git add docs/index.html
+          if git diff --cached --quiet; then
+            echo "Sin cambios pendientes"
+          else
+            git commit -m "Mueve historial de pedidos a panel lateral"
+            git push
+          fi
