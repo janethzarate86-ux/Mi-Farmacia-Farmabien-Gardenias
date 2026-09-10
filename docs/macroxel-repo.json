@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "source": "Macroxel FarmaControl",
+  "purpose": "mi-farmacia-central-viewer",
+  "build": "firebase-universal-v1",
+  "viewer": "index.html",
+  "firebaseLinkMode": "query-db-store",
+  "updatedAt": "2026-09-10"
+}
