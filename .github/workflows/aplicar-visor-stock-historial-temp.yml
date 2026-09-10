@@ -29,3 +29,4 @@ jobs:
             git commit -m "Muestra stock directo y detalle de historial"
             git push
           fi
+# reintento 2
