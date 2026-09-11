@@ -50,6 +50,17 @@
 .stock-inline{display:flex;align-items:center;gap:5px;width:fit-content;max-width:100%;margin-top:5px;border-radius:9px;padding:5px 7px;background:#e9f8f1;color:#087653;border:1px solid #bfe8d8;font-size:.59rem;font-weight:950;line-height:1.2}
 .stock-inline.is-low{background:#fff3d6;color:#9a5a00;border-color:#f1cb7a}.stock-inline.is-out{background:#fdebed;color:#aa203b;border-color:#f4bfc8}.stock-inline.is-out::before{content:'●';font-size:.65rem}.stock-inline.is-low::before{content:'⚠';font-size:.7rem}
 .order-history-item{cursor:pointer;transition:.15s}.order-history-item:hover,.order-history-item.open{border-color:#9fc7e9;background:#f8fbfe}.order-history-detail{grid-column:1/-1;border-top:1px solid #e4ebf2;margin-top:4px;padding-top:9px}.order-history-detail h3{margin:0 0 7px;color:var(--navy);font-size:.71rem}.order-history-detail-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:6px 0;border-bottom:1px dashed #e5ebf1}.order-history-detail-row:last-child{border-bottom:0}.order-history-detail-row span{font-size:.62rem;color:#40566b;line-height:1.35}.order-history-detail-row b{font-size:.62rem;color:var(--navy);white-space:nowrap}.order-history-detail-meta{margin-top:7px;padding:7px 8px;border-radius:9px;background:#eef5fb;color:#53697e;font-size:.61rem;line-height:1.4}.order-history-item .history-hint{display:block;margin-top:5px;color:#0b66ae;font-size:.58rem;font-weight:900}
+
+/* v1.8 · Maps, imagen de sucursal ampliada y fondo visual */
+body.store-wallpaper{background:#eef4fa;}
+body.store-wallpaper::before{content:"";position:fixed;inset:51px 0 0;z-index:0;pointer-events:none;background-image:var(--store-wallpaper,none);background-repeat:no-repeat;background-position:center center;background-size:min(980px,88vw) auto;opacity:.13;filter:saturate(.9) contrast(.96);}
+main{position:relative;z-index:1}.app-header{z-index:40}.connection-panel,.modal,.drawer{z-index:120}
+.store-public-card{width:100%;font:inherit;text-align:left;cursor:pointer;appearance:none;-webkit-appearance:none;transition:.16s border-color,.16s background,.16s transform}
+.store-public-card:hover{border-color:#9fc7e9;background:rgba(248,251,254,.92)}.store-public-card:active{transform:scale(.995)}
+.store-public-card small{font-size:.73rem}.store-public-card .maps-hint{display:block;margin-top:3px;color:#0b66ae;font-size:.58rem;font-weight:900}
+.connection-store-photo{margin:13px 0 10px;border:1px solid #dbe6ef;border-radius:16px;background:#f2f7fb;overflow:hidden;display:grid;place-items:center;min-height:120px}
+.connection-store-photo[hidden]{display:none!important}.connection-store-photo img{display:block;width:100%;height:min(320px,42vh);object-fit:contain;background:#f2f7fb}
+@media(max-width:520px){body.store-wallpaper::before{background-size:94vw auto;opacity:.11}.connection-store-photo img{height:min(260px,36vh)}}
 </style>
 </head>
 <body>
@@ -73,6 +84,7 @@
         <button id="closeConnection" class="icon-button" type="button" aria-label="Cerrar">✕</button>
       </div>
       <div class="connection-status"><i id="connectionDot"></i><strong id="connectionState">Conectando…</strong></div>
+      <div id="connectionStorePhoto" class="connection-store-photo" hidden><img id="connectionStoreImage" alt="Imagen de la sucursal"></div>
       <div class="connection-grid">
         <div class="connection-field"><span>Farmacia</span><strong id="connectionStoreName">FARMACIA FARMABIEN GARDENIAS</strong></div>
         <div class="connection-field"><span>ID / equipo</span><strong id="connectionStoreId">—</strong></div>
@@ -85,7 +97,7 @@
 
   <main>
 
-    <section id="storePublicCard" class="store-public-card" aria-label="Dirección de la sucursal"><span>📍</span><div><strong id="storePublicName">Mi Farmacia</strong><small id="storePublicAddress">Dirección pendiente de sincronizar</small></div></section>
+    <button id="storePublicCard" class="store-public-card" type="button" aria-label="Abrir ubicación de la sucursal en Google Maps"><span>📍</span><div><small id="storePublicAddress">Dirección pendiente de sincronizar</small><span class="maps-hint">Abrir ubicación en Maps</span></div></button>
 
     <section class="search-shell" aria-label="Buscar productos">
       <div class="search-box"><span>⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="Buscar medicamento o producto..."><button id="clearSearch" type="button" aria-label="Limpiar búsqueda">✕</button></div>
@@ -380,7 +392,24 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
   }
   const DEFAULT_BRAND_LOGO_SRC=$('brandLogo')?.src||'';
   function storePaused(){return state.store?.pausada===true;}
-  function refreshStoreImage(){const img=$('brandLogo');if(!img)return;const personalizada=text(state.store?.imagenFarmaciaUrl||'');const valida=/^data:image\/(?:jpeg|jpg|png|webp);base64,/i.test(personalizada);img.src=valida?personalizada:DEFAULT_BRAND_LOGO_SRC;img.classList.toggle('custom-store-image',valida);img.alt=valida?`Imagen de ${text(state.store?.nombreActivo||state.store?.nombre||'la farmacia')}`:'Mi Farmacia';}
+  function refreshStoreImage(){
+    const img=$('brandLogo');
+    const personalizada=text(state.store?.imagenFarmaciaUrl||'');
+    const valida=/^data:image\/(?:jpeg|jpg|png|webp);base64,/i.test(personalizada);
+    const nombre=text(state.store?.nombreActivo||state.store?.nombre||'la farmacia');
+    if(img){img.src=valida?personalizada:DEFAULT_BRAND_LOGO_SRC;img.classList.toggle('custom-store-image',valida);img.alt=valida?`Imagen de ${nombre}`:'Mi Farmacia';}
+    const detalle=$('connectionStoreImage'),contenedor=$('connectionStorePhoto');
+    if(detalle&&contenedor){detalle.src=valida?personalizada:DEFAULT_BRAND_LOGO_SRC;detalle.alt=valida?`Imagen de ${nombre}`:'Mi Farmacia';contenedor.hidden=!valida;}
+    if(valida){document.body.classList.add('store-wallpaper');document.body.style.setProperty('--store-wallpaper',`url(${JSON.stringify(personalizada)})`);}
+    else{document.body.classList.remove('store-wallpaper');document.body.style.removeProperty('--store-wallpaper');}
+  }
+  function storeMapsUrl(){
+    const directa=text(state.store?.mapsUrl||state.publication?.mapsUrl||'');
+    if(/^https:\/\//i.test(directa))return directa;
+    const direccion=text(state.store?.direccion||'');
+    return direccion?`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(direccion)}`:'';
+  }
+  function openStoreMaps(){const url=storeMapsUrl();if(!url){toast('La farmacia aún no ha publicado su ubicación.');return;}window.open(url,'_blank','noopener,noreferrer');}
   function refreshStoreAvailability(){
     const pausada=storePaused();const paused=$('pausedState');if(paused)paused.hidden=!pausada;
     const search=document.querySelector('.search-shell');if(search)search.hidden=pausada;
@@ -401,9 +430,10 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
     $('connectionCatalog').textContent=cat;
     const direccion=text(state.store?.direccion||'')||'Dirección pendiente de sincronizar';
     $('connectionStoreAddress').textContent=direccion;
-    $('storePublicName').textContent=nombre;
-    $('storePublicAddress').textContent=direccion;
+    const publicAddress=$('storePublicAddress');if(publicAddress)publicAddress.textContent=direccion;
     $('pickupStoreAddress').textContent=direccion;
+    const maps=storeMapsUrl(),publicCard=$('storePublicCard');
+    if(publicCard){publicCard.disabled=!maps;publicCard.title=maps?'Abrir ubicación en Google Maps':'Ubicación pendiente de sincronizar';}
     refreshStoreImage();refreshStoreAvailability();
     const online=!!(state.store&&state.firebaseUrl&&!state.lastError);
     $('connectionState').textContent=online?(storePaused()?'Tienda pausada por mantenimiento':'Conectado al sistema principal'):(navigator.onLine?'Sin sincronizar':'Sin internet');
@@ -954,6 +984,7 @@ function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id
 
   function bind(){
     $('brandButton').addEventListener('click',openConnectionPanel);
+    $('storePublicCard')?.addEventListener('click',openStoreMaps);
     $('saveWelcomeProfile').addEventListener('click',saveWelcomeProfile);
     $('welcomePhone').addEventListener('keydown',e=>{if(e.key==='Enter')saveWelcomeProfile();});
     $('closeConnection').addEventListener('click',closeConnectionPanel);
