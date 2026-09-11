@@ -1,0 +1,31 @@
+name: Aplicar corrección de catálogo completo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/aplicar-cache-catalogo-completo-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Corregir caché incompleta del visor
+        run: python tools/patch_cache_catalogo_completo_temp.py
+      - name: Guardar cambios
+        run: |
+          git config user.name "Macroxel Update"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/index.html
+          if git diff --cached --quiet; then
+            echo "Sin cambios pendientes"
+          else
+            git commit -m "Corrige actualización completa del catálogo Mi Farmacia"
+            git push
+          fi
