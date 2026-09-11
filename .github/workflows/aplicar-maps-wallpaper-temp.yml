@@ -1,0 +1,31 @@
+name: Aplicar Maps e imagen de sucursal Mi Farmacia
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/aplicar-maps-wallpaper-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Aplicar Maps, fondo e imagen ampliada
+        run: python tools/patch_maps_wallpaper_temp.py
+      - name: Guardar cambios
+        run: |
+          git config user.name "Macroxel Update"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/index.html
+          if git diff --cached --quiet; then
+            echo "Sin cambios pendientes"
+          else
+            git commit -m "Agrega Maps y fondo de sucursal a Mi Farmacia"
+            git push
+          fi
