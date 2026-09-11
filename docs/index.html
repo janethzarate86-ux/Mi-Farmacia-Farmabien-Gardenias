@@ -67,6 +67,7 @@ main{position:relative;z-index:1}.app-header{z-index:40}.connection-panel,.modal
   .order-progress-close{position:absolute;top:8px;right:8px;width:28px;height:28px;border:1px solid #d8e2ec;border-radius:50%;background:#fff;color:#536579;font-size:18px;line-height:1;display:grid;place-items:center;cursor:pointer;z-index:2;padding:0}
   .order-progress-close:hover{background:#f1f5f9}
   .order-progress-top{padding-right:32px}
+  .delivery-radius-notice{margin:0 0 10px;padding:10px 11px;border:1px solid #b9d9ef;border-radius:12px;background:#eef8ff;color:#31536e;font-size:.67rem;line-height:1.42}.delivery-radius-notice strong{display:block;color:#075f9a;margin-bottom:4px}.delivery-radius-notice.warning{border-color:#f1cc82;background:#fff7df;color:#76520f}.delivery-radius-notice.ok{border-color:#b9e2cf;background:#eefaf4;color:#166447}.delivery-radius-notice.error{border-color:#efbdc6;background:#fff1f3;color:#9d2940}.delivery-location-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:7px}.delivery-location-actions button{border:1px solid #bfd6e8;background:#fff;color:#0b66ae;border-radius:9px;padding:6px 9px;font-size:.61rem;font-weight:900}.delivery-location-status{font-weight:800}.success-privacy-note{margin:10px 0 0;padding:9px 10px;border-radius:11px;background:#eef8f4;color:#166447;font-size:.67rem;font-weight:800;line-height:1.4}
 </style>
 </head>
 <body>
@@ -132,7 +133,7 @@ main{position:relative;z-index:1}.app-header{z-index:40}.connection-panel,.modal
       </div>
       <button id="saveWelcomeProfile" class="btn primary wide" type="button" style="margin-top:14px">Guardar y continuar</button>
       <p id="welcomeError" class="profile-error"></p>
-      <p class="privacy-note">Tus datos no se publican en el catálogo. Solo se usan para identificar los pedidos que tú envíes a esta farmacia.</p>
+      <p class="privacy-note">Tus datos de contacto se conservan únicamente en este dispositivo para identificar tus pedidos y viajan cifrados a la farmacia. La dirección y la fotografía de entrega se retiran del visor después de enviar.</p>
     </div>
   </div>
 
@@ -172,8 +173,8 @@ main{position:relative;z-index:1}.app-header{z-index:40}.connection-panel,.modal
       <button class="modal-close" type="button" data-close="checkout">✕</button>
       <p class="eyebrow">DATOS PARA TU PEDIDO</p><h2 id="checkoutTitle">Confirmar pedido</h2>
       <div class="checkout-grid">
-        <label>Nombre completo<input id="customerName" autocomplete="name" maxlength="80" placeholder="Tu nombre"></label>
-        <label>Teléfono<input id="customerPhone" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="10 dígitos"></label>
+        <input id="customerName" type="hidden"><input id="customerPhone" type="hidden">
+        <div class="privacy-note full">🔒 Tus datos de contacto ya están registrados en este dispositivo y se enviarán cifrados a la farmacia. No se muestran nuevamente al finalizar el carrito.</div>
         <label class="full">Observaciones<textarea id="customerNote" maxlength="240" placeholder="Opcional: indicaciones para la farmacia"></textarea></label>
       </div>
       <div class="delivery-choice">
@@ -190,6 +191,7 @@ main{position:relative;z-index:1}.app-header{z-index:40}.connection-panel,.modal
           </div>
         </div>
         <div id="homeDeliveryFields" class="delivery-section" hidden>
+          <div id="deliveryRadiusNotice" class="delivery-radius-notice warning"><strong>📍 Entrega a domicilio únicamente dentro de 1 km de la sucursal</strong><span id="deliveryLocationStatus" class="delivery-location-status">Necesitamos validar la ubicación de este dispositivo para confirmar que estás cerca de la farmacia.</span><div class="delivery-location-actions"><button id="validateDeliveryLocation" type="button">Validar mi ubicación</button><span>Tu ubicación exacta no se guarda en el historial.</span></div></div>
           <label>Dirección de entrega<textarea id="deliveryAddress" maxlength="260" autocomplete="street-address" placeholder="Calle, número, colonia, referencias"></textarea></label>
           <label style="margin-top:9px">Fotografía de la fachada<input id="deliveryFacade" type="file" accept="image/*" capture="environment"></label>
           <p class="delivery-help">La fotografía se comprime y viaja protegida junto con los datos privados de tu pedido.</p>
@@ -207,7 +209,7 @@ main{position:relative;z-index:1}.app-header{z-index:40}.connection-panel,.modal
     <div class="modal-backdrop"></div>
     <div class="modal-card success-card" role="dialog" aria-modal="true">
       <div class="success-mark">✓</div><p class="eyebrow">PEDIDO ENVIADO</p><h2>Tu farmacia ya recibió el pedido</h2>
-      <p>Conserva este folio para identificarlo.</p><div id="successOrderId" class="order-id">—</div>
+      <p>Conserva este folio para identificarlo.</p><div id="successOrderId" class="order-id">—</div><div class="success-privacy-note">🔒 Tus datos de contacto no se muestran en el pedido finalizado. La dirección y la fotografía de entrega ya fueron retiradas de esta pantalla.</div>
       <button id="closeSuccess" class="btn primary wide" type="button">Seguir comprando</button>
     </div>
   </div>
@@ -272,6 +274,8 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
   const STORAGE_CUSTOMER = 'mi_farmacia:customer:v1';
   const STORAGE_ORDERS = 'mi_farmacia:orders:v1';
   const STORAGE_PROGRESS_DISMISS = 'mi_farmacia:progress_dismiss:v1';
+  const STORAGE_LOCATION_PERMISSION = 'mi_farmacia:location_permission:v1';
+  const STORAGE_ORDER_RATE = 'mi_farmacia:order_rate:v1';
   const STORAGE_IMAGE_CACHE = 'mi_farmacia:image_cache:v2';
   const STORAGE_IMAGE_MASTER = 'mi_farmacia:image_master:v1';
   const CONFIG_FILE = window.MI_FARMACIA_CONFIG || {};
@@ -279,6 +283,10 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
   const IMAGE_CATALOG_CONFIG = window.MI_FARMACIA_IMAGE_CATALOG || {};
   let RUNTIME_CONFIG = {};
   const MAX_ORDER_QTY = 99;
+  const MAX_DELIVERY_DISTANCE_KM = 1;
+  const LOCATION_ACCURACY_LIMIT_M = 350;
+  const LOCATION_CACHE_MS = 3 * 60 * 1000;
+  const ORDER_SUBMIT_COOLDOWN_MS = 60 * 1000;
   const META_POLL_MS = 60000;
   const ORDER_STATUS_POLL_MS = 15000;
   const ORDER_PROGRESS_TTL_MS = 10 * 60 * 1000;
@@ -291,7 +299,7 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
   const IMAGE_MASTER_TTL = 10*60*1000;
   const IMAGE_NEGATIVE_CACHE_TTL = 3*24*60*60*1000;
   const IMAGE_LOOKUP_GAP_MS = 4500;
-  const state = { firebaseUrl:'', bootstrapUrl:'', githubUrl:'', storeId:'', store:null, publication:null, catalogMeta:null, lastResolveAt:0, lastError:'', products:[], productMap:new Map(), cart:new Map(), category:'TODOS', selected:null, loading:false, displayLimit:60, cacheLoaded:false, imageQueue:[], imageBusy:false, imageLastLookup:0, imageMaster:{}, imageMasterLoaded:false, imageMasterRevision:'', facadeData:'', orderStatusBusy:false, historyOrderOpenId:'' };
+  const state = { firebaseUrl:'', bootstrapUrl:'', githubUrl:'', storeId:'', store:null, publication:null, catalogMeta:null, lastResolveAt:0, lastError:'', products:[], productMap:new Map(), cart:new Map(), category:'TODOS', selected:null, loading:false, displayLimit:60, cacheLoaded:false, imageQueue:[], imageBusy:false, imageLastLookup:0, imageMaster:{}, imageMasterLoaded:false, imageMasterRevision:'', facadeData:'', orderStatusBusy:false, historyOrderOpenId:'', deviceLocation:null, deviceLocationAt:0, deliveryLocationCheck:null };
   const imageCache = readJsonStorage(STORAGE_IMAGE_CACHE,{});
   const money = n => Number(n || 0).toLocaleString('es-MX',{style:'currency',currency:'MXN'});
   const text = v => String(v ?? '').trim();
@@ -419,6 +427,13 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
     return direccion?`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(direccion)}`:'';
   }
   function openStoreMaps(){const url=storeMapsUrl();if(!url){toast('La farmacia aún no ha publicado su ubicación.');return;}window.open(url,'_blank','noopener,noreferrer');}
+  function coordinatesFromMapsUrl(raw){const value=text(raw);if(!value)return null;const patterns=[/@(-?\d{1,2}(?:\.\d+)?),(-?\d{1,3}(?:\.\d+)?)/,/!3d(-?\d{1,2}(?:\.\d+)?)!4d(-?\d{1,3}(?:\.\d+)?)/,/[?&](?:q|query|ll)=(-?\d{1,2}(?:\.\d+)?)(?:%2C|,)(-?\d{1,3}(?:\.\d+)?)/i];for(const p of patterns){const m=value.match(p);if(!m)continue;const lat=Number(m[1]),lng=Number(m[2]);if(Number.isFinite(lat)&&Number.isFinite(lng)&&Math.abs(lat)<=90&&Math.abs(lng)<=180)return{lat,lng};}return null;}
+  function storeCoordinates(){const candidates=[state.store?.ubicacion,state.publication?.ubicacion,state.store,state.publication];for(const c of candidates){if(!c||typeof c!=='object')continue;const lat=Number(c.latitud??c.lat??c.latitude),lng=Number(c.longitud??c.lng??c.lon??c.longitude);if(Number.isFinite(lat)&&Number.isFinite(lng)&&Math.abs(lat)<=90&&Math.abs(lng)<=180)return{lat,lng};}return coordinatesFromMapsUrl(storeMapsUrl());}
+  function haversineKm(a,b){if(!a||!b)return Infinity;const rad=v=>Number(v)*Math.PI/180,R=6371,dLat=rad(b.lat-a.lat),dLng=rad(b.lng-a.lng),x=Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLng/2)**2;return 2*R*Math.asin(Math.min(1,Math.sqrt(x)));}
+  function locationStatus(message,type='warning'){const box=$('deliveryRadiusNotice'),status=$('deliveryLocationStatus');if(status)status.textContent=message||'';if(box){box.classList.remove('warning','ok','error');box.classList.add(type);}}
+  function getDevicePosition({force=false}={}){if(!navigator.geolocation)return Promise.reject(new Error('Este dispositivo no permite usar ubicación.'));if(!force&&state.deviceLocation&&Date.now()-Number(state.deviceLocationAt||0)<LOCATION_CACHE_MS)return Promise.resolve(state.deviceLocation);return new Promise((resolve,reject)=>navigator.geolocation.getCurrentPosition(pos=>{const point={lat:Number(pos.coords.latitude),lng:Number(pos.coords.longitude),accuracy:Number(pos.coords.accuracy||0)};state.deviceLocation=point;state.deviceLocationAt=Date.now();resolve(point);},err=>reject(new Error(err?.code===1?'No autorizaste el uso de ubicación. Para entrega a domicilio es necesario permitirla.':err?.code===2?'No fue posible determinar tu ubicación. Activa la ubicación del dispositivo e inténtalo de nuevo.':'La validación de ubicación tardó demasiado. Inténtalo nuevamente.')),{enableHighAccuracy:true,timeout:12000,maximumAge:force?0:60000}));}
+  async function ensureDeliveryLocation({force=false,quiet=false}={}){const store=storeCoordinates();if(!store){const result={ok:false,reason:'STORE_LOCATION_MISSING'};state.deliveryLocationCheck=result;if(!quiet)locationStatus('La farmacia todavía no ha publicado coordenadas precisas de su sucursal. Por ahora selecciona recoger en sucursal.','error');return result;}try{if(!quiet)locationStatus('Validando tu ubicación…','warning');const point=await getDevicePosition({force});const accuracy=Number(point.accuracy||0);if(accuracy>LOCATION_ACCURACY_LIMIT_M){const result={ok:false,reason:'LOW_ACCURACY',accuracy};state.deliveryLocationCheck=result;if(!quiet)locationStatus(`La ubicación tiene una precisión de aproximadamente ${Math.round(accuracy)} m. Activa ubicación precisa y vuelve a intentarlo.`,'error');return result;}const distanceKm=haversineKm(point,store),result={ok:distanceKm<=MAX_DELIVERY_DISTANCE_KM,distanceKm,accuracy,checkedAt:nowISO()};state.deliveryLocationCheck=result;if(!quiet){if(result.ok)locationStatus(`Ubicación validada: estás aproximadamente a ${Math.max(.01,distanceKm).toFixed(2)} km de la sucursal. Puedes solicitar entrega a domicilio.`,'ok');else locationStatus(`La entrega a domicilio está limitada a ${MAX_DELIVERY_DISTANCE_KM} km. Tu ubicación está aproximadamente a ${distanceKm.toFixed(2)} km de la sucursal.`,'error');}return result;}catch(error){const result={ok:false,reason:'PERMISSION',error:text(error?.message||error)};state.deliveryLocationCheck=result;if(!quiet)locationStatus(result.error,'error');return result;}}
+  async function requestLocationOnActivation(){if(!navigator.geolocation||!storeCoordinates())return false;let permission='prompt';try{if(navigator.permissions?.query){const p=await navigator.permissions.query({name:'geolocation'});permission=p.state;}}catch(_){}const saved=readJsonStorage(STORAGE_LOCATION_PERMISSION,{});if(permission==='denied')return false;if(permission==='granted'){await ensureDeliveryLocation({quiet:true}).catch(()=>{});return true;}if(Number(saved?.askedAt||0)&&Date.now()-Number(saved.askedAt)<86400000)return false;writeJsonStorage(STORAGE_LOCATION_PERMISSION,{askedAt:Date.now(),status:'asked'});const result=await ensureDeliveryLocation({quiet:true}).catch(()=>({ok:false}));return !!result?.ok;}
   function refreshStoreAvailability(){
     const pausada=storePaused();const paused=$('pausedState');if(paused)paused.hidden=!pausada;
     const search=document.querySelector('.search-shell');if(search)search.hidden=pausada;
@@ -476,7 +491,7 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
     const name=text($('welcomeName').value);const phone=String($('welcomePhone').value||'').replace(/\D/g,'');
     if(name.length<3){$('welcomeError').textContent='Escribe tu nombre completo.';$('welcomeName').focus();return;}
     if(phone.length<10){$('welcomeError').textContent='Escribe un teléfono válido de al menos 10 dígitos.';$('welcomePhone').focus();return;}
-    writeJsonStorage(STORAGE_CUSTOMER,{name,phone,updatedAt:nowISO()});$('welcomeModal').hidden=true;$('welcomeError').textContent='';if($('welcomeModal').hidden&&$('quantityModal').hidden&&$('checkoutModal').hidden&&$('successModal').hidden&&$('cartDrawer').hidden&&$('connectionPanel').hidden)document.body.style.overflow='';toast('Datos guardados en este dispositivo');
+    writeJsonStorage(STORAGE_CUSTOMER,{name,phone,updatedAt:nowISO()});$('welcomeModal').hidden=true;$('welcomeError').textContent='';if($('welcomeModal').hidden&&$('quantityModal').hidden&&$('checkoutModal').hidden&&$('successModal').hidden&&$('cartDrawer').hidden&&$('connectionPanel').hidden)document.body.style.overflow='';toast('Datos listos para tu pedido');requestLocationOnActivation().catch(()=>{});
   }
   function barcodeOf(product){
     const raw=String(product?.imagenClave||product?.codigo||'').replace(/\D/g,'');
@@ -904,7 +919,11 @@ function changeCart(id,delta){const item=state.cart.get(id);if(!item)return;cons
   function closeCart(){closeModal('cartDrawer')}
 
   function deliveryType(){return document.querySelector('input[name="deliveryType"]:checked')?.value||'RECOGER_SUCURSAL'}
-  function refreshDeliveryFields(){const home=deliveryType()==='DOMICILIO';$('pickupFields').hidden=home;$('homeDeliveryFields').hidden=!home;if(!home){$('checkoutMessage').textContent='';}}
+  function refreshDeliveryFields(){const home=deliveryType()==='DOMICILIO';$('pickupFields').hidden=home;$('homeDeliveryFields').hidden=!home;if(!home){$('checkoutMessage').textContent='';state.deliveryLocationCheck=null;}else locationStatus(`Entrega disponible únicamente dentro de ${MAX_DELIVERY_DISTANCE_KM} km de la sucursal. Valida tu ubicación para continuar.`,'warning');}
+  async function onDeliveryTypeChanged(){refreshDeliveryFields();if(deliveryType()!=='DOMICILIO')return;const result=await ensureDeliveryLocation({force:false});if(!result.ok)$('checkoutMessage').textContent='No podemos confirmar entrega a domicilio con esta ubicación. Puedes continuar seleccionando recoger en sucursal.';}
+  function clearPrivateCustomerData(){for(const id of ['customerName','customerPhone','customerNote','deliveryAddress']){const el=$(id);if(el)el.value='';}clearFacade();state.deliveryLocationCheck=null;state.deviceLocation=null;state.deviceLocationAt=0;}
+  function hasActiveLocalOrder(){return localOrders().some(o=>['NUEVO','EN_PROCESO','PREPARANDO','PREPARANDO_PEDIDO'].includes(text(o?.estado||'').toUpperCase()))}
+  function orderRateRemaining(){const rate=readJsonStorage(STORAGE_ORDER_RATE,{}),elapsed=Date.now()-Number(rate?.lastSentAt||0);return Math.max(0,ORDER_SUBMIT_COOLDOWN_MS-elapsed)}
   function clearFacade(){state.facadeData='';$('deliveryFacade').value='';$('facadePreview').hidden=true;$('facadePreviewImage').removeAttribute('src')}
   async function fileToCompressedDataUrl(file){
     if(!file||!String(file.type||'').startsWith('image/'))throw new Error('Selecciona una fotografía válida de la fachada.');
@@ -991,7 +1010,7 @@ function renderOrderHistory(){
         ? items.map(it=>`<div class="order-history-detail-row"><span><b>${Number(it.cantidad||0).toLocaleString('es-MX')} pza(s)</b> · ${esc(it.nombre||it.codigo||'Producto')}<br>${esc(it.presentacion||'')}</span><b>${money(Number(it.importe||0)||Number(it.precioUnitario||0)*Number(it.cantidad||0))}</b></div>`).join('')
         : '<div class="order-history-detail-meta">Este pedido fue guardado con una versión anterior. El detalle de productos no quedó almacenado en este dispositivo.</div>';
       const detalleEntrega=o.entrega?.tipo==='DOMICILIO'
-        ? `Entrega a domicilio${o.entrega?.direccion?` · ${esc(o.entrega.direccion)}`:''}`
+        ? `Entrega a domicilio`
         : `Recoger en sucursal${o.entrega?.fechaEstimada?` · ${esc(o.entrega.fechaEstimada)}`:''}${o.entrega?.horaEstimada?` ${esc(o.entrega.horaEstimada)}`:''}`;
       const total=Number(o.total||0);
       const detalle=abierto?`<div class="order-history-detail"><h3>Detalle del pedido</h3>${detalleItems}<div class="order-history-detail-meta"><b>${esc(detalleEntrega)}</b>${Number(o.pieces||0)?` · ${Number(o.pieces).toLocaleString('es-MX')} pieza(s)`:''}${total?` · Total ${money(total)}`:''}</div></div>`:'';
@@ -1027,6 +1046,9 @@ function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id
     if(name.length<3){$('checkoutMessage').textContent='Escribe tu nombre completo.';$('customerName').focus();return}
     if(phone.length<10){$('checkoutMessage').textContent='Escribe un teléfono válido de al menos 10 dígitos.';$('customerPhone').focus();return}
     if(!cartValues().length){$('checkoutMessage').textContent='El carrito está vacío.';return}
+    if(hasActiveLocalOrder()){$('checkoutMessage').textContent='Ya tienes un pedido activo. Espera a que la farmacia lo surta o cancele antes de enviar otro pedido desde este dispositivo.';return}
+    const restante=orderRateRemaining();if(restante>0){$('checkoutMessage').textContent=`Espera ${Math.ceil(restante/1000)} segundos antes de enviar otro pedido.`;return}
+    let verificacionUbicacion=null;if(tipo==='DOMICILIO'){verificacionUbicacion=await ensureDeliveryLocation({force:true});if(!verificacionUbicacion.ok){$('checkoutMessage').textContent=verificacionUbicacion.reason==='STORE_LOCATION_MISSING'?'La entrega a domicilio no está disponible hasta que la farmacia publique su ubicación precisa. Selecciona recoger en sucursal.':(verificacionUbicacion.error||`La entrega a domicilio solo está disponible dentro de ${MAX_DELIVERY_DISTANCE_KM} km de la sucursal.`);return}}
     const entrega=tipo==='DOMICILIO'
       ? {tipo:'DOMICILIO',direccion:text($('deliveryAddress').value),fachada:state.facadeData||''}
       : {tipo:'RECOGER_SUCURSAL',fechaEstimada:text($('pickupDate').value),horaEstimada:text($('pickupTime').value)};
@@ -1035,13 +1057,13 @@ function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id
     state.loading=true;$('submitOrder').disabled=true;$('submitOrder').textContent='Validando disponibilidad…';$('checkoutMessage').textContent='';
     try{
       await verifyStockBeforeOrder();const totals=cartTotals(),id=orderId(),token=statusToken(),creadoEn=nowISO();const items=cartValues().map(i=>({idProducto:i.id,codigo:i.codigo||'',generica:i.generica||'',distintiva:i.distintiva||'',nombre:i.nombre,presentacion:i.presentacion||'',cantidad:Number(i.cantidad),precioUnitario:Number(i.precio||0),importe:Number(i.cantidad)*Number(i.precio||0)}));
-      $('submitOrder').textContent='Protegiendo datos…';const contenidoCifrado=await encryptOrderContent({cliente:{nombre:name,telefono:phone},observaciones:note,entrega,items,piezas:totals.pieces,totalEstimado:Math.round(totals.total*100)/100});
+      $('submitOrder').textContent='Protegiendo datos…';const entregaPrivada=tipo==='DOMICILIO'?{...entrega,validacionUbicacion:{validada:true,distanciaKm:Number(verificacionUbicacion?.distanceKm||0).toFixed(3),precisionMetros:Math.round(Number(verificacionUbicacion?.accuracy||0)),verificadaEn:verificacionUbicacion?.checkedAt||nowISO()}}:entrega;const contenidoCifrado=await encryptOrderContent({cliente:{nombre:name,telefono:phone},observaciones:note,entrega:entregaPrivada,items,piezas:totals.pieces,totalEstimado:Math.round(totals.total*100)/100});
       const payload={version:1,origen:'MI_FARMACIA_GITHUB',id,tiendaId:state.storeId,tiendaNombre:text(state.store?.nombreActivo||state.store?.nombre||''),estado:'NUEVO',consultaToken:token,creadoEn,actualizadoEn:creadoEn,contenidoCifrado};
       $('submitOrder').textContent='Enviando pedido…';await request(`mi_farmacia/pedidos/${state.storeId}/${id}`,{method:'PUT',body:payload});
       const statusPayload={version:1,pedidoId:id,tiendaId:state.storeId,estado:'NUEVO',mensaje:'Pedido enviado a sucursal.',creadoEn,actualizadoEn:creadoEn};
       try{await request(`mi_farmacia/pedidos_estado/${state.storeId}/${token}`,{method:'PUT',body:statusPayload})}catch(error){console.warn('El pedido se envió, pero el seguimiento inicial no pudo publicarse:',error)}
       try{await request(`mi_farmacia/pedidos_meta/${state.storeId}`,{method:'PUT',body:{revision:Date.now(),actualizadoEn:nowISO()}})}catch(_){}
-      writeJsonStorage(STORAGE_CUSTOMER,{name,phone,updatedAt:nowISO()});localStorage.setItem('mi_farmacia:last_order',JSON.stringify({id,storeId:state.storeId,createdAt:creadoEn}));addLocalOrder({id,storeId:state.storeId,token,createdAt:creadoEn,estado:'NUEVO',mensaje:statusPayload.mensaje,entrega:{tipo:entrega.tipo,fechaEstimada:entrega.fechaEstimada||'',horaEstimada:entrega.horaEstimada||'',direccion:entrega.direccion||''},items:items.map(it=>({codigo:it.codigo,nombre:it.nombre,presentacion:it.presentacion,cantidad:Number(it.cantidad||0),precioUnitario:Number(it.precioUnitario||0),importe:Number(it.importe||0)})),pieces:totals.pieces,total:Math.round(totals.total*100)/100});state.cart.clear();persistCart();renderCart();clearFacade();closeModal('checkoutModal');$('successOrderId').textContent=id;$('successModal').hidden=false;document.body.style.overflow='hidden';refreshOrderStatuses();
+      writeJsonStorage(STORAGE_CUSTOMER,{name,phone,updatedAt:nowISO()});localStorage.setItem('mi_farmacia:last_order',JSON.stringify({id,storeId:state.storeId,createdAt:creadoEn}));writeJsonStorage(STORAGE_ORDER_RATE,{lastSentAt:Date.now(),orderId:id});addLocalOrder({id,storeId:state.storeId,token,createdAt:creadoEn,estado:'NUEVO',mensaje:statusPayload.mensaje,entrega:{tipo:entrega.tipo,fechaEstimada:entrega.fechaEstimada||'',horaEstimada:entrega.horaEstimada||''},items:items.map(it=>({codigo:it.codigo,nombre:it.nombre,presentacion:it.presentacion,cantidad:Number(it.cantidad||0),precioUnitario:Number(it.precioUnitario||0),importe:Number(it.importe||0)})),pieces:totals.pieces,total:Math.round(totals.total*100)/100});state.cart.clear();persistCart();renderCart();clearPrivateCustomerData();closeModal('checkoutModal');$('successOrderId').textContent=id;$('successModal').hidden=false;document.body.style.overflow='hidden';refreshOrderStatuses();
     }catch(e){$('checkoutMessage').textContent=e.message||String(e);setStatus(false,'Revisar conexión')}
     finally{state.loading=false;$('submitOrder').disabled=false;$('submitOrder').textContent='Enviar pedido a la farmacia'}
   }
@@ -1064,7 +1086,7 @@ function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id
     $('orderProgressPanel').addEventListener('click',e=>{if(e.target.closest('[data-close-progress]')){e.stopPropagation();dismissOrderProgress();return}openHistory()});$('orderProgressPanel').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('[data-close-progress]')){e.preventDefault();openHistory()}});$('orderHistoryButton').addEventListener('click',openHistory);$('deleteOrderHistory').addEventListener('click',deleteOrderHistory);document.querySelectorAll('[data-close="history"]').forEach(el=>el.addEventListener('click',closeHistory));$('orderHistoryList').addEventListener('click',e=>{const row=e.target.closest('[data-history-order]');if(row)toggleHistoryOrderDetail(row.dataset.historyOrder)});$('orderHistoryList').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-history-order]')){e.preventDefault();toggleHistoryOrderDetail(e.target.dataset.historyOrder)}});
     $('cartButton').addEventListener('click',openCart);document.querySelectorAll('[data-close="cart"]').forEach(el=>el.addEventListener('click',closeCart));
     $('cartItems').addEventListener('click',e=>{const minus=e.target.closest('[data-cart-minus]'),plus=e.target.closest('[data-cart-plus]'),remove=e.target.closest('[data-cart-remove]');if(minus)changeCart(minus.dataset.cartMinus,-1);if(plus)changeCart(plus.dataset.cartPlus,1);if(remove){state.cart.delete(remove.dataset.cartRemove);persistCart();renderCart()}});$('checkoutButton').addEventListener('click',openCheckout);
-    document.querySelectorAll('[data-close="checkout"]').forEach(el=>el.addEventListener('click',()=>closeModal('checkoutModal')));$('submitOrder').addEventListener('click',submitOrder);$('deliveryPickup').addEventListener('change',refreshDeliveryFields);$('deliveryHome').addEventListener('change',refreshDeliveryFields);$('deliveryFacade').addEventListener('change',onFacadeSelected);$('enableOrderNotifications').addEventListener('click',enableOrderNotifications);$('closeSuccess').addEventListener('click',()=>{closeModal('successModal');loadCatalog({quiet:true,forceNetwork:true});refreshOrderStatuses()});
+    document.querySelectorAll('[data-close="checkout"]').forEach(el=>el.addEventListener('click',()=>closeModal('checkoutModal')));$('submitOrder').addEventListener('click',submitOrder);$('deliveryPickup').addEventListener('change',onDeliveryTypeChanged);$('deliveryHome').addEventListener('change',onDeliveryTypeChanged);$('validateDeliveryLocation')?.addEventListener('click',()=>ensureDeliveryLocation({force:true}));$('deliveryFacade').addEventListener('change',onFacadeSelected);$('enableOrderNotifications').addEventListener('click',enableOrderNotifications);$('closeSuccess').addEventListener('click',()=>{closeModal('successModal');loadCatalog({quiet:true,forceNetwork:true});refreshOrderStatuses()});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('connectionPanel').hidden)closeConnectionPanel();else if(!$('quantityModal').hidden)closeModal('quantityModal');else if(!$('historyDrawer').hidden)closeHistory();else if(!$('cartDrawer').hidden)closeCart();else if(!$('checkoutModal').hidden)closeModal('checkoutModal')}});
     window.addEventListener('online',()=>loadCatalog({quiet:true,forceNetwork:true}));window.addEventListener('offline',()=>setStatus(false,'Sin internet'));
     document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){runImageQueue();refreshOrderStatuses();if(navigator.onLine){loadMasterImageCatalog();loadCatalog({quiet:true,forceNetwork:true})}}});
@@ -1086,6 +1108,7 @@ function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id
       // a propósito para evitar anclar el visor a una farmacia fija.
       if(!state.firebaseUrl)throw new Error('La conexión central de Mi Farmacia está incompleta. Genera la carpeta GitHub completa desde Macroxel.');
       await loadCatalog({quiet:!!state.products.length,forceNetwork:true});
+      if($('welcomeModal')?.hidden)setTimeout(()=>requestLocationOnActivation().catch(()=>{}),700);
       loadMasterImageCatalog({force:true}).catch(()=>{});
       refreshOrderStatuses();
       setInterval(()=>{if(document.visibilityState==='visible'&&navigator.onLine){loadMasterImageCatalog().catch(()=>{});loadCatalog({quiet:true,forceNetwork:true})}},META_POLL_MS);
