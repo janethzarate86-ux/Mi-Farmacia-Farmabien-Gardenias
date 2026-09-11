@@ -1,0 +1,65 @@
+name: Reemplazo limpio cargador catalogo
+on:
+  push:
+    paths:
+      - '.github/workflows/replace-catalog-loader-v2-temp.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sustituir lógica anterior
+        run: python tools/replace-catalog-loader-v2.py
+      - name: Validar JavaScript y lógica única
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('docs/index.html').read_text(encoding='utf-8')
+          blocks=re.findall(r'<script(?:\s[^>]*)?>(.*?)</script>',s,re.S|re.I)
+          inline=[]
+          for b in blocks:
+              if b.strip(): inline.append(b)
+          if not inline: raise SystemExit('No se encontraron scripts inline')
+          for i,b in enumerate(inline): Path(f'/tmp/mf-inline-{i}.js').write_text(b,encoding='utf-8')
+          print('scripts_inline=',len(inline))
+          print('loadCatalog_count=',s.count('async function loadCatalog('))
+          print('checkCatalogIntegrity_count=',s.count('async function checkCatalogIntegrity('))
+          assert s.count('async function loadCatalog(')==1
+          assert s.count('async function checkCatalogIntegrity(')==1
+          assert 'verifyCatalogIntegrity' not in s
+          assert 'single-file-v2.0.0-catalog-loader-clean' in s
+          PY
+          for f in /tmp/mf-inline-*.js; do node --check "$f"; done
+      - name: Probar catálogo publicado real
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const cfg=JSON.parse(fs.readFileSync('docs/macroxel-config.json','utf8'));
+          const base=String(cfg.firebaseUrl||'').replace(/\/+$/,'');
+          async function get(p){const r=await fetch(`${base}/${p.replace(/^\/+|\/+$/g,'')}.json`,{headers:{Accept:'application/json'}});if(!r.ok)throw new Error(`${p}: HTTP ${r.status}`);return r.json();}
+          (async()=>{
+            const pub=await get('mi_farmacia/publicacion')||{};
+            const id=String(pub.tiendaId||cfg.tiendaId||'');
+            if(!id)throw new Error('Sin tiendaId');
+            const [store,meta,productos]=await Promise.all([get(`mi_farmacia/tiendas/${id}`),get(`mi_farmacia/catalogo/${id}/meta`),get(`mi_farmacia/catalogo/${id}/productos`)]);
+            const count=productos&&typeof productos==='object'?Object.keys(productos).length:0;
+            console.log('tienda=',id,'productos=',count,'meta_total=',Number(meta?.totalProductos||0));
+            if(!store||!count)throw new Error('No existe catálogo utilizable');
+            if(Number(meta?.totalProductos||0)!==count)throw new Error('Conteo de meta y catálogo no coincide');
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - name: Guardar cambio final
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/index.html
+          git diff --cached --quiet && exit 0
+          git commit -m 'Reemplaza cargador del catálogo por lógica limpia y tolerante'
+          git push
