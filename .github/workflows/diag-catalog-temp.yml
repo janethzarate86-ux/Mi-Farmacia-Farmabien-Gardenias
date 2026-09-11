@@ -17,12 +17,8 @@ jobs:
           python - <<'PY'
           import json, urllib.request, urllib.error
           from pathlib import Path
-
           cfg=json.loads(Path('docs/macroxel-config.json').read_text(encoding='utf-8'))
           base=str(cfg.get('firebaseUrl','')).rstrip('/')
-          print('config_version=',cfg.get('version'))
-          print('config_storeId=',cfg.get('tiendaId'))
-
           def get(path):
               url=f"{base}/{path.strip('/')}.json"
               req=urllib.request.Request(url,headers={'Accept':'application/json','User-Agent':'MacroxelCatalogDiag/1.0'})
@@ -30,35 +26,56 @@ jobs:
                   with urllib.request.urlopen(req,timeout=20) as r:
                       raw=r.read().decode('utf-8','replace')
                       print(path,'HTTP',r.status,'bytes',len(raw))
-                      try:return json.loads(raw) if raw else None
-                      except Exception as e:
-                          print(path,'JSON_ERROR',type(e).__name__); return None
+                      return json.loads(raw) if raw else None
               except urllib.error.HTTPError as e:
-                  body=e.read().decode('utf-8','replace')
-                  print(path,'HTTP_ERROR',e.code,body[:300]); return None
+                  body=e.read().decode('utf-8','replace'); print(path,'HTTP_ERROR',e.code,body[:300]); return None
               except Exception as e:
                   print(path,'ERROR',type(e).__name__,str(e)[:300]); return None
-
           pub=get('mi_farmacia/publicacion') or {}
           store_id=str(pub.get('tiendaId') or cfg.get('tiendaId') or '')
           print('resolved_storeId=',store_id)
-          print('publication_keys=',sorted(pub.keys()))
-
           store=get(f'mi_farmacia/tiendas/{store_id}') or {}
-          print('store_keys=',sorted(store.keys()))
+          meta=get(f'mi_farmacia/catalogo/{store_id}/meta') or {}
+          productos=get(f'mi_farmacia/catalogo/{store_id}/productos')
           print('store_has_order_key=',bool(store.get('clavePedidosId')))
           print('store_has_catalog_key=',bool(store.get('claveFirmaCatalogoId') or store.get('clavePublicaFirmaCatalogo')))
-
-          meta=get(f'mi_farmacia/catalogo/{store_id}/meta') or {}
           print('meta=',{k:meta.get(k) for k in ['version','revision','baseRevision','totalProductos','actualizadoEn']})
           sig=meta.get('firmaCatalogo') or {}
           print('meta_signature=',{'has_value':bool(sig.get('value')),'keyId':sig.get('keyId')})
-
-          productos=get(f'mi_farmacia/catalogo/{store_id}/productos')
-          print('productos_type=',type(productos).__name__)
           print('productos_count=',len(productos) if isinstance(productos,dict) else None)
-          if isinstance(productos,dict) and productos:
-              sample_key=next(iter(productos))
-              sample=productos[sample_key] if isinstance(productos[sample_key],dict) else {}
-              print('sample_fields=',sorted(sample.keys()))
           PY
+      - name: Verificar firma igual que el navegador
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const cfg=JSON.parse(fs.readFileSync('docs/macroxel-config.json','utf8'));
+          const base=String(cfg.firebaseUrl||'').replace(/\/+$/,'');
+          async function get(path){const r=await fetch(`${base}/${path.replace(/^\/+|\/+$/g,'')}.json`,{headers:{Accept:'application/json'}});if(!r.ok)throw new Error(`${path}: HTTP ${r.status}`);return await r.json();}
+          function canonicalJson(value){
+            if(value===null||typeof value!=='object') return JSON.stringify(value);
+            if(Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+            const keys=Object.keys(value).filter(k=>value[k]!==undefined).sort();
+            return `{${keys.map(k=>`${JSON.stringify(k)}:${canonicalJson(value[k])}`).join(',')}}`;
+          }
+          (async()=>{
+            const pub=await get('mi_farmacia/publicacion')||{};
+            const storeId=String(pub.tiendaId||cfg.tiendaId||'');
+            const [store,meta,productos]=await Promise.all([
+              get(`mi_farmacia/tiendas/${storeId}`),
+              get(`mi_farmacia/catalogo/${storeId}/meta`),
+              get(`mi_farmacia/catalogo/${storeId}/productos`)
+            ]);
+            const sig=meta?.firmaCatalogo||{};
+            const jwk=store?.clavePublicaFirmaCatalogo;
+            const signature=Buffer.from(String(sig.value||''),'base64');
+            console.log('signature_bytes=',signature.length);
+            console.log('expected_key_id=',store?.claveFirmaCatalogoId,'signature_key_id=',sig?.keyId);
+            const payload={version:2,tiendaId:storeId,revision:Number(meta?.revision||0)||0,productos:productos||{}};
+            const encoded=new TextEncoder().encode(canonicalJson(payload));
+            console.log('canonical_bytes=',encoded.length);
+            const key=await crypto.subtle.importKey('jwk',jwk,{name:'ECDSA',namedCurve:'P-256'},false,['verify']);
+            const ok=await crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'},key,signature,encoded);
+            console.log('webcrypto_verify=',ok);
+          })().catch(e=>{console.error('VERIFY_ERROR',e?.stack||e);process.exitCode=1});
+          NODE
