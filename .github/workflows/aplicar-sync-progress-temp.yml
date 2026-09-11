@@ -1,0 +1,32 @@
+name: Aplicar sincronizacion y seguimiento
+
+on:
+  push:
+    paths:
+      - '.github/workflows/aplicar-sync-progress-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Aplicar correcciones
+        run: python tools/patch_sync_progress_temp.py
+      - name: Validar marcadores
+        run: |
+          grep -q "data-close-progress" docs/index.html
+          grep -q "Catálogo disponible" docs/index.html
+          grep -q "productosFallback" docs/index.html
+      - name: Guardar cambio
+        run: |
+          git config user.name "janethzarate86-ux"
+          git config user.email "janeth.zarate86@gmail.com"
+          git add docs/index.html
+          git commit -m "Corrige sincronizacion visual y seguimiento cerrable"
+          git push
