@@ -767,8 +767,11 @@ function insufficientStockMessage(p,requested){
       const cacheRevision=cacheValida?Number(cache.revision||0):0;
       const revision=Number(meta.revision||0);
       const baseRevision=Number(meta.baseRevision||revision);
-      let usoCache=!!productos;
-      if(!productos||cacheRevision<baseRevision){
+      const cacheTotal=productos&&typeof productos==='object'?Object.keys(productos).length:0;
+      const metaTotal=Number(meta.totalProductos||0);
+      const cacheIncompleta=!!(productos&&metaTotal>=0&&cacheTotal!==metaTotal);
+      let usoCache=!!productos&&!cacheIncompleta;
+      if(forceNetwork||cacheIncompleta||!productos||cacheRevision<baseRevision){
         if(productosInicialPromise){const inicial=await productosInicialPromise;if(!inicial.ok)throw inicial.error;productos=inicial.value;}
         else productos=await request(productosPath,{timeoutMs:FIREBASE_CATALOG_TIMEOUT_MS});
         usoCache=false;
