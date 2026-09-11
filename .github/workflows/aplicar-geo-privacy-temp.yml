@@ -1,0 +1,23 @@
+name: Aplicar ubicacion y privacidad de pedidos
+on:
+  push:
+    paths:
+      - tools/patch_geo_privacy_temp.py
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: python tools/patch_geo_privacy_temp.py
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html
+          git diff --cached --quiet || git commit -m "Agrega privacidad y validacion de ubicacion a Mi Farmacia"
+          git push
