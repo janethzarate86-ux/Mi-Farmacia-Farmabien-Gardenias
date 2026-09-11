@@ -18,6 +18,7 @@ s=s.replace("historyOrderOpenId:'', deviceLocation:null, deviceLocationAt:0, del
 
 s=re.sub(r'  function coordinatesFromMapsUrl\(raw\)\{.*?(?=  function refreshStoreAvailability\()', '', s, count=1, flags=re.S)
 s=s.replace("toast('Datos listos para tu pedido');requestLocationOnActivation().catch(()=>{});", "toast('Datos listos para tu pedido');")
+s=re.sub(r"\s*if\(\$\('welcomeModal'\)\?\.hidden\)\s*setTimeout\(\(\)=>requestLocationOnActivation\(\)\.catch\(\(\)=>\{\}\),700\);", '', s)
 
 s=re.sub(r'''  function deliveryType\(\)\{return document\.querySelector\('input\[name="deliveryType"\]:checked'\)\?\.value\|\|'RECOGER_SUCURSAL'\}\n  function refreshDeliveryFields\(\)\{.*?\n  function hasActiveLocalOrder\(\)''', '''  function deliveryType(){return document.querySelector('input[name="deliveryType"]:checked')?.value||'RECOGER_SUCURSAL'}
   function refreshDeliveryFields(){const home=deliveryType()==='DOMICILIO';$('pickupFields').hidden=home;$('homeDeliveryFields').hidden=!home;if(!home)$('checkoutMessage').textContent='';}
@@ -29,7 +30,6 @@ s=re.sub(r"    let verificacionUbicacion=null;\n    if\(tipo==='DOMICILIO'\)\{ve
 s=re.sub(r"const entregaPrivada=tipo==='DOMICILIO'\?\{\.\.\.entrega,validacionUbicacion:\{.*?\}\}:entrega;const contenidoCifrado=await encryptOrderContent\(\{cliente:\{nombre:name,telefono:phone\},observaciones:note,entrega:entregaPrivada,", "const contenidoCifrado=await encryptOrderContent({cliente:{nombre:name,telefono:phone},observaciones:note,entrega,", s, count=1, flags=re.S)
 
 s=s.replace("$('deliveryPickup').addEventListener('change',onDeliveryTypeChanged);$('deliveryHome').addEventListener('change',onDeliveryTypeChanged);$('validateDeliveryLocation')?.addEventListener('click',()=>ensureDeliveryLocation({force:true}));", "$('deliveryPickup').addEventListener('change',refreshDeliveryFields);$('deliveryHome').addEventListener('change',refreshDeliveryFields);")
-s=s.replace("      if($('welcomeModal')?.hidden) setTimeout(()=>requestLocationOnActivation().catch(()=>{}),700);\n",'')
 
 old="""      const [tiendaResultado,metaResultado]=await Promise.allSettled([tiendaPromise,metaPromise]);
       if(metaResultado.status!=='fulfilled') throw metaResultado.reason;
