@@ -1,0 +1,31 @@
+name: Aplicar correccion arranque Mi Farmacia
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/aplicar-arranque-mi-farmacia-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Corregir arranque dinamico del visor
+        run: python tools/patch_arranque_mi_farmacia_temp.py
+      - name: Guardar cambios
+        run: |
+          git config user.name "Macroxel Update"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/index.html
+          if git diff --cached --quiet; then
+            echo "Sin cambios pendientes"
+          else
+            git commit -m "Corrige arranque y semaforo de Mi Farmacia"
+            git push
+          fi
