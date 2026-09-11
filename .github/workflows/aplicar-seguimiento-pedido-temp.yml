@@ -29,3 +29,4 @@ jobs:
             git commit -m "Agrega seguimiento visible de pedidos"
             git push
           fi
+# Reintento con parche ajustado al visor actual.
