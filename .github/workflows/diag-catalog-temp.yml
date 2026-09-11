@@ -1,0 +1,64 @@
+name: Diagnostico temporal catalogo Mi Farmacia
+on:
+  push:
+    paths:
+      - '.github/workflows/diag-catalog-temp.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revisar publicacion y catalogo
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, urllib.request, urllib.error
+          from pathlib import Path
+
+          cfg=json.loads(Path('docs/macroxel-config.json').read_text(encoding='utf-8'))
+          base=str(cfg.get('firebaseUrl','')).rstrip('/')
+          print('config_version=',cfg.get('version'))
+          print('config_storeId=',cfg.get('tiendaId'))
+
+          def get(path):
+              url=f"{base}/{path.strip('/')}.json"
+              req=urllib.request.Request(url,headers={'Accept':'application/json','User-Agent':'MacroxelCatalogDiag/1.0'})
+              try:
+                  with urllib.request.urlopen(req,timeout=20) as r:
+                      raw=r.read().decode('utf-8','replace')
+                      print(path,'HTTP',r.status,'bytes',len(raw))
+                      try:return json.loads(raw) if raw else None
+                      except Exception as e:
+                          print(path,'JSON_ERROR',type(e).__name__); return None
+              except urllib.error.HTTPError as e:
+                  body=e.read().decode('utf-8','replace')
+                  print(path,'HTTP_ERROR',e.code,body[:300]); return None
+              except Exception as e:
+                  print(path,'ERROR',type(e).__name__,str(e)[:300]); return None
+
+          pub=get('mi_farmacia/publicacion') or {}
+          store_id=str(pub.get('tiendaId') or cfg.get('tiendaId') or '')
+          print('resolved_storeId=',store_id)
+          print('publication_keys=',sorted(pub.keys()))
+
+          store=get(f'mi_farmacia/tiendas/{store_id}') or {}
+          print('store_keys=',sorted(store.keys()))
+          print('store_has_order_key=',bool(store.get('clavePedidosId')))
+          print('store_has_catalog_key=',bool(store.get('claveFirmaCatalogoId') or store.get('clavePublicaFirmaCatalogo')))
+
+          meta=get(f'mi_farmacia/catalogo/{store_id}/meta') or {}
+          print('meta=',{k:meta.get(k) for k in ['version','revision','baseRevision','totalProductos','actualizadoEn']})
+          sig=meta.get('firmaCatalogo') or {}
+          print('meta_signature=',{'has_value':bool(sig.get('value')),'keyId':sig.get('keyId')})
+
+          productos=get(f'mi_farmacia/catalogo/{store_id}/productos')
+          print('productos_type=',type(productos).__name__)
+          print('productos_count=',len(productos) if isinstance(productos,dict) else None)
+          if isinstance(productos,dict) and productos:
+              sample_key=next(iter(productos))
+              sample=productos[sample_key] if isinstance(productos[sample_key],dict) else {}
+              print('sample_fields=',sorted(sample.keys()))
+          PY
