@@ -14,69 +14,69 @@ if anchor not in s: raise SystemExit('CSS anchor not found')
 s=s.replace(anchor,anchor+css,1)
 
 cart='      <button id="cartButton" class="cart-button" type="button" aria-label="Abrir carrito">🛒<b id="cartCount">0</b></button>'
-replacement=cart+'\n      <section id="orderProgressPanel" class="order-progress-panel" role="button" tabindex="0" aria-live="polite" aria-label="Seguimiento del pedido" hidden></section>'
 if cart not in s: raise SystemExit('cart not found')
-s=s.replace(cart,replacement,1)
+s=s.replace(cart,cart+'\n      <section id="orderProgressPanel" class="order-progress-panel" role="button" tabindex="0" aria-live="polite" aria-label="Seguimiento del pedido" hidden></section>',1)
 
-const='  const ORDER_STATUS_POLL_MS = 15000;'
-if const not in s: raise SystemExit('poll const not found')
-s=s.replace(const,const+'\n  const ORDER_PROGRESS_TTL_MS = 10 * 60 * 1000;',1)
+poll='const ORDER_STATUS_POLL_MS = 15000;'
+idx=s.find(poll)
+if idx<0: raise SystemExit('poll const not found')
+s=s[:idx]+s[idx:].replace(poll,poll+'\n  const ORDER_PROGRESS_TTL_MS = 10 * 60 * 1000;',1)
 
-old="  function publicOrderStatusLabel(estado=''){const e=text(estado||'NUEVO').toUpperCase();return e==='EN_PROCESO'?'SURTIENDO':e.replace(/_/g,' ')}"
-new="  function publicOrderStatusLabel(estado=''){const e=text(estado||'NUEVO').toUpperCase();if(e==='NUEVO')return 'ENVIADO A SUCURSAL';if(e==='EN_PROCESO')return 'SURTIENDO PEDIDO';if(e==='SURTIDO')return 'PEDIDO SURTIDO';if(e==='CANCELADO')return 'PEDIDO CANCELADO';return e.replace(/_/g,' ')}"
+old="function publicOrderStatusLabel(estado=''){const e=text(estado||'NUEVO').toUpperCase();return e==='EN_PROCESO'?'SURTIENDO':e.replace(/_/g,' ')}"
+new="function publicOrderStatusLabel(estado=''){const e=text(estado||'NUEVO').toUpperCase();if(e==='NUEVO')return 'ENVIADO A SUCURSAL';if(e==='EN_PROCESO')return 'SURTIENDO PEDIDO';if(e==='SURTIDO')return 'PEDIDO SURTIDO';if(e==='CANCELADO')return 'PEDIDO CANCELADO';return e.replace(/_/g,' ')}"
 if old not in s: raise SystemExit('status mapper not found')
 s=s.replace(old,new,1)
 
-voice="  function orderVoiceText(estado=''){"
-funcs=r'''  function orderTerminalTime(order){
-    const raw=order?.canceladoEn||order?.surtidoEn||order?.updatedAt||order?.createdAt||'';
-    const t=new Date(raw).getTime();return Number.isFinite(t)?t:0;
-  }
-  function visibleOrderProgress(){
-    const now=Date.now();
-    return localOrders().find(o=>{
-      const e=text(o?.estado||'NUEVO').toUpperCase();
-      if(!['SURTIDO','CANCELADO'].includes(e))return true;
-      const t=orderTerminalTime(o);return !!t&&(now-t)<ORDER_PROGRESS_TTL_MS;
-    })||null;
-  }
-  function renderOrderProgress(){
-    const panel=$('orderProgressPanel');if(!panel)return;
-    const o=visibleOrderProgress();if(!o){panel.hidden=true;panel.innerHTML='';panel.className='order-progress-panel';return}
-    const e=text(o.estado||'NUEVO').toUpperCase();
-    const terminal=e==='SURTIDO',cancelled=e==='CANCELADO';
-    const step=e==='NUEVO'?1:e==='EN_PROCESO'?2:e==='SURTIDO'?3:0;
-    const mensaje=e==='NUEVO'?'Tu pedido fue enviado a la sucursal.':e==='EN_PROCESO'?'La farmacia está surtiendo tu pedido.':e==='SURTIDO'?'Tu pedido ya fue surtido.':e==='CANCELADO'?'Tu pedido fue cancelado por la farmacia.':(o.mensaje||'Seguimiento del pedido.');
-    const steps=[['Enviado','a sucursal'],['Surtiendo','pedido'],['Pedido','surtido']].map((parts,i)=>{const n=i+1;const cls=terminal?'done':n<step?'done':n===step?'current':'';return `<div class="order-progress-step ${cls}">${parts[0]}<br>${parts[1]}</div>`}).join('');
-    panel.className=`order-progress-panel${terminal?' terminal':''}${cancelled?' cancelled':''}`;
-    panel.innerHTML=`<div class="order-progress-top"><div class="order-progress-title"><strong>Seguimiento de tu pedido</strong><small>${esc(o.id||'')}</small></div><span class="order-progress-badge ${esc(e.toLowerCase().replace(/_/g,'-'))}">${esc(publicOrderStatusLabel(e))}</span></div><div class="order-progress-message">${esc(mensaje)}</div><div class="order-progress-steps">${steps}</div>`;
-    panel.hidden=false;
-  }
+voice="function orderVoiceText(estado=''){"
+funcs=r'''function orderTerminalTime(order){
+  const raw=order?.canceladoEn||order?.surtidoEn||order?.updatedAt||order?.createdAt||'';
+  const t=new Date(raw).getTime();return Number.isFinite(t)?t:0;
+}
+function visibleOrderProgress(){
+  const now=Date.now();
+  return localOrders().find(o=>{
+    const e=text(o?.estado||'NUEVO').toUpperCase();
+    if(!['SURTIDO','CANCELADO'].includes(e))return true;
+    const t=orderTerminalTime(o);return !!t&&(now-t)<ORDER_PROGRESS_TTL_MS;
+  })||null;
+}
+function renderOrderProgress(){
+  const panel=$('orderProgressPanel');if(!panel)return;
+  const o=visibleOrderProgress();if(!o){panel.hidden=true;panel.innerHTML='';panel.className='order-progress-panel';return}
+  const e=text(o.estado||'NUEVO').toUpperCase(),terminal=e==='SURTIDO',cancelled=e==='CANCELADO';
+  const step=e==='NUEVO'?1:e==='EN_PROCESO'?2:e==='SURTIDO'?3:0;
+  const mensaje=e==='NUEVO'?'Tu pedido fue enviado a la sucursal.':e==='EN_PROCESO'?'La farmacia está surtiendo tu pedido.':e==='SURTIDO'?'Tu pedido ya fue surtido.':e==='CANCELADO'?'Tu pedido fue cancelado por la farmacia.':(o.mensaje||'Seguimiento del pedido.');
+  const steps=[['Enviado','a sucursal'],['Surtiendo','pedido'],['Pedido','surtido']].map((parts,i)=>{const n=i+1,cls=terminal?'done':n<step?'done':n===step?'current':'';return `<div class="order-progress-step ${cls}">${parts[0]}<br>${parts[1]}</div>`}).join('');
+  panel.className=`order-progress-panel${terminal?' terminal':''}${cancelled?' cancelled':''}`;
+  panel.innerHTML=`<div class="order-progress-top"><div class="order-progress-title"><strong>Seguimiento de tu pedido</strong><small>${esc(o.id||'')}</small></div><span class="order-progress-badge ${esc(e.toLowerCase().replace(/_/g,'-'))}">${esc(publicOrderStatusLabel(e))}</span></div><div class="order-progress-message">${esc(mensaje)}</div><div class="order-progress-steps">${steps}</div>`;
+  panel.hidden=false;
+}
 '''
 if voice not in s: raise SystemExit('voice anchor not found')
 s=s.replace(voice,funcs+voice,1)
 s=s.replace("if(e==='EN_PROCESO')return 'Tu pedido se está surtiendo. La farmacia ya está preparando tus productos.';", "if(e==='EN_PROCESO')return 'Surtiendo pedido. La farmacia ya está preparando tus productos.';",1)
 s=s.replace("if(e==='SURTIDO')return 'Pedido surtido, favor de estar atento en el punto de encuentro.';", "if(e==='SURTIDO')return 'Pedido surtido.';",1)
 
-old_add="  function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id);rows.unshift(order);saveLocalOrders(rows);renderOrderHistory()}"
+old_add="function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id);rows.unshift(order);saveLocalOrders(rows);renderOrderHistory()}"
 if old_add not in s: raise SystemExit('addLocalOrder not found')
-s=s.replace(old_add,"  function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id);rows.unshift(order);saveLocalOrders(rows);renderOrderHistory();renderOrderProgress()}",1)
+s=s.replace(old_add,"function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id);rows.unshift(order);saveLocalOrders(rows);renderOrderHistory();renderOrderProgress()}",1)
 
 frag="o.estado=next;o.mensaje=text(remote.mensaje)||o.mensaje;o.updatedAt=remote.actualizadoEn||nowISO();if(next!==before){"
 if frag not in s: raise SystemExit('refresh fragment not found')
 s=s.replace(frag,"o.estado=next;o.mensaje=text(remote.mensaje)||o.mensaje;o.updatedAt=remote.actualizadoEn||nowISO();if(remote.surtidoEn)o.surtidoEn=remote.surtidoEn;if(remote.canceladoEn)o.canceladoEn=remote.canceladoEn;if(next!==before){",1)
-s=s.replace("    }finally{state.orderStatusBusy=false;if(changed)saveLocalOrders(rows);renderOrderHistory()}","    }finally{state.orderStatusBusy=false;if(changed)saveLocalOrders(rows);renderOrderHistory();renderOrderProgress()}",1)
+s=s.replace("}finally{state.orderStatusBusy=false;if(changed)saveLocalOrders(rows);renderOrderHistory()}","}finally{state.orderStatusBusy=false;if(changed)saveLocalOrders(rows);renderOrderHistory();renderOrderProgress()}",1)
 s=s.replace("mensaje:'Tu pedido fue recibido por la farmacia.'","mensaje:'Pedido enviado a sucursal.'",1)
 
-bind="    $('orderHistoryButton').addEventListener('click',openHistory);"
-if bind not in s: raise SystemExit('bind not found')
-s=s.replace(bind,"    $('orderProgressPanel').addEventListener('click',openHistory);$('orderProgressPanel').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openHistory()}});\n"+bind,1)
+bind="$('orderHistoryButton').addEventListener('click',openHistory);"
+pos=s.find(bind)
+if pos<0: raise SystemExit('bind not found')
+s=s[:pos]+"$('orderProgressPanel').addEventListener('click',openHistory);$('orderProgressPanel').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openHistory()}});"+s[pos:]
 
-init="    loadCart();bind();renderOrderHistory();refreshNotificationButton();refreshConnectionInfo();showWelcomeIfNeeded();"
+init="loadCart();bind();renderOrderHistory();refreshNotificationButton();refreshConnectionInfo();showWelcomeIfNeeded();"
 if init not in s: raise SystemExit('init not found')
-s=s.replace(init,"    loadCart();bind();renderOrderHistory();renderOrderProgress();refreshNotificationButton();refreshConnectionInfo();showWelcomeIfNeeded();",1)
+s=s.replace(init,"loadCart();bind();renderOrderHistory();renderOrderProgress();refreshNotificationButton();refreshConnectionInfo();showWelcomeIfNeeded();",1)
 
-interval="      setInterval(()=>{if(navigator.onLine)refreshOrderStatuses()},ORDER_STATUS_POLL_MS);"
+interval="setInterval(()=>{if(navigator.onLine)refreshOrderStatuses()},ORDER_STATUS_POLL_MS);"
 if interval not in s: raise SystemExit('interval not found')
 s=s.replace(interval,interval+'\n      setInterval(renderOrderProgress,30000);',1)
 
