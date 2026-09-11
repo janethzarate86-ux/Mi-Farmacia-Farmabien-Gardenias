@@ -62,6 +62,11 @@ main{position:relative;z-index:1}.app-header{z-index:40}.connection-panel,.modal
 .connection-store-photo{margin:13px 0 10px;border:1px solid #dbe6ef;border-radius:16px;background:#f2f7fb;overflow:hidden;display:grid;place-items:center;min-height:120px}
 .connection-store-photo[hidden]{display:none!important}.connection-store-photo img{display:block;width:100%;height:min(320px,42vh);object-fit:contain;background:#f2f7fb}
 @media(max-width:520px){body.store-wallpaper::before{background-size:94vw auto;opacity:.11}.connection-store-photo img{height:min(260px,36vh)}}
+
+  .order-progress-panel{position:relative}
+  .order-progress-close{position:absolute;top:8px;right:8px;width:28px;height:28px;border:1px solid #d8e2ec;border-radius:50%;background:#fff;color:#536579;font-size:18px;line-height:1;display:grid;place-items:center;cursor:pointer;z-index:2;padding:0}
+  .order-progress-close:hover{background:#f1f5f9}
+  .order-progress-top{padding-right:32px}
 </style>
 </head>
 <body>
@@ -266,6 +271,7 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
   const STORAGE_CART = 'mi_farmacia:cart:v2';
   const STORAGE_CUSTOMER = 'mi_farmacia:customer:v1';
   const STORAGE_ORDERS = 'mi_farmacia:orders:v1';
+  const STORAGE_PROGRESS_DISMISS = 'mi_farmacia:progress_dismiss:v1';
   const STORAGE_IMAGE_CACHE = 'mi_farmacia:image_cache:v2';
   const STORAGE_IMAGE_MASTER = 'mi_farmacia:image_master:v1';
   const CONFIG_FILE = window.MI_FARMACIA_CONFIG || {};
@@ -428,7 +434,7 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
     const actualizado=text(state.catalogMeta?.actualizadoEn||state.publication?.actualizadoEn||'');
     $('connectionStoreName').textContent=nombre;
     $('connectionStoreId').textContent=id;
-    let cat=revision?`Revisión ${revision.toLocaleString('es-MX')}`:'Esperando sincronización';
+    let cat=revision?`Revisión ${revision.toLocaleString('es-MX')}`:(state.products.length?`Catálogo disponible · ${state.products.length.toLocaleString('es-MX')} producto(s)`:'Esperando sincronización');
     if(actualizado){try{cat+=` · ${new Date(actualizado).toLocaleString('es-MX',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}`}catch(_){}}
     $('connectionCatalog').textContent=cat;
     const direccion=text(state.store?.direccion||'')||'Dirección pendiente de sincronizar';
@@ -438,7 +444,8 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
     const maps=storeMapsUrl(),publicCard=$('storePublicCard');
     if(publicCard){publicCard.disabled=!maps;publicCard.title=maps?'Abrir ubicación en Google Maps':'Ubicación pendiente de sincronizar';}
     refreshStoreImage();refreshStoreAvailability();
-    const online=!!(state.store&&state.firebaseUrl&&!state.lastError);
+    const catalogoUtil=!!(Number(state.catalogMeta?.revision||0)||state.products.length||state.cacheLoaded);
+    const online=!!(state.store&&state.firebaseUrl&&catalogoUtil);
     $('connectionState').textContent=online?(storePaused()?'Tienda pausada por mantenimiento':'Conectado al sistema principal'):(navigator.onLine?'Sin sincronizar':'Sin internet');
     $('connectionDot').parentElement.classList.toggle('online',online);
     $('connectionDot').parentElement.classList.toggle('offline',!online);
@@ -797,7 +804,19 @@ function insufficientStockMessage(p,requested){
       refreshConnectionInfo();
       if(storePaused()){state.lastError='';setStatus(true,'Mantenimiento');$('loadingState').hidden=true;refreshStoreAvailability();return true;}
 
-      if(Number(meta.version||0)!==2||!Number(meta.revision||0)) throw new Error('El catálogo todavía no ha sido sincronizado con la versión móvil actual.');
+      if(Number(meta.version||0)!==2||!Number(meta.revision||0)){
+        let productosFallback=cacheValida?cache.productos:null;
+        if(!productosFallback){
+          if(productosInicialPromise){const inicial=await productosInicialPromise;if(!inicial.ok)throw inicial.error;productosFallback=inicial.value;}
+          else productosFallback=await request(productosPath,{timeoutMs:FIREBASE_CATALOG_TIMEOUT_MS});
+        }
+        productosFallback=productosFallback||{};
+        const revisionFallback=Date.now();
+        const metaFallback={...meta,version:2,revision:Number(meta.revision||revisionFallback),baseRevision:Number(meta.baseRevision||meta.revision||revisionFallback),totalProductos:Object.keys(productosFallback).length,actualizadoEn:text(meta.actualizadoEn||state.publication?.actualizadoEn||nowISO())};
+        state.catalogMeta=metaFallback;applyProductsObject(productosFallback);saveCatalogCache(productosFallback,metaFallback);state.cacheLoaded=true;
+        $('storeName').textContent=text(state.store?.nombreActivo||state.store?.nombre||state.publication?.nombre||'Catálogo en línea');
+        state.lastError='';setStatus(true,'En línea');refreshConnectionInfo();renderCategories();renderProducts();reconcileCart();$('loadingState').hidden=true;return true;
+      }
       let productos=cacheValida?cache.productos:null;
       const cacheRevision=cacheValida?Number(cache.revision||0):0;
       const revision=Number(meta.revision||0);
@@ -825,7 +844,8 @@ function insufficientStockMessage(p,requested){
       state.lastError=''; setStatus(true,'En línea'); refreshConnectionInfo(); renderCategories(); renderProducts(); reconcileCart(); $('loadingState').hidden=true; return true;
     }catch(e){
       state.lastError=text(e?.message||e); console.warn('Mi Farmacia no pudo sincronizar:',e);
-      setStatus(false,navigator.onLine?'Sin sincronizar':'Sin internet'); refreshConnectionInfo(); $('loadingState').hidden=true;
+      const catalogoUtil=!!(state.store&&state.firebaseUrl&&(Number(state.catalogMeta?.revision||0)||state.products.length||state.cacheLoaded));
+      if(catalogoUtil){state.lastError='';setStatus(true,'En línea');}else setStatus(false,navigator.onLine?'Sin sincronizar':'Sin internet'); refreshConnectionInfo(); $('loadingState').hidden=true;
       if(!state.products.length){$('emptyState').hidden=false;$('emptyMessage').textContent=state.lastError||'Catálogo temporalmente no disponible. La farmacia debe sincronizar desde Macroxel.';}
       if(!quiet)toast(navigator.onLine?'No se pudo actualizar el catálogo.':'Sin conexión a internet.'); return false;
     }finally{state.loading=false;}
@@ -910,13 +930,17 @@ function orderTerminalTime(order){
   const raw=order?.canceladoEn||order?.surtidoEn||order?.updatedAt||order?.createdAt||'';
   const t=new Date(raw).getTime();return Number.isFinite(t)?t:0;
 }
+function progressDismissKey(order){return `${text(order?.id)}|${text(order?.estado||'NUEVO').toUpperCase()}`}
+function progressDismissedFor(order){const saved=readJsonStorage(STORAGE_PROGRESS_DISMISS,{});return !!order&&text(saved?.key)===progressDismissKey(order)}
+function dismissOrderProgress(){const o=visibleOrderProgress();if(!o)return;writeJsonStorage(STORAGE_PROGRESS_DISMISS,{key:progressDismissKey(o),at:Date.now()});renderOrderProgress()}
 function visibleOrderProgress(){
   const now=Date.now();
-  return localOrders().find(o=>{
+  const o=localOrders().find(o=>{
     const e=text(o?.estado||'NUEVO').toUpperCase();
     if(!['SURTIDO','CANCELADO'].includes(e))return true;
     const t=orderTerminalTime(o);return !!t&&(now-t)<ORDER_PROGRESS_TTL_MS;
   })||null;
+  return o&&!progressDismissedFor(o)?o:null;
 }
 function renderOrderProgress(){
   const panel=$('orderProgressPanel');if(!panel)return;
@@ -926,7 +950,7 @@ function renderOrderProgress(){
   const mensaje=e==='NUEVO'?'Tu pedido fue enviado a la sucursal.':e==='EN_PROCESO'?'La farmacia está surtiendo tu pedido.':e==='SURTIDO'?'Tu pedido ya fue surtido.':e==='CANCELADO'?'Tu pedido fue cancelado por la farmacia.':(o.mensaje||'Seguimiento del pedido.');
   const steps=[['Enviado','a sucursal'],['Surtiendo','pedido'],['Pedido','surtido']].map((parts,i)=>{const n=i+1,cls=terminal?'done':n<step?'done':n===step?'current':'';return `<div class="order-progress-step ${cls}">${parts[0]}<br>${parts[1]}</div>`}).join('');
   panel.className=`order-progress-panel${terminal?' terminal':''}${cancelled?' cancelled':''}`;
-  panel.innerHTML=`<div class="order-progress-top"><div class="order-progress-title"><strong>Seguimiento de tu pedido</strong><small>${esc(o.id||'')}</small></div><span class="order-progress-badge ${esc(e.toLowerCase().replace(/_/g,'-'))}">${esc(publicOrderStatusLabel(e))}</span></div><div class="order-progress-message">${esc(mensaje)}</div><div class="order-progress-steps">${steps}</div>`;
+  panel.innerHTML=`<button class="order-progress-close" type="button" data-close-progress aria-label="Cerrar seguimiento">×</button><div class="order-progress-top"><div class="order-progress-title"><strong>Seguimiento de tu pedido</strong><small>${esc(o.id||'')}</small></div><span class="order-progress-badge ${esc(e.toLowerCase().replace(/_/g,'-'))}">${esc(publicOrderStatusLabel(e))}</span></div><div class="order-progress-message">${esc(mensaje)}</div><div class="order-progress-steps">${steps}</div>`;
   panel.hidden=false;
 }
 function orderVoiceText(estado=''){
@@ -1037,7 +1061,7 @@ function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id
     $('productGrid').addEventListener('click',e=>{const add=e.target.closest('[data-add]');const card=e.target.closest('[data-product]');openQuantity(add?.dataset.add||card?.dataset.product||'')});$('loadMoreProducts').addEventListener('click',()=>{state.displayLimit+=60;renderProducts()});
     $('productGrid').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-product]')){e.preventDefault();openQuantity(e.target.dataset.product)}});
     document.querySelectorAll('[data-close="quantity"]').forEach(el=>el.addEventListener('click',()=>closeModal('quantityModal')));$('qtyMinus').addEventListener('click',()=>adjustQty(-1));$('qtyPlus').addEventListener('click',()=>adjustQty(1));$('qtyInput').addEventListener('change',()=>{const max=selectedMax(),wanted=Math.max(1,Math.floor(Number($('qtyInput').value)||1));if(wanted>max){toast(insufficientStockMessage(state.selected,wanted));$('qtyInput').value=String(max);}else $('qtyInput').value=String(clamp(wanted,1,max));});$('addToCart').addEventListener('click',addSelected);
-    $('orderProgressPanel').addEventListener('click',openHistory);$('orderProgressPanel').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openHistory()}});$('orderHistoryButton').addEventListener('click',openHistory);$('deleteOrderHistory').addEventListener('click',deleteOrderHistory);document.querySelectorAll('[data-close="history"]').forEach(el=>el.addEventListener('click',closeHistory));$('orderHistoryList').addEventListener('click',e=>{const row=e.target.closest('[data-history-order]');if(row)toggleHistoryOrderDetail(row.dataset.historyOrder)});$('orderHistoryList').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-history-order]')){e.preventDefault();toggleHistoryOrderDetail(e.target.dataset.historyOrder)}});
+    $('orderProgressPanel').addEventListener('click',e=>{if(e.target.closest('[data-close-progress]')){e.stopPropagation();dismissOrderProgress();return}openHistory()});$('orderProgressPanel').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('[data-close-progress]')){e.preventDefault();openHistory()}});$('orderHistoryButton').addEventListener('click',openHistory);$('deleteOrderHistory').addEventListener('click',deleteOrderHistory);document.querySelectorAll('[data-close="history"]').forEach(el=>el.addEventListener('click',closeHistory));$('orderHistoryList').addEventListener('click',e=>{const row=e.target.closest('[data-history-order]');if(row)toggleHistoryOrderDetail(row.dataset.historyOrder)});$('orderHistoryList').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-history-order]')){e.preventDefault();toggleHistoryOrderDetail(e.target.dataset.historyOrder)}});
     $('cartButton').addEventListener('click',openCart);document.querySelectorAll('[data-close="cart"]').forEach(el=>el.addEventListener('click',closeCart));
     $('cartItems').addEventListener('click',e=>{const minus=e.target.closest('[data-cart-minus]'),plus=e.target.closest('[data-cart-plus]'),remove=e.target.closest('[data-cart-remove]');if(minus)changeCart(minus.dataset.cartMinus,-1);if(plus)changeCart(plus.dataset.cartPlus,1);if(remove){state.cart.delete(remove.dataset.cartRemove);persistCart();renderCart()}});$('checkoutButton').addEventListener('click',openCheckout);
     document.querySelectorAll('[data-close="checkout"]').forEach(el=>el.addEventListener('click',()=>closeModal('checkoutModal')));$('submitOrder').addEventListener('click',submitOrder);$('deliveryPickup').addEventListener('change',refreshDeliveryFields);$('deliveryHome').addEventListener('change',refreshDeliveryFields);$('deliveryFacade').addEventListener('change',onFacadeSelected);$('enableOrderNotifications').addEventListener('click',enableOrderNotifications);$('closeSuccess').addEventListener('click',()=>{closeModal('successModal');loadCatalog({quiet:true,forceNetwork:true});refreshOrderStatuses()});
@@ -1069,7 +1093,7 @@ function addLocalOrder(order){const rows=localOrders().filter(o=>o.id!==order.id
       setInterval(renderOrderProgress,30000);
     }catch(error){
       state.lastError=text(error?.message||error);console.warn('Mi Farmacia no pudo iniciar:',error);
-      $('loadingState').hidden=true;setStatus(false,navigator.onLine?'Sin sincronizar':'Sin internet');refreshConnectionInfo();
+      $('loadingState').hidden=true;const catalogoUtil=!!(state.store&&state.firebaseUrl&&(Number(state.catalogMeta?.revision||0)||state.products.length||state.cacheLoaded));if(catalogoUtil){state.lastError='';setStatus(true,'En línea');}else setStatus(false,navigator.onLine?'Sin sincronizar':'Sin internet');refreshConnectionInfo();
       if(!state.products.length){$('emptyState').hidden=false;$('emptyMessage').textContent=state.lastError;}
       else toast('No se pudo validar la conexión nueva; se muestra el último catálogo guardado.');
     }
