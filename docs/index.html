@@ -262,7 +262,7 @@ window.MI_FARMACIA_IMAGE_CATALOG = window.MI_FARMACIA_IMAGE_CATALOG || {
 (() => {
   'use strict';
   const MIN_ORDER_TOTAL = 120;
-  const minimumOrderMessage = () => 'El pedido mínimo es mayor a 
+  const minimumOrderMessage = () => 'El pedido mínimo es mayor a ' + String.fromCharCode(36) + MIN_ORDER_TOTAL.toFixed(2) + '. Agrega productos hasta superar ese monto.';
   const $ = id => document.getElementById(id);
   const STORAGE_RESOLVER = 'mi_farmacia:resolver:v2';
   const STORAGE_CATALOG = 'mi_farmacia:catalogo:v2';
